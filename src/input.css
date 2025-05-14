@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-darker text-gray-200;
+  }
+}
+
+@layer components {
+  .nav-link {
+    @apply px-4 py-2 text-gray-300 hover:text-white hover:bg-primary/20 rounded-lg transition-all duration-300;
+  }
+  
+  .nav-link.active {
+    @apply text-white bg-primary/30;
+  }
+  
+  .btn {
+    @apply px-6 py-2 rounded-lg font-medium transition-all duration-300 transform hover:scale-105;
+  }
+  
+  .btn-primary {
+    @apply bg-primary text-white hover:bg-primary-dark hover:shadow-lg hover:shadow-primary/30;
+  }
+  
+  .btn-outline {
+    @apply border-2 border-primary text-primary hover:bg-primary hover:text-white;
+  }
+  
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold mb-4 text-white relative inline-block;
+  }
+  
+  .section-title::after {
+    content: "";
+    @apply absolute bottom-0 left-0 w-1/2 h-1 bg-primary rounded-full;
+  }
+  
+  .project-card {
+    @apply bg-dark rounded-xl overflow-hidden shadow-lg hover:shadow-primary/20 transition-all duration-500 transform hover:-translate-y-2;
+  }
+  
+  .skill-card {
+    @apply bg-dark p-6 rounded-xl relative overflow-hidden hover:shadow-lg hover:shadow-primary/20 transition-all duration-300;
+  }
+  
+  .skill-card::before {
+    content: "";
+    @apply absolute top-0 left-0 w-1 h-full bg-primary rounded-l-xl transition-all duration-500;
+  }
+  
+  .skill-card:hover::before {
+    @apply w-2;
+  }
+  
+  .glow-effect {
+    @apply relative;
+  }
+  
+  .glow-effect::after {
+    content: "";
+    @apply absolute inset-0 rounded-xl opacity-0 transition-opacity duration-300 bg-primary/20 blur-xl;
+  }
+  
+  .glow-effect:hover::after {
+    @apply opacity-100;
+  }
+}
