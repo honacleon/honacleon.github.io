@@ -804,6 +804,10 @@ body {
   position: relative;
 }
 
+.sticky {
+  position: sticky;
+}
+
 .inset-0 {
   inset: 0px;
 }
@@ -856,6 +860,14 @@ body {
   top: 25%;
 }
 
+.right-4 {
+  right: 1rem;
+}
+
+.top-4 {
+  top: 1rem;
+}
+
 .z-0 {
   z-index: 0;
 }
@@ -866,6 +878,10 @@ body {
 
 .z-50 {
   z-index: 50;
+}
+
+.z-\[60\] {
+  z-index: 60;
 }
 
 .mx-auto {
@@ -981,6 +997,22 @@ body {
   height: 24rem;
 }
 
+.h-10 {
+  height: 2.5rem;
+}
+
+.h-auto {
+  height: auto;
+}
+
+.max-h-\[85vh\] {
+  max-height: 85vh;
+}
+
+.max-h-\[90vh\] {
+  max-height: 90vh;
+}
+
 .min-h-screen {
   min-height: 100vh;
 }
@@ -1013,12 +1045,24 @@ body {
   width: 100%;
 }
 
+.w-10 {
+  width: 2.5rem;
+}
+
 .max-w-3xl {
   max-width: 48rem;
 }
 
 .max-w-4xl {
   max-width: 56rem;
+}
+
+.max-w-\[90vw\] {
+  max-width: 90vw;
+}
+
+.max-w-full {
+  max-width: 100%;
 }
 
 .transform {
@@ -1053,6 +1097,10 @@ body {
 
 .animate-spin {
   animation: spin 1s linear infinite;
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }
 
 .grid-cols-1 {
@@ -1133,6 +1181,10 @@ body {
 
 .overflow-hidden {
   overflow: hidden;
+}
+
+.overflow-y-auto {
+  overflow-y: auto;
 }
 
 .scroll-smooth {
@@ -1247,15 +1299,23 @@ body {
 }
 
 .bg-secondary\/10 {
-  background-color: rgb(16 185 129 / 0.1);
+  background-color: rgb(181 158 79 / 0.1);
 }
 
 .bg-secondary\/20 {
-  background-color: rgb(16 185 129 / 0.2);
+  background-color: rgb(181 158 79 / 0.2);
 }
 
 .bg-secondary\/50 {
-  background-color: rgb(16 185 129 / 0.5);
+  background-color: rgb(181 158 79 / 0.5);
+}
+
+.bg-darker\/90 {
+  background-color: rgb(15 23 42 / 0.9);
+}
+
+.bg-darker\/95 {
+  background-color: rgb(15 23 42 / 0.95);
 }
 
 .bg-gradient-to-b {
@@ -1299,8 +1359,8 @@ body {
 }
 
 .from-secondary\/20 {
-  --tw-gradient-from: rgb(16 185 129 / 0.2) var(--tw-gradient-from-position);
-  --tw-gradient-to: rgb(16 185 129 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-from: rgb(181 158 79 / 0.2) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(181 158 79 / 0) var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
@@ -1321,11 +1381,16 @@ body {
 }
 
 .to-secondary\/20 {
-  --tw-gradient-to: rgb(16 185 129 / 0.2) var(--tw-gradient-to-position);
+  --tw-gradient-to: rgb(181 158 79 / 0.2) var(--tw-gradient-to-position);
 }
 
 .to-transparent {
   --tw-gradient-to: transparent var(--tw-gradient-to-position);
+}
+
+.object-contain {
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 .p-2 {
@@ -1382,6 +1447,11 @@ body {
 .py-3 {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
+}
+
+.px-3 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
 }
 
 .pt-20 {
@@ -1486,11 +1556,11 @@ body {
 
 .text-secondary {
   --tw-text-opacity: 1;
-  color: rgb(16 185 129 / var(--tw-text-opacity, 1));
+  color: rgb(181 158 79 / var(--tw-text-opacity, 1));
 }
 
 .text-secondary\/50 {
-  color: rgb(16 185 129 / 0.5);
+  color: rgb(181 158 79 / 0.5);
 }
 
 .text-white {
@@ -1512,8 +1582,19 @@ body {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
+.shadow-xl {
+  --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
 .shadow-primary\/20 {
   --tw-shadow-color: rgb(99 102 241 / 0.2);
+  --tw-shadow: var(--tw-shadow-colored);
+}
+
+.shadow-primary\/10 {
+  --tw-shadow-color: rgb(99 102 241 / 0.1);
   --tw-shadow: var(--tw-shadow-colored);
 }
 
@@ -1556,6 +1637,12 @@ body {
   transition-duration: 150ms;
 }
 
+.transition-transform {
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
 .duration-300 {
   transition-duration: 300ms;
 }
@@ -1590,7 +1677,11 @@ body {
 }
 
 .hover\:border-secondary\/50:hover {
-  border-color: rgb(16 185 129 / 0.5);
+  border-color: rgb(181 158 79 / 0.5);
+}
+
+.hover\:border-primary\/50:hover {
+  border-color: rgb(99 102 241 / 0.5);
 }
 
 .hover\:bg-primary:hover {
@@ -1606,6 +1697,11 @@ body {
 .hover\:text-primary:hover {
   --tw-text-opacity: 1;
   color: rgb(99 102 241 / var(--tw-text-opacity, 1));
+}
+
+.hover\:text-white:hover {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 
 .focus\:outline-none:focus {

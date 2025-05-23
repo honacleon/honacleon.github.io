@@ -207,12 +207,12 @@
                 <div class="project-card glow-effect group">
                     <div class="relative overflow-hidden rounded-t-xl">
                         <div class="h-48 bg-gradient-to-r from-primary/20 to-secondary/20 flex items-center justify-center">
-                            <i class="fas fa-brain text-6xl text-primary/50"></i>
+                            <i class="fas fa-file-alt text-6xl text-primary/50"></i>
                         </div>
                         <div class="absolute inset-0 bg-gradient-to-t from-dark to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
                             <div class="p-4 w-full">
                                 <div class="flex justify-center">
-                                    <button class="bg-primary hover:bg-primary-dark text-white px-4 py-2 rounded-lg text-sm transition-all duration-300 transform hover:scale-105">
+                                    <button onclick="openProjetoModal()" class="bg-primary hover:bg-primary-dark text-white px-4 py-2 rounded-lg text-sm transition-all duration-300 transform hover:scale-105">
                                         <i class="fas fa-eye mr-2"></i> Ver Detalhes
                                     </button>
                                 </div>
@@ -221,16 +221,16 @@
                     </div>
                     <div class="p-6">
                         <div class="flex justify-between items-start mb-4">
-                            <h3 class="text-xl font-bold text-white">Modelo Preditivo de Campanhas de Marketing</h3>
+                            <h3 class="text-xl font-bold text-white">Agente de Análise de documentos</h3>
                             <span class="text-xs bg-primary/20 text-primary py-1 px-2 rounded-full">IA</span>
                         </div>
                         <p class="text-gray-400 mb-4">
-                            Sistema de predição para otimizar resultados de campanhas de marketing com base em comportamento do cliente.
+                            Agente inteligente para análise e extração de informações relevantes de documentos usando IA generativa.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-4">
                             <span class="text-xs bg-dark-800 text-gray-300 py-1 px-2 rounded-full border border-gray-700">Python</span>
-                            <span class="text-xs bg-dark-800 text-gray-300 py-1 px-2 rounded-full border border-gray-700">Machine Learning</span>
-                            <span class="text-xs bg-dark-800 text-gray-300 py-1 px-2 rounded-full border border-gray-700">Scikit-Learn</span>
+                            <span class="text-xs bg-dark-800 text-gray-300 py-1 px-2 rounded-full border border-gray-700">OpenAI</span>
+                            <span class="text-xs bg-dark-800 text-gray-300 py-1 px-2 rounded-full border border-gray-700">LangChain</span>
                         </div>
                     </div>
                 </div>
@@ -653,6 +653,107 @@
                     }, 500);
                 });
             }
+        });
+    </script>
+
+    <!-- Modal para o Agente de Análise de Documentos -->
+    <div id="projeto-modal" class="fixed inset-0 bg-darker/90 z-50 flex items-center justify-center hidden overflow-y-auto p-4">
+        <div class="bg-dark rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto border border-gray-800 shadow-xl shadow-primary/10">
+            <!-- Header do Modal -->
+            <div class="border-b border-gray-800 p-4 flex justify-between items-center sticky top-0 bg-dark z-10">
+                <h3 class="text-xl font-bold text-white">Agente de Análise de documentos</h3>
+                <button id="fechar-modal" class="text-gray-400 hover:text-white transition-colors">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            
+            <!-- Conteúdo do Modal -->
+            <div class="p-6">
+                <h4 class="text-lg font-bold text-white mb-4">Visão Geral</h4>
+                <p class="text-gray-300 mb-6">
+                    Este agente inteligente foi desenvolvido para analisar documentos e extrair informações relevantes automaticamente usando inteligência artificial generativa. O sistema é capaz de compreender o contexto dos documentos, responder perguntas específicas e gerar insights acionáveis.
+                </p>
+                
+                <h4 class="text-lg font-bold text-white mb-4">Screenshots</h4>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <!-- Placeholder para os screenshots - serão substituídos pelas imagens reais -->
+                    <div class="screenshot-container rounded-lg overflow-hidden border border-gray-800 hover:border-primary/50 transition-all cursor-pointer">
+                        <img src="img/projects/doc-agent/screenshot1.jpg" alt="Screenshot do Agente 1" class="w-full h-auto hover:scale-105 transition-transform duration-300" onclick="openFullImage(this.src)">
+                    </div>
+                    <div class="screenshot-container rounded-lg overflow-hidden border border-gray-800 hover:border-primary/50 transition-all cursor-pointer">
+                        <img src="img/projects/doc-agent/screenshot2.jpg" alt="Screenshot do Agente 2" class="w-full h-auto hover:scale-105 transition-transform duration-300" onclick="openFullImage(this.src)">
+                    </div>
+                    <div class="screenshot-container rounded-lg overflow-hidden border border-gray-800 hover:border-primary/50 transition-all cursor-pointer">
+                        <img src="img/projects/doc-agent/screenshot3.jpg" alt="Screenshot do Agente 3" class="w-full h-auto hover:scale-105 transition-transform duration-300" onclick="openFullImage(this.src)">
+                    </div>
+                </div>
+                
+                <h4 class="text-lg font-bold text-white mb-4">Tecnologias Utilizadas</h4>
+                <div class="flex flex-wrap gap-2 mb-6">
+                    <span class="bg-dark-800 text-gray-300 py-1 px-3 rounded-full border border-gray-700">Python</span>
+                    <span class="bg-dark-800 text-gray-300 py-1 px-3 rounded-full border border-gray-700">OpenAI</span>
+                    <span class="bg-dark-800 text-gray-300 py-1 px-3 rounded-full border border-gray-700">LangChain</span>
+                    <span class="bg-dark-800 text-gray-300 py-1 px-3 rounded-full border border-gray-700">PDF Processing</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para visualizar imagem em tamanho completo -->
+    <div id="fullscreen-image-modal" class="fixed inset-0 bg-darker/95 z-[60] flex items-center justify-center hidden p-4">
+        <div class="relative max-w-[90vw] max-h-[90vh]">
+            <img id="fullscreen-image" src="" alt="Imagem em tamanho completo" class="max-w-full max-h-[85vh] object-contain">
+            <button id="close-fullscreen" class="absolute top-4 right-4 bg-dark/80 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Funções para gerenciar os modais
+        document.addEventListener('DOMContentLoaded', function() {
+            // Referências ao modal do projeto
+            const projetoModal = document.getElementById('projeto-modal');
+            const fecharModalBtn = document.getElementById('fechar-modal');
+            
+            // Função para abrir o modal do projeto
+            window.openProjetoModal = function() {
+                projetoModal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            }
+            
+            // Fechar o modal do projeto
+            fecharModalBtn.addEventListener('click', function() {
+                projetoModal.classList.add('hidden');
+                document.body.style.overflow = '';
+            });
+            
+            // Referências ao modal de imagem em tamanho completo
+            const fullImageModal = document.getElementById('fullscreen-image-modal');
+            const fullImage = document.getElementById('fullscreen-image');
+            const closeFullscreen = document.getElementById('close-fullscreen');
+            
+            // Função para abrir imagem em tamanho completo
+            window.openFullImage = function(src) {
+                fullImage.src = src;
+                fullImageModal.classList.remove('hidden');
+            }
+            
+            // Fechar modal de imagem
+            closeFullscreen.addEventListener('click', function() {
+                fullImageModal.classList.add('hidden');
+            });
+            
+            // Fechar os modais ao clicar fora deles
+            window.addEventListener('click', function(e) {
+                if (e.target === projetoModal) {
+                    projetoModal.classList.add('hidden');
+                    document.body.style.overflow = '';
+                }
+                if (e.target === fullImageModal) {
+                    fullImageModal.classList.add('hidden');
+                }
+            });
         });
     </script>
 </body>
