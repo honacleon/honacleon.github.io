@@ -37,7 +37,7 @@
     </style>
 </head>
 
-<body class="bg-darker text-gray-200 font-sans">
+<body class="bg-gray-900 text-gray-100 font-sans leading-normal tracking-normal">
     <!-- Navbar -->
     <header class="fixed w-full z-50 bg-dark/80 backdrop-blur-md border-b border-gray-800">
         <div class="container mx-auto px-4 py-3">
@@ -124,13 +124,12 @@
         </div>
     </section>
 
-
     <!-- About Section -->
     <section id="about" class="py-20 relative overflow-hidden bg-gradient-to-b from-darker to-dark">
         <!-- Background Elements -->
         <div class="absolute right-0 bottom-0 opacity-10 pointer-events-none">
             <svg width="400" height="400" viewBox="0 0 200 200">
-                <path fill="#6366f1" d="M39.7,-68.2C53.1,-55.9,67,-47,75.7,-34.1C84.4,-21.2,87.9,-4.3,84.9,11.1C81.9,26.5,72.5,40.5,60.4,52.4C48.3,64.3,33.6,74.2,16.8,78.9C0.1,83.6,-18.6,83.1,-34.9,76.8C-51.2,70.5,-65,58.3,-73.5,43.1C-82.1,27.9,-85.2,9.6,-82.8,-7.4C-80.3,-24.4,-72.2,-40.2,-60.5,-52.7C-48.8,-65.2,-33.4,-74.4,-17.8,-77.6C-2.2,-80.7,13.6,-77.8,26.4,-80.5C39.1,-83.2,48.8,-91.4,55.1,-88.3C61.4,-85.3,64.5,-70.9,39.7,-68.2Z" transform="translate(100 100)" />
+                <path fill="#6366f1" d="M45.3,-76.3C53.1,-55.9,67,-47,75.7,-34.1C84.4,-21.2,87.9,-4.3,84.9,11.1C81.9,26.5,72.5,40.5,60.4,52.4C48.3,64.3,33.6,74.2,16.8,78.9C0.1,83.6,-18.6,83.1,-34.9,76.8C-51.2,70.5,-65,58.3,-73.5,43.1C-82.1,27.9,-85.2,9.6,-82.8,-7.4C-80.3,-24.4,-72.2,-40.2,-60.5,-52.7C-48.8,-65.2,-33.4,-74.4,-17.8,-77.6C-2.2,-80.7,13.6,-77.8,26.4,-80.5C39.1,-83.2,48.8,-91.4,55.1,-88.3C61.4,-85.3,64.5,-70.9,39.7,-68.2Z" transform="translate(100 100)" />
             </svg>
         </div>
         
@@ -183,8 +182,6 @@
         </div>
     </section>
 
-      
-
     <!-- Projects Section -->
     <section id="projects" class="py-20 bg-dark">
         <div class="container mx-auto px-4">
@@ -203,34 +200,32 @@
 
             <!-- Projects Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Project Card 1 (Example) -->
-                <div class="project-card glow-effect group">
-                    <div class="relative overflow-hidden rounded-t-xl">
-                        <div class="h-48 bg-gradient-to-r from-primary/20 to-secondary/20 flex items-center justify-center">
-                            <i class="fas fa-file-alt text-6xl text-primary/50"></i>
-                        </div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-dark to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                            <div class="p-4 w-full">
-                                <div class="flex justify-center">
-                                    <button onclick="openProjetoModal()" class="bg-primary hover:bg-primary-dark text-white px-4 py-2 rounded-lg text-sm transition-all duration-300 transform hover:scale-105">
-                                        <i class="fas fa-eye mr-2"></i> Ver Detalhes
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
+                <!-- Project Card 1 (Novo Design) -->
+                <div id="cardAgenteDoc" class="bg-dark-light rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-primary/40 flex flex-col">
+                    <!-- Imagem/Ícone Area -->
+                    <div class="h-48 bg-gradient-to-r from-primary/20 to-secondary/20 flex items-center justify-center">
+                        <i class="fas fa-file-alt text-6xl text-primary/50"></i>
                     </div>
-                    <div class="p-6">
-                        <div class="flex justify-between items-start mb-4">
-                            <h3 class="text-xl font-bold text-white">Agente de Análise de documentos</h3>
-                            <span class="text-xs bg-primary/20 text-primary py-1 px-2 rounded-full">IA</span>
-                        </div>
-                        <p class="text-gray-400 mb-4">
+
+                    <!-- Text Content Area -->
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-semibold mb-2 text-white">Agente de Análise de documentos 
+                            <span class="text-xs bg-primary/20 text-primary px-2 py-1 rounded-full ml-1 align-middle">IA</span>
+                        </h3>
+                        <p class="text-gray-400 text-sm mb-4 flex-grow">
                             Agente inteligente para análise e extração de informações relevantes de documentos usando IA generativa.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="text-xs bg-dark-800 text-gray-300 py-1 px-2 rounded-full border border-gray-700">Python</span>
-                            <span class="text-xs bg-dark-800 text-gray-300 py-1 px-2 rounded-full border border-gray-700">OpenAI</span>
-                            <span class="text-xs bg-dark-800 text-gray-300 py-1 px-2 rounded-full border border-gray-700">LangChain</span>
+                            <span class="bg-dark text-gray-300 px-3 py-1 rounded-full text-xs">Python</span>
+                            <span class="bg-dark text-gray-300 px-3 py-1 rounded-full text-xs">OpenAI</span>
+                            <span class="bg-dark text-gray-300 px-3 py-1 rounded-full text-xs">LangChain</span>
+                        </div>
+                        <!-- Button Area -->
+                        <div class="mt-auto pt-4 text-center">
+                            <button id="verDetalhesAgenteDoc" 
+                                    class="bg-primary hover:bg-primary-dark text-white px-6 py-3 rounded-lg text-sm transition-colors duration-300 cursor-pointer transform hover:scale-105 w-full sm:w-auto">
+                                <i class="fas fa-eye mr-2"></i> Ver Detalhes
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -306,7 +301,7 @@
         <!-- Background Element -->
         <div class="absolute left-0 top-0 opacity-10 pointer-events-none">
             <svg width="400" height="400" viewBox="0 0 200 200">
-                <path fill="#10b981" d="M45.3,-76.3C60.9,-69.9,77.3,-61.3,86.1,-47.3C94.9,-33.3,96.2,-13.9,93,4.1C89.9,22.2,82.4,38.9,70.8,51.8C59.2,64.7,43.6,73.8,26.6,79.9C9.6,85.9,-8.8,89,-25.4,85.5C-42,82,-56.8,71.9,-67.4,58.6C-78,45.3,-84.3,28.8,-87.4,11.1C-90.5,-6.6,-90.3,-25.4,-82,-39.6C-73.7,-53.8,-57.3,-63.4,-41.5,-69.8C-25.7,-76.3,-10.4,-79.5,3.4,-85.1C17.3,-90.7,29.7,-82.7,45.3,-76.3Z" transform="translate(100 100)" />
+                <path fill="#10b981" d="M45.3,-76.3C53.1,-55.9,67,-47,75.7,-34.1C84.4,-21.2,87.9,-4.3,84.9,11.1C81.9,26.5,72.5,40.5,60.4,52.4C48.3,64.3,33.6,74.2,16.8,78.9C0.1,83.6,-18.6,83.1,-34.9,76.8C-51.2,70.5,-65,58.3,-73.5,43.1C-82.1,27.9,-85.2,9.6,-82.8,-7.4C-80.3,-24.4,-72.2,-40.2,-60.5,-52.7C-48.8,-65.2,-33.4,-74.4,-17.8,-77.6C-2.2,-80.7,13.6,-77.8,26.4,-80.5C39.1,-83.2,48.8,-91.4,55.1,-88.3C61.4,-85.3,64.5,-70.9,39.7,-68.2Z" transform="translate(100 100)" />
             </svg>
         </div>
     
@@ -501,7 +496,7 @@
         <!-- Background Element -->
         <div class="absolute right-0 bottom-0 opacity-10 pointer-events-none">
             <svg width="400" height="400" viewBox="0 0 200 200">
-                <path fill="#6366f1" d="M45.3,-76.3C60.9,-69.9,77.3,-61.3,86.1,-47.3C94.9,-33.3,96.2,-13.9,93,4.1C89.9,22.2,82.4,38.9,70.8,51.8C59.2,64.7,43.6,73.8,26.6,79.9C9.6,85.9,-8.8,89,-25.4,85.5C-42,82,-56.8,71.9,-67.4,58.6C-78,45.3,-84.3,28.8,-87.4,11.1C-90.5,-6.6,-90.3,-25.4,-82,-39.6C-73.7,-53.8,-57.3,-63.4,-41.5,-69.8C-25.7,-76.3,-10.4,-79.5,3.4,-85.1C17.3,-90.7,29.7,-82.7,45.3,-76.3Z" transform="translate(100 100)" />
+                <path fill="#6366f1" d="M45.3,-76.3C53.1,-55.9,67,-47,75.7,-34.1C84.4,-21.2,87.9,-4.3,84.9,11.1C81.9,26.5,72.5,40.5,60.4,52.4C48.3,64.3,33.6,74.2,16.8,78.9C0.1,83.6,-18.6,83.1,-34.9,76.8C-51.2,70.5,-65,58.3,-73.5,43.1C-82.1,27.9,-85.2,9.6,-82.8,-7.4C-80.3,-24.4,-72.2,-40.2,-60.5,-52.7C-48.8,-65.2,-33.4,-74.4,-17.8,-77.6C-2.2,-80.7,13.6,-77.8,26.4,-80.5C39.1,-83.2,48.8,-91.4,55.1,-88.3C61.4,-85.3,64.5,-70.9,39.7,-68.2Z" transform="translate(100 100)" />
             </svg>
         </div>
         
@@ -519,7 +514,7 @@
                 </p>
             </div>
             
-            <div class="max-w-3xl mx-auto bg-dark/50 p-8 rounded-2xl shadow-lg border border-gray-800 backdrop-blur-sm">
+            <div class="max-w-3xl mx-auto bg-dark/50 p-8 rounded-2xl shadow-lg border border-gray-800 backdrop-blur-md">
                 <div class="flex flex-col md:flex-row gap-10">
                     <!-- Contact Info -->
                     <div class="w-full md:w-2/5 space-y-6">
@@ -550,10 +545,10 @@
                             <div>
                                 <h3 class="text-white font-medium">Redes Sociais</h3>
                                 <div class="flex space-x-4 mt-2">
-                                    <a href="#" class="text-gray-400 hover:text-primary transition-colors text-xl">
+                                    <a href="https://github.com/honacleon" class="text-gray-400 hover:text-primary transition-colors text-xl" target="_blank">
                                         <i class="fab fa-github"></i>
                                     </a>
-                                    <a href="#" class="text-gray-400 hover:text-primary transition-colors text-xl">
+                                    <a href="https://www.linkedin.com/in/honacleonjr/" class="text-gray-400 hover:text-primary transition-colors text-xl" target="_blank">
                                         <i class="fab fa-linkedin"></i>
                                     </a>
                                 </div>
@@ -604,156 +599,396 @@
     <div id="preloader" class="fixed inset-0 bg-darker z-50 flex items-center justify-center">
         <div class="w-16 h-16 border-4 border-t-primary border-gray-700 rounded-full animate-spin"></div>
     </div>
+
+    <!-- Project Details Modal -->
+    <div id="projeto-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-90 backdrop-blur-md transition-opacity duration-300 ease-in-out hidden">
+        <div class="bg-gray-800 rounded-lg shadow-xl p-6 max-w-3xl w-full relative transform transition-all duration-300 ease-in-out scale-95 opacity-0" id="modal-content-wrapper">
+            <!-- Cabeçalho do Modal -->
+            <div class="flex justify-between items-center border-b border-gray-700 pb-3 mb-4">
+                <h3 id="modal-project-title" class="text-2xl font-semibold text-indigo-400">Título do Projeto</h3>
+                <button id="fechar-modal" class="text-gray-400 hover:text-gray-200 transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+
+            <!-- Conteúdo do Modal -->
+            <div id="modal-project-image-container" class="relative mb-10 min-h-80 flex items-center justify-center" style="display: none;"> 
+                <img id="modal-project-image" src="" alt="Imagem do Projeto" class="object-cover w-full h-[70vh] mx-auto block rounded-xl shadow-lg">
+                <button id="prev-image-btn" class="absolute top-1/2 left-4 z-20 flex items-center justify-center w-12 h-12 text-2xl transform -translate-y-1/2 bg-gray-700 hover:bg-gray-600 text-white rounded-full shadow-md disabled:opacity-50 disabled:cursor-not-allowed" style="display: flex;">
+    &#x276E;
+</button>
+<button id="next-image-btn" class="absolute top-1/2 right-4 z-20 flex items-center justify-center w-12 h-12 text-2xl transform -translate-y-1/2 bg-gray-700 hover:bg-gray-600 text-white rounded-full shadow-md disabled:opacity-50 disabled:cursor-not-allowed" style="display: flex;">
+    &#x276F;
+</button>
+                <div id="image-counter" class="absolute bottom-2 left-1/2 transform -translate-x-1/2 bg-black bg-opacity-50 text-white text-xs px-2 py-1 rounded" style="display: none;">
+                    1 / 3
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <h4 class="text-lg font-semibold text-gray-100 dark:text-white mb-2">Descrição</h4>
+                <p id="modal-project-description" class="text-gray-300 dark:text-gray-100 font-semibold mb-4 text-sm leading-relaxed"></p>
+            </div>
+
+            <div class="mb-4">
+                <h4 class="text-lg font-semibold text-gray-200 dark:text-gray-100 mb-3">Tecnologias Utilizadas</h4>
+                <div id="modal-project-technologies-list" class="flex flex-wrap gap-2">
+                    <!-- Tags de tecnologia serão inseridas aqui pelo JS -->
+                    <span class="bg-dark text-gray-300 px-3 py-1 rounded-full text-xs">Placeholder</span>
+                </div>
+            </div>
+
+            <div id="modal-project-link-container" class="mb-6 hidden">
+                <h4 class="text-lg font-semibold text-gray-200 dark:text-gray-100 mb-2">Link do Projeto</h4>
+                <a id="modal-project-link" href="#" target="_blank" class="text-secondary hover:text-secondary-dark underline break-all">
+                    Ver projeto online
+                </a>
+            </div>
+
+            <!-- Rodapé do Modal -->
+            <div class="mt-8 pt-4 border-t border-gray-700 flex justify-end">
+                <button id="fechar-modal-footer" type="button" class="px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 transition ease-in-out duration-150">
+                    Fechar
+                </button>
+            </div>
+        </div>
+    </div>
     
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        // Mobile menu toggle
-        document.addEventListener('DOMContentLoaded', function() {
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            
-            if (mobileMenuButton && mobileMenu) {
-                mobileMenuButton.addEventListener('click', function() {
-                    mobileMenu.classList.toggle('hidden');
-                });
+        console.log('[DEBUG] Script principal iniciado.'); // Log inicial
+
+        // Dados dos Projetos
+        const projetosData = {
+            agenteDoc: {
+                id: 'agenteDoc',
+                titulo: "Agente de Análise de Documentos com IA",
+                descricao: `<p class="text-gray-300 mb-4">Este projeto envolve um agente inteligente desenvolvido para realizar análises profundas e extrair informações cruciais de grandes volumes de documentos. Utilizando técnicas avançadas de Processamento de Linguagem Natural (PLN) e modelos de IA generativa, o agente é capaz de resumir, classificar entidades nomeadas, classificar documentos por assuntos e responder a perguntas específicas.</p>
+                <p class="text-gray-300 mb-4">O objetivo principal é otimizar processos que dependem da revisão manual de documentos, economizando tempo e aumentando a precisão da extração de dados. Ideal para setores jurídicos, financeiros, acadêmicos e de pesquisa.</p>`,
+                tecnologias: ["Python", "OpenAI API", "LangChain", "NLTK", "Streamlit"],
+                imagens: [
+    "img/projects/doc-agent/screenshot1.png",
+    "img/projects/doc-agent/screenshot2.png",
+    "img/projects/doc-agent/screenshot3.png"
+]
             }
+        };
+
+        // Garante que tudo esteja carregado antes de executar o script
+        window.addEventListener('load', function() {
+            console.log('[DEBUG] Evento load disparado. Iniciando configuração de listeners e DOM.');
+
+            // Elementos do DOM do modal - definidos primeiro para serem acessados por todas as funções
+            const projetoModal = document.getElementById('projeto-modal');
+            const projetoModalContent = document.getElementById('modal-content-wrapper');
+            const fecharModalBtn = document.getElementById('fechar-modal');
+            const modalTitle = document.getElementById('modal-project-title');
+            const modalDescription = document.getElementById('modal-project-description');
+            const modalTech = document.getElementById('modal-project-technologies-list');
+            const modalImageContainer = document.getElementById('modal-project-image-container');
+            const prevImageBtn = document.getElementById('prev-image-btn');
+            const nextImageBtn = document.getElementById('next-image-btn');
+            const currentImageElement = document.getElementById('modal-project-image');
+            const imageCounter = document.getElementById('image-counter');
+            const fullImageModal = document.getElementById('fullscreen-image-modal');
             
-            // Navigation active state based on section
-            const sections = document.querySelectorAll('section');
-            const navLinks = document.querySelectorAll('.nav-link');
+            // Variáveis de estado para a galeria de imagens
+            let currentProjectImages = [];
+            let currentImageIndex = 0;
             
-            window.addEventListener('scroll', function() {
-                let current = '';
+            console.log('[DEBUG] Verificando elementos DOM obtidos:');
+            console.log('projetoModal:', projetoModal ? 'encontrado' : 'não encontrado');
+            console.log('projetoModalContent:', projetoModalContent ? 'encontrado' : 'não encontrado');
+            console.log('fecharModalBtn:', fecharModalBtn ? 'encontrado' : 'não encontrado');
+            console.log('modalImageContainer:', modalImageContainer ? 'encontrado' : 'não encontrado');
+            console.log('currentImageElement:', currentImageElement ? 'encontrado' : 'não encontrado');
+            console.log('prevImageBtn:', prevImageBtn ? 'encontrado' : 'não encontrado');
+            console.log('nextImageBtn:', nextImageBtn ? 'encontrado' : 'não encontrado');
+            console.log('imageCounter:', imageCounter ? 'encontrado' : 'não encontrado');
+
+            console.log('[DEBUG] Verificando elementos DOM obtidos:');
+            console.log('projetoModal:', projetoModal ? 'encontrado' : 'não encontrado');
+            console.log('projetoModalContent:', projetoModalContent ? 'encontrado' : 'não encontrado');
+            console.log('fecharModalBtn:', fecharModalBtn ? 'encontrado' : 'não encontrado');
+            console.log('modalImageContainer:', modalImageContainer ? 'encontrado' : 'não encontrado');
+            console.log('currentImageElement:', currentImageElement ? 'encontrado' : 'não encontrado');
+
+            // Funções para gerenciar os modais
+            function displayCurrentImage() {
+                console.log('[DEBUG] displayCurrentImage() chamada. Índice atual:', currentImageIndex);
+                console.log('[DEBUG] currentProjectImages:', currentProjectImages);
                 
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    const sectionHeight = section.clientHeight;
-                    
-                    if (pageYOffset >= (sectionTop - 200)) {
-                        current = section.getAttribute('id');
-                    }
+                if (!currentImageElement) {
+                    console.error('[ERRO] Elemento de imagem não encontrado.');
+                    return;
+                }
+                
+                if (currentProjectImages.length === 0) {
+                    console.warn('[AVISO] Sem imagens para exibir.');
+                    currentImageElement.src = ''; // Limpa se não houver imagens
+                    currentImageElement.alt = 'Nenhuma imagem para exibir';
+                    if (imageCounter) imageCounter.textContent = '0/0';
+                    if (prevImageBtn) prevImageBtn.disabled = true;
+                    if (nextImageBtn) nextImageBtn.disabled = true;
+                    if (modalImageContainer) modalImageContainer.style.display = 'none';
+                    return;
+                }
+                
+                // Exibe o container de imagem se estiver oculto
+                if (modalImageContainer) modalImageContainer.style.display = 'block';
+                
+                // Exibe a imagem atual
+                const imagePath = currentProjectImages[currentImageIndex];
+                console.log('[DEBUG] Carregando imagem:', imagePath);
+                currentImageElement.src = imagePath;
+                currentImageElement.alt = `Imagem ${currentImageIndex + 1} do projeto`;
+                
+                // Atualiza o contador de imagens
+                if (imageCounter) {
+                    imageCounter.textContent = `${currentImageIndex + 1}/${currentProjectImages.length}`;
+                    imageCounter.style.display = 'block';
+                }
+                
+                // Atualiza estado dos botões de navegação
+                if (prevImageBtn) {
+                    prevImageBtn.disabled = currentImageIndex === 0;
+                    prevImageBtn.style.display = currentProjectImages.length > 1 ? 'block' : 'none';
+                }
+                if (nextImageBtn) {
+                    nextImageBtn.disabled = currentImageIndex === currentProjectImages.length - 1;
+                    nextImageBtn.style.display = currentProjectImages.length > 1 ? 'block' : 'none';
+                }
+                
+                console.log('[DEBUG] Imagem exibida com sucesso.');
+            }
+
+            function popularModal(projeto) {
+                console.log('[DEBUG] popularModal() chamada com projeto:', projeto.titulo);
+                
+                if (!projeto) {
+                    console.error("[ERRO] Dados do projeto não fornecidos para popularModal.");
+                    return;
+                }
+                
+                if (!modalTitle || !modalDescription || !modalTech) {
+                    console.error('[ERRO] Elementos do modal não encontrados no DOM.');
+                    return;
+                }
+
+                // Preenche os dados do projeto no modal
+                modalTitle.textContent = projeto.titulo;
+                modalDescription.innerHTML = projeto.descricao;
+                
+                // Limpa e preenche tecnologias
+                modalTech.innerHTML = '';
+                projeto.tecnologias.forEach(tech => {
+                    const techBadge = document.createElement('span');
+                    techBadge.className = 'bg-dark text-gray-300 px-3 py-1 rounded-full text-xs mr-2';
+                    techBadge.textContent = tech;
+                    modalTech.appendChild(techBadge);
                 });
                 
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href').substring(1) === current) {
-                        link.classList.add('active');
+                // Configura as imagens para a galeria
+                currentProjectImages = projeto.imagens || [];
+                currentImageIndex = 0;
+                
+                console.log('[DEBUG] Imagens do projeto:', currentProjectImages);
+                
+                // Exibe a primeira imagem
+                displayCurrentImage();
+
+                const projectLinkContainer = document.getElementById('modal-project-link-container');
+                const projectLink = document.getElementById('modal-project-link');
+                if (projectLinkContainer && projectLink) {
+                    if (projeto.link) {
+                        projectLink.href = projeto.link;
+                        projectLinkContainer.classList.remove('hidden');
+                    } else {
+                        projectLinkContainer.classList.add('hidden');
                     }
-                });
-            });
-            
-            // Preloader
+                } else {
+                    console.warn("[AVISO] Elementos de link do projeto não encontrados.");
+                }
+                console.log('[DEBUG] Modal populado.');
+            }
+
+            function openProjectModalWithAnimation(projeto) {
+                console.log('[DEBUG] openProjectModalWithAnimation() foi chamada.');
+                if (!projetoModal || !projetoModalContent) {
+                    console.error('[ERRO] Elementos do modal do projeto não encontrados no DOM.');
+                    return;
+                }
+                
+                popularModal(projeto); // Popula o modal com os dados do projeto
+
+                // Adiciona pointer-events-none ao card para evitar cliques "vazados"
+                const cardAgenteDoc = document.getElementById('cardAgenteDoc');
+                if (cardAgenteDoc) {
+                    cardAgenteDoc.classList.add('pointer-events-none');
+                    console.log('[DEBUG] Adicionada classe pointer-events-none ao cardAgenteDoc.');
+                }
+
+                // Garante que o modal esteja visível
+                projetoModal.style.display = 'flex';
+                projetoModal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden'; // Impede o scroll do body quando o modal está aberto
+                
+                // Adiciona as classes para animação de entrada
+                setTimeout(() => {
+                    projetoModal.classList.add('opacity-100'); 
+                    projetoModalContent.classList.add('animate-scale-in'); 
+                    projetoModalContent.classList.remove('opacity-0', 'scale-95'); 
+                    console.log('[DEBUG] Modal do projeto completamente visível.');
+                }, 10); // Tempo reduzido para a animação iniciar mais rápido 
+            }
+
+            function closeProjectModal() {
+                console.log('[DEBUG] closeProjectModal() chamada. Escondendo modal.');
+                if (!projetoModal || !projetoModalContent) {
+                    console.error('[ERRO] Elementos do modal do projeto não encontrados no DOM ao tentar fechar.');
+                    return;
+                }
+
+                // Remove pointer-events-none do card
+                const cardAgenteDoc = document.getElementById('cardAgenteDoc');
+                if (cardAgenteDoc) {
+                    cardAgenteDoc.classList.remove('pointer-events-none');
+                    console.log('[DEBUG] Removida classe pointer-events-none do cardAgenteDoc.');
+                }
+
+                // Limpa as variáveis de imagem para evitar problemas na próxima abertura
+                currentProjectImages = [];
+                currentImageIndex = 0;
+                if (currentImageElement) currentImageElement.src = '';
+                console.log('[DEBUG] Variáveis de imagem resetadas.');
+
+                // Animação de fade-out e scale-down
+                projetoModalContent.classList.remove('animate-scale-in');
+                projetoModalContent.classList.add('opacity-0', 'scale-95'); 
+                projetoModal.classList.remove('opacity-100'); 
+                
+                // Aguarda a animação completar antes de esconder completamente
+                setTimeout(() => {
+                    projetoModal.classList.add('hidden'); 
+                    projetoModal.style.display = 'none'; // Garante que o overlay suma e o blur desapareça
+                    document.body.style.overflow = ''; // Restaura o scroll do body
+                    console.log('[DEBUG] Modal completamente escondido.');
+                }, 300); 
+            }
+
+            // Lógica do Preloader
             const preloader = document.getElementById('preloader');
             if (preloader) {
-                window.addEventListener('load', function() {
-                    preloader.style.opacity = '0';
-                    setTimeout(function() {
-                        preloader.style.display = 'none';
-                    }, 500);
+                console.log('[DEBUG] Configurando para esconder preloader.');
+                preloader.style.opacity = '0';
+                setTimeout(function() {
+                    preloader.style.display = 'none';
+                    console.log('[DEBUG] Preloader escondido.');
+                }, 500); 
+            }
+
+            console.log('[DEBUG] Script principal iniciado (dentro de window.load).');
+            // DOMContentLoaded não é mais necessário aqui, pois 'load' garante que tudo está pronto.
+            // document.addEventListener('DOMContentLoaded', function() { ... });
+
+            // Referências aos modais e botões de fechar
+            console.log('[DEBUG] Tentando obter elementos do modal (dentro de window.load)...');
+
+            // Configurar navegação de imagens
+            if (prevImageBtn) {
+                console.log('[DEBUG] Configurando listener para prevImageBtn.');
+                prevImageBtn.addEventListener('click', function() {
+                    console.log('[DEBUG] Botão de imagem anterior clicado. Índice atual:', currentImageIndex);
+                    if (currentImageIndex > 0) {
+                        currentImageIndex--;
+                        displayCurrentImage();
+                    }
                 });
             }
-        });
-    </script>
 
-    <!-- Modal para o Agente de Análise de Documentos -->
-    <div id="projeto-modal" class="fixed inset-0 bg-darker/90 z-50 flex items-center justify-center hidden overflow-y-auto p-4">
-        <div class="bg-dark rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto border border-gray-800 shadow-xl shadow-primary/10">
-            <!-- Header do Modal -->
-            <div class="border-b border-gray-800 p-4 flex justify-between items-center sticky top-0 bg-dark z-10">
-                <h3 class="text-xl font-bold text-white">Agente de Análise de documentos</h3>
-                <button id="fechar-modal" class="text-gray-400 hover:text-white transition-colors">
-                    <i class="fas fa-times text-xl"></i>
-                </button>
-            </div>
-            
-            <!-- Conteúdo do Modal -->
-            <div class="p-6">
-                <h4 class="text-lg font-bold text-white mb-4">Visão Geral</h4>
-                <p class="text-gray-300 mb-6">
-                    Este agente inteligente foi desenvolvido para analisar documentos e extrair informações relevantes automaticamente usando inteligência artificial generativa. O sistema é capaz de compreender o contexto dos documentos, responder perguntas específicas e gerar insights acionáveis.
-                </p>
-                
-                <h4 class="text-lg font-bold text-white mb-4">Screenshots</h4>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                    <!-- Placeholder para os screenshots - serão substituídos pelas imagens reais -->
-                    <div class="screenshot-container rounded-lg overflow-hidden border border-gray-800 hover:border-primary/50 transition-all cursor-pointer">
-                        <img src="img/projects/doc-agent/screenshot1.jpg" alt="Screenshot do Agente 1" class="w-full h-auto hover:scale-105 transition-transform duration-300" onclick="openFullImage(this.src)">
-                    </div>
-                    <div class="screenshot-container rounded-lg overflow-hidden border border-gray-800 hover:border-primary/50 transition-all cursor-pointer">
-                        <img src="img/projects/doc-agent/screenshot2.jpg" alt="Screenshot do Agente 2" class="w-full h-auto hover:scale-105 transition-transform duration-300" onclick="openFullImage(this.src)">
-                    </div>
-                    <div class="screenshot-container rounded-lg overflow-hidden border border-gray-800 hover:border-primary/50 transition-all cursor-pointer">
-                        <img src="img/projects/doc-agent/screenshot3.jpg" alt="Screenshot do Agente 3" class="w-full h-auto hover:scale-105 transition-transform duration-300" onclick="openFullImage(this.src)">
-                    </div>
-                </div>
-                
-                <h4 class="text-lg font-bold text-white mb-4">Tecnologias Utilizadas</h4>
-                <div class="flex flex-wrap gap-2 mb-6">
-                    <span class="bg-dark-800 text-gray-300 py-1 px-3 rounded-full border border-gray-700">Python</span>
-                    <span class="bg-dark-800 text-gray-300 py-1 px-3 rounded-full border border-gray-700">OpenAI</span>
-                    <span class="bg-dark-800 text-gray-300 py-1 px-3 rounded-full border border-gray-700">LangChain</span>
-                    <span class="bg-dark-800 text-gray-300 py-1 px-3 rounded-full border border-gray-700">PDF Processing</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal para visualizar imagem em tamanho completo -->
-    <div id="fullscreen-image-modal" class="fixed inset-0 bg-darker/95 z-[60] flex items-center justify-center hidden p-4">
-        <div class="relative max-w-[90vw] max-h-[90vh]">
-            <img id="fullscreen-image" src="" alt="Imagem em tamanho completo" class="max-w-full max-h-[85vh] object-contain">
-            <button id="close-fullscreen" class="absolute top-4 right-4 bg-dark/80 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-    </div>
-
-    <script>
-        // Funções para gerenciar os modais
-        document.addEventListener('DOMContentLoaded', function() {
-            // Referências ao modal do projeto
-            const projetoModal = document.getElementById('projeto-modal');
-            const fecharModalBtn = document.getElementById('fechar-modal');
-            
-            // Função para abrir o modal do projeto
-            window.openProjetoModal = function() {
-                projetoModal.classList.remove('hidden');
-                document.body.style.overflow = 'hidden';
+            if (nextImageBtn) {
+                console.log('[DEBUG] Configurando listener para nextImageBtn.');
+                nextImageBtn.addEventListener('click', function() {
+                    console.log('[DEBUG] Botão de próxima imagem clicado. Índice atual:', currentImageIndex);
+                    if (currentImageIndex < currentProjectImages.length - 1) {
+                        currentImageIndex++;
+                        displayCurrentImage();
+                    }
+                });
             }
-            
-            // Fechar o modal do projeto
-            fecharModalBtn.addEventListener('click', function() {
-                projetoModal.classList.add('hidden');
-                document.body.style.overflow = '';
-            });
-            
-            // Referências ao modal de imagem em tamanho completo
-            const fullImageModal = document.getElementById('fullscreen-image-modal');
-            const fullImage = document.getElementById('fullscreen-image');
-            const closeFullscreen = document.getElementById('close-fullscreen');
-            
-            // Função para abrir imagem em tamanho completo
-            window.openFullImage = function(src) {
-                fullImage.src = src;
-                fullImageModal.classList.remove('hidden');
+
+            // Fechar o modal do projeto (botão X no header)
+            if (fecharModalBtn && projetoModal) {
+                console.log('[DEBUG] Botão "fechar-modal" ENCONTRADO. Adicionando listener.');
+                fecharModalBtn.addEventListener('click', function(event) { 
+                    event.stopPropagation(); 
+                    console.log('[DEBUG] Botão "fechar-modal" CLICADO.');
+                    closeProjectModal();
+                });
             }
-            
-            // Fechar modal de imagem
-            closeFullscreen.addEventListener('click', function() {
-                fullImageModal.classList.add('hidden');
-            });
-            
-            // Fechar os modais ao clicar fora deles
+
+            // Fechar o modal do projeto (botão no footer)
+            if (projetoModal) { 
+                console.log('[DEBUG] Verificando existência do botão fechar-modal-footer. projetoModal existe.');
+                const fecharModalFooterBtn = document.getElementById('fechar-modal-footer'); 
+                if (fecharModalFooterBtn) {
+                    console.log('[DEBUG] Botão "fechar-modal-footer" ENCONTRADO. Adicionando listener.');
+                    fecharModalFooterBtn.addEventListener('click', function(event) { 
+                        event.stopPropagation(); 
+                        console.log('[DEBUG] Callback do event listener para "fechar-modal-footer" EXECUTADO.');
+                        console.log('[DEBUG] Botão "fechar-modal-footer" CLICADO.');
+                        closeProjectModal(); 
+                    });
+                } else {
+                    console.error('[ERRO] Botão "fechar-modal-footer" NÃO encontrado no DOM (dentro do if projetoModal). ID procurado: fechar-modal-footer');
+                }
+            }
+
+            // Fechar os modais ao clicar fora deles (na área do overlay)
             window.addEventListener('click', function(e) {
-                if (e.target === projetoModal) {
-                    projetoModal.classList.add('hidden');
+                if (projetoModal && e.target === projetoModal) {
+                    console.log('[DEBUG] Clique detectado no overlay do modal do projeto.');
+                    closeProjectModal();
+                }
+                if (fullImageModal && e.target === fullImageModal) {
+                    console.log('[DEBUG] Clique detectado no overlay do modal de imagem.');
+                    fullImageModal.classList.add('hidden');
                     document.body.style.overflow = '';
                 }
-                if (e.target === fullImageModal) {
-                    fullImageModal.classList.add('hidden');
-                }
             });
+
+            // Fechar modal de imagem em tamanho completo
+            // Corrigido para não interromper o restante do script se o elemento não existir
+            const closeFullscreen = document.getElementById('close-fullscreen');
+            if (closeFullscreen && fullImageModal) {
+                closeFullscreen.addEventListener('click', function() {
+                    console.log('[DEBUG] Botão "close-fullscreen" CLICADO.');
+                    fullImageModal.classList.add('hidden');
+                    document.body.style.overflow = ''; 
+                });
+            }
+
+            // Vincular o botão "Ver Detalhes" do Agente de Documentos
+            const verDetalhesBtnAgenteDoc = document.getElementById('verDetalhesAgenteDoc');
+            if (verDetalhesBtnAgenteDoc) {
+                console.log('[DEBUG] Botão "verDetalhesAgenteDoc" encontrado (dentro de window.load).');
+                verDetalhesBtnAgenteDoc.addEventListener('click', function(event) {
+                    console.log('[DEBUG] Event listener para verDetalhesAgenteDoc ATIVADO PELO CLIQUE (dentro de window.load).');
+                    event.preventDefault(); 
+                    console.log('[DEBUG] Botão "verDetalhesAgenteDoc" CLICADO (após preventDefault).');
+                    
+                    const projetoInfo = projetosData.agenteDoc; 
+                    console.log('[DEBUG] Informações do projeto para popular:', projetoInfo);
+                    if (projetoInfo) {
+                        openProjectModalWithAnimation(projetoInfo); 
+                    } else {
+                        console.error('[ERRO] Dados para o projeto "agenteDoc" não encontrados.');
+                    }
+                });
+            } else {
+                console.error('[ERRO] Botão "verDetalhesAgenteDoc" NÃO encontrado no DOM (dentro de window.load).');
+            }
         });
     </script>
 </body>
