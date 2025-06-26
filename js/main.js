@@ -6,11 +6,14 @@ const projetos = [
         titulo: "Agente de Análise de Documentos",
         descricao: "Sistema inteligente que utiliza IA para análise e extração de informações de documentos complexos, com processamento de linguagem natural avançado.",
         tecnologias: ["Python", "OpenAI API", "LangChain", "NLTK", "Streamlit"],
-        thumbnail: "img/projects/doc-agent/screenshot1.jpeg",
+        thumbnail: "img/projects/doc-agent/imgleio (1).png",
         screenshots: [
-            "img/projects/doc-agent/screenshot1.jpeg",
-            "img/projects/doc-agent/screenshot2.jpeg",
-            "img/projects/doc-agent/screenshot3.jpeg"
+            "img/projects/doc-agent/imgleio (1).png",
+            "img/projects/doc-agent/imgleio (2).png",
+            "img/projects/doc-agent/imgleio (3).png",
+            "img/projects/doc-agent/imgleio (4).png",
+            "img/projects/doc-agent/imgleio (5).png",
+            "img/projects/doc-agent/imgleio (6).png"
         ],
         descricaoDetalhada: `
             <p>Este projeto envolve um agente inteligente desenvolvido para realizar análises profundas e extrair informações cruciais de grandes volumes de documentos. Utilizando técnicas avançadas de Processamento de Linguagem Natural (PLN) e modelos de IA generativa, o agente é capaz de:</p>
