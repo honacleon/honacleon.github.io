@@ -23,7 +23,7 @@ const projetos = [
             <p>O objetivo principal é otimizar processos que dependem da revisão manual de documentos, economizando tempo e aumentando a precisão da extração de dados. Ideal para setores jurídicos, financeiros, acadêmicos e de pesquisa.</p>
         `,
         liveDemo: null,
-        repositorio: "https://github.com/honacleon",
+        repositorio: "https://github.com/honacleon/LeioAI-RAG",
         video: null
     },
     {
@@ -60,7 +60,7 @@ const projetos = [
             <p>Os resultados proporcionaram à empresa uma compreensão aprofundada do comportamento dos consumidores e tendências de mercado, permitindo decisões mais assertivas e direcionadas para crescimento sustentável.</p>
         `,
         liveDemo: null,
-        repositorio: "https://github.com/honacleon",
+        repositorio: "https://github.com/honacleon/CaseOlist",
         video: null
     },
     {
