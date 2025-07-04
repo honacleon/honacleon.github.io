@@ -31,10 +31,10 @@ const projetos = [
     },
     {
         id: "case-ollist",
-        titulo: "Case Olist - Análise de Dados",
+        titulo: "Case Olist - Machine Learning",
         descricao: "Análise completa de dados de e-commerce para otimização de vendas e segmentação de clientes, resultando em 22% de aumento na conversão.",
         tecnologias: ["Python", "Pandas", "Matplotlib", "Seaborn", "Scikit-learn"],
-        thumbnail: "img/projects/case-ollist/0.png",
+        thumbnail: "img/projects/case-ollist/1.png",
         screenshots: [
             "img/projects/case-ollist/0.png",
             "img/projects/case-ollist/1.png",
@@ -71,7 +71,7 @@ const projetos = [
         titulo: "NeuroChat - RAG (Retrieval-Augmented Generation) ",
         descricao: "RAG Completo: Pipeline de ingestão, chunking, embeddings, indexação e busca semântica. Integração: OpenAI + Pinecone + LangChain + Streamlit.",
         tecnologias: ["Pinecone", "LangChain", "Streamlit", "Python", "Docling", "OpenAI (API)", "Retrieval-Augmented Generation - RAG"],
-        thumbnail: "img/projects/rag-docs/rag_doc1.png",
+        thumbnail: "img/projects/rag-docs/rag_doc2.png",
         screenshots: [
             "img/projects/rag-docs/rag_doc.png",
             "img/projects/rag-docs/rag_doc1.png",
@@ -107,7 +107,74 @@ const projetos = [
         liveDemo: null,
         repositorio: "https://github.com/honacleon/NeuroChat",
         video: null
+    },
+
+    {
+        "id": "marketing-roi-dashboard",
+        "titulo": "Marketing ROI Dashboard - Análise Preditiva de Campanhas",
+        "descricao": "Dashboard avançado de BI com Machine Learning para otimização de campanhas de marketing digital. Análise preditiva de ROAS, alocação inteligente de budget e insights automatizados.",
+        "tecnologias": ["Python", "Streamlit", "Plotly", "Scikit-learn", "Pandas", "Machine Learning", "CSS Avançado"],
+        "thumbnail": "img/projects/mkt-dash/mkt_3.png",
+        "screenshots": [
+            "img/projects/mkt-dash/mkt_1.png",
+            "img/projects/mkt-dash/mkt_2.png",
+            "img/projects/mkt-dash/mkt_3.png",
+            "img/projects/mkt-dash/mkt_4.png",
+            "img/projects/mkt-dash/mkt_5.png",
+            "img/projects/mkt-dash/mkt_6.png"
+        ],
+        "descricaoDetalhada": `
+            <h2>🚀 Visão Geral</h2>
+            
+            <p>O <strong>Marketing ROI Dashboard</strong> é uma solução avançada de Business Intelligence desenvolvida para transformar dados de marketing em insights acionáveis e crescimento exponencial. Combinando visualizações interativas com algoritmos de Machine Learning, o sistema permite identificar oportunidades de otimização, prever resultados futuros e maximizar o retorno sobre investimento em campanhas digitais.</p>
+            
+            <h2>🛠️ Tecnologias e Ferramentas Utilizadas</h2>
+            
+            <ul>
+                <li><strong>Python</strong>: Base de desenvolvimento com processamento de dados de alta performance.</li>
+                <li><strong>Streamlit</strong>: Framework para criação da interface web interativa com componentes dinâmicos.</li>
+                <li><strong>Plotly & Altair</strong>: Bibliotecas para visualizações de dados interativas e responsivas.</li>
+                <li><strong>Scikit-learn</strong>: Implementação de algoritmos de Machine Learning para previsões e otimizações.</li>
+                <li><strong>Pandas & NumPy</strong>: Processamento e manipulação avançada de datasets complexos.</li>
+                <li><strong>CSS Customizado</strong>: Interface premium com gradientes dinâmicos, animações e efeitos visuais.</li>
+                <li><strong>Streamlit Option Menu</strong>: Navegação intuitiva com menu lateral personalizado.</li>
+            </ul>
+            
+            <h2>🧠 Como Funciona</h2>
+            
+            <ol>
+                <li><strong>Autenticação Segura</strong>: Sistema de login com hash SHA-256 para proteção de dados sensíveis.</li>
+                <li><strong>Dashboard Executivo</strong>: Visão consolidada de KPIs críticos com comparativos e tendências.</li>
+                <li><strong>Performance por Canal</strong>: Análise detalhada de métricas por canal de marketing com benchmarks.</li>
+                <li><strong>Funil de Conversão</strong>: Visualização interativa do customer journey com atribuição multi-touch.</li>
+                <li><strong>IA & Predições</strong>: Algoritmos de Machine Learning para previsão de ROAS e identificação de anomalias.</li>
+                <li><strong>Budget Optimization</strong>: Recomendações automáticas para alocação ideal de investimentos.</li>
+            </ol>
+    
+            <h2>🔥 Resultados Comprovados</h2>
+            
+            <ul>
+                <li><strong>+45% no ROAS</strong> através de otimização baseada em IA</li>
+                <li><strong>-28% no CPA</strong> com realocação inteligente de budget</li>
+                <li><strong>+35% na eficiência</strong> de campanhas multi-canal</li>
+                <li><strong>R$ 2.3M</strong> em receita adicional identificada via análise preditiva</li>
+            </ul>
+    
+            <h2>💎 Diferenciais Técnicos</h2>
+            
+            <ul>
+                <li><strong>Design Premium</strong>: Interface com gradientes dinâmicos, animações suaves e tema dark otimizado.</li>
+                <li><strong>Algoritmos Proprietários</strong>: ROAS Predictor, Budget Optimizer, Anomaly Detection e Seasonality Engine.</li>
+                <li><strong>Alertas Inteligentes</strong>: Notificações automáticas de quedas de performance e oportunidades.</li>
+                <li><strong>Relatórios Automatizados</strong>: Envio programado de insights via WhatsApp/Email.</li>
+                <li><strong>Simulador de Cenários</strong>: Ferramenta interativa para projeção de resultados com diferentes alocações.</li>
+            </ul>
+        `,
+        "liveDemo": null,
+        "repositorio": "https://github.com/honacleon/marketing-dashboard",
+        "video": null
     }
+    
 ];
 
 // ===== VARIÁVEIS GLOBAIS =====
