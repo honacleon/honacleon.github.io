@@ -295,7 +295,7 @@ button {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    background: linear-gradient(135deg, var(--gray-900) 0%, var(--gray-800) 100%);
+    background: linear-gradient(135deg, rgba(24, 24, 27, 0.95) 0%, rgba(39, 39, 42, 0.9) 100%);
     position: relative;
     overflow: hidden;
 }
@@ -448,7 +448,7 @@ button {
 /* ===== AURUM SECTION ===== */
 .aurum {
     padding: var(--spacing-3xl) 0;
-    background: linear-gradient(135deg, var(--gray-900) 0%, var(--gray-800) 50%, var(--gray-900) 100%);
+    background: linear-gradient(135deg, rgba(24, 24, 27, 0.97) 0%, rgba(39, 39, 42, 0.95) 50%, rgba(24, 24, 27, 0.97) 100%);
     position: relative;
     overflow: hidden;
 }
@@ -649,7 +649,7 @@ button {
 /* ===== PROJETOS SECTION ===== */
 .projetos {
     padding: var(--spacing-3xl) 0;
-    background: var(--gray-800);
+    background: rgba(39, 39, 42, 0.95);
 }
 
 .projetos-grid {
@@ -775,7 +775,7 @@ button {
 /* ===== SOBRE SECTION ===== */
 .sobre {
     padding: var(--spacing-3xl) 0;
-    background: var(--gray-900);
+    background: rgba(24, 24, 27, 0.97);
 }
 
 .sobre-content {
@@ -856,7 +856,7 @@ button {
 /* ===== CONTATO SECTION ===== */
 .contato {
     padding: var(--spacing-3xl) 0;
-    background: var(--gray-800);
+    background: rgba(39, 39, 42, 0.95);
 }
 
 .contato-content {
@@ -944,7 +944,7 @@ button {
 
 /* ===== FOOTER ===== */
 .footer {
-    background: var(--gray-dark);
+    background: rgba(24, 24, 27, 0.98);
     color: var(--white);
     padding: var(--spacing-xl) 0;
 }
@@ -1246,6 +1246,98 @@ button {
 .back-to-top:hover {
     background: var(--gold-secondary);
     transform: translateY(-3px);
+}
+
+/* ===== ANIMATED BACKGROUND ===== */
+#animated-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+#particles-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.gradient-orbs {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.4;
+    animation: orbFloat 20s ease-in-out infinite;
+}
+
+.orb-1 {
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.3) 0%, transparent 70%);
+    top: -200px;
+    left: -200px;
+    animation-delay: 0s;
+    animation-duration: 25s;
+}
+
+.orb-2 {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(255, 223, 186, 0.25) 0%, transparent 70%);
+    top: 50%;
+    right: -150px;
+    animation-delay: -5s;
+    animation-duration: 30s;
+}
+
+.orb-3 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(251, 191, 36, 0.2) 0%, transparent 70%);
+    bottom: -100px;
+    left: 30%;
+    animation-delay: -10s;
+    animation-duration: 22s;
+}
+
+.orb-4 {
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, rgba(245, 158, 11, 0.2) 0%, transparent 70%);
+    top: 30%;
+    left: 50%;
+    animation-delay: -15s;
+    animation-duration: 28s;
+}
+
+@keyframes orbFloat {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+    }
+    25% {
+        transform: translate(50px, -30px) scale(1.1);
+    }
+    50% {
+        transform: translate(-30px, 50px) scale(0.95);
+    }
+    75% {
+        transform: translate(-50px, -20px) scale(1.05);
+    }
 }
 
 /* ===== SCROLL ANIMATIONS ===== */
