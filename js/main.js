@@ -200,6 +200,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initHeroAnimations();
     initScrollAnimations();
     initBackToTop();
+    initMagneticButtons();
     loadProjects();
     initModal();
     initLightbox();
@@ -334,6 +335,34 @@ function loadProjects() {
         setTimeout(() => {
             projetoCard.classList.add('fade-in');
         }, index * 200);
+    });
+}
+
+// ===== MAGNETIC CTA EFFECT =====
+function initMagneticButtons() {
+    const buttons = document.querySelectorAll('.btn.magnetic');
+
+    buttons.forEach(button => {
+        if (button.dataset.magneticInit === 'true') return;
+
+        const field = document.createElement('div');
+        field.className = 'particles-field';
+
+        const particleCount = 40;
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('span');
+            particle.className = 'particle';
+            particle.style.setProperty('--x', `${Math.random() * 160 - 80}px`);
+            particle.style.setProperty('--y', `${Math.random() * 160 - 80}px`);
+            particle.style.animationDuration = `${1 + Math.random() * 1.5}s`;
+            particle.style.animationDelay = `${Math.random() * 0.5}s`;
+            particle.style.left = `${Math.random() * 100}%`;
+            particle.style.top = `${Math.random() * 100}%`;
+            field.appendChild(particle);
+        }
+
+        button.appendChild(field);
+        button.dataset.magneticInit = 'true';
     });
 }
 
