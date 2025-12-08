@@ -6,8 +6,9 @@ const projetos = [
         titulo: "Agente de Análise de Documentos",
         descricao: "Sistema inteligente que utiliza IA para análise e extração de informações de documentos complexos, com processamento de linguagem natural avançado.",
         tecnologias: ["Python", "OpenAI API", "LangChain", "NLTK", "Streamlit"],
-        thumbnail: "img/projects/doc-agent/imgleio (1).png",
+        thumbnail: "img/projects/doc-agent/capa_1.png",
         screenshots: [
+            "img/projects/doc-agent/capa_1.png",
             "img/projects/doc-agent/imgleio (1).png",
             "img/projects/doc-agent/imgleio (2).png",
             "img/projects/doc-agent/imgleio (3).png",
@@ -34,8 +35,9 @@ const projetos = [
         titulo: "Case Olist - Machine Learning",
         descricao: "Análise completa de dados de e-commerce para otimização de vendas e segmentação de clientes, resultando em 22% de aumento na conversão.",
         tecnologias: ["Python", "Pandas", "Matplotlib", "Seaborn", "Scikit-learn"],
-        thumbnail: "img/projects/case-ollist/1.png",
+        thumbnail: "img/projects/case-ollist/capa_1.png",
         screenshots: [
+            "img/projects/case-ollist/capa_1.png",
             "img/projects/case-ollist/0.png",
             "img/projects/case-ollist/1.png",
             "img/projects/case-ollist/2.png",
@@ -71,8 +73,9 @@ const projetos = [
         titulo: "NeuroChat - RAG (Retrieval-Augmented Generation) ",
         descricao: "RAG Completo: Pipeline de ingestão, chunking, embeddings, indexação e busca semântica. Integração: OpenAI + Pinecone + LangChain + Streamlit.",
         tecnologias: ["Pinecone", "LangChain", "Streamlit", "Python", "Docling", "OpenAI (API)", "Retrieval-Augmented Generation - RAG"],
-        thumbnail: "img/projects/rag-docs/rag_doc2.png",
+        thumbnail: "img/projects/rag-docs/capa_1.png",
         screenshots: [
+            "img/projects/rag-docs/capa_1.png",
             "img/projects/rag-docs/rag_doc.png",
             "img/projects/rag-docs/rag_doc1.png",
             "img/projects/rag-docs/rag_doc2.png",
@@ -114,8 +117,9 @@ const projetos = [
         "titulo": "Marketing ROI Dashboard - Análise Preditiva de Campanhas",
         "descricao": "Dashboard avançado de BI com Machine Learning para otimização de campanhas de marketing digital. Análise preditiva de ROAS, alocação inteligente de budget e insights automatizados.",
         "tecnologias": ["Python", "Streamlit", "Plotly", "Scikit-learn", "Pandas", "Machine Learning", "CSS Avançado"],
-        "thumbnail": "img/projects/mkt-dash/mkt_3.png",
+        "thumbnail": "img/projects/mkt-dash/capa_1.png",
         "screenshots": [
+            "img/projects/mkt-dash/capa_1.png",
             "img/projects/mkt-dash/mkt_1.png",
             "img/projects/mkt-dash/mkt_2.png",
             "img/projects/mkt-dash/mkt_3.png",
