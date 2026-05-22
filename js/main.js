@@ -2,6 +2,84 @@
 // Para adicionar um novo projeto, adicione um objeto neste array
 const projetos = [
     {
+        id: "sql-assistant",
+        titulo: "AI SQL Assistant — Natural Language → SQL com Multi-Agent + RAG",
+        descricao: "Plataforma full-stack que traduz perguntas em português para SQL via pipeline multi-agente de 9 prompts especializados, com retrieval semântico em pgvector, self-healing de queries e multi-LLM (Claude / GPT-4o / Gemini).",
+        tecnologias: ["TypeScript", "React 18", "Node.js", "Express", "Supabase", "pgvector", "Anthropic Claude", "OpenAI GPT-4o", "Google Gemini", "Multi-Agent", "RAG", "Tailwind", "ShadCN/UI", "Vitest"],
+        thumbnail: "img/projects/sql-assistant/capa.jpg",
+        screenshots: [
+            "img/projects/sql-assistant/capa.jpg",
+            "img/projects/sql-assistant/login.jpg",
+            "img/projects/sql-assistant/projetos.jpg",
+            "img/projects/sql-assistant/chat.jpg",
+            "img/projects/sql-assistant/sql-gerado.jpg",
+            "img/projects/sql-assistant/resultado.jpg",
+            "img/projects/sql-assistant/insights.jpg",
+            "img/projects/sql-assistant/treinar-ia.jpg"
+        ],
+        descricaoDetalhada: `
+            <h2>🎯 Visão Geral</h2>
+            <p>Sistema completo de consulta a bancos relacionais via linguagem natural. O usuário faz uma pergunta em português ("qual o NPS médio por região no último trimestre?") e a plataforma orquestra um pipeline de 9 agentes especializados que traduzem, validam, executam e narram a resposta — com self-healing automático quando uma query falha.</p>
+
+            <h2>🏗️ Arquitetura</h2>
+            <ul>
+                <li><strong>Monorepo TypeScript</strong> com 3 pacotes (shared / backend / frontend) e npm workspaces</li>
+                <li><strong>Backend Node.js + Express</strong>: 126 arquivos, 50+ services em 9 grupos funcionais, <strong>47 endpoints REST</strong></li>
+                <li><strong>Frontend React 18 + Vite</strong> com Tailwind, ShadCN/UI, Radix, Framer Motion e Recharts</li>
+                <li><strong>Multi-tenant</strong>: organizações, projetos, members, invitations, RLS no PostgreSQL com JWT-first auth</li>
+            </ul>
+
+            <h2>🤖 Pipeline Multi-Agente (9 prompts em 3 fases)</h2>
+            <p>Cada agente tem temperatura calibrada para seu papel — do roteamento ultra-determinístico ao narrador criativo:</p>
+            <ol>
+                <li><strong>Router (T=0.0)</strong>: classifica pergunta em ON_TOPIC / OFF_TOPIC / GREETING / CLARIFICATION</li>
+                <li><strong>AI Service (T=0.3)</strong>: gera SQL com 8 production rules (P1–P8) contra alucinação</li>
+                <li><strong>Project Prompts</strong>: templates de domínio (Marketing, Financial, Market Research) injetam regras específicas (ponderação NPS, ROUND moeda, NULLIF para evitar div/0)</li>
+                <li><strong>Critic Agent (T=0.1)</strong>: valida sintaxe, colunas, agregações e filtros antes de executar</li>
+                <li><strong>SQL Correction → Healer</strong>: cascata de auto-fix com até 2 tentativas cada</li>
+                <li><strong>Narrator (T=0.7)</strong>: transforma resultado em narrativa em pt-BR (R$, dd/mm/yyyy)</li>
+                <li><strong>Insights (T=0.6)</strong>: identifica padrões e anomalias automaticamente</li>
+                <li><strong>Follow-up (T=0.5)</strong>: sugere 2 perguntas relacionadas para guiar a investigação</li>
+            </ol>
+
+            <h2>🧠 RAG + Retrieval Semântico</h2>
+            <ul>
+                <li><strong>pgvector</strong> nativo no Supabase com embeddings de 1536 dimensões (Gemini text-embedding)</li>
+                <li>RPC <code>match_columns_by_embedding</code> table-scoped para descoberta de colunas relevantes</li>
+                <li><strong>Schema introspection</strong> dinâmica + grounding service que injeta apenas o contexto necessário no prompt</li>
+                <li>Upload de CSV end-to-end com indexação automática de embeddings (testado com 1.500 linhas × 57 colunas)</li>
+            </ul>
+
+            <h2>🔁 Multi-LLM com Fallback</h2>
+            <p>Suporte nativo a 4 provedores com fallback transparente: <strong>Gemini 2.5 Flash-Lite</strong> (principal), <strong>OpenAI GPT-4o</strong>, <strong>Anthropic Claude</strong> e <strong>OpenRouter</strong>. Provider switcher no nível de service permite trocar sem mudar o consumidor.</p>
+
+            <h2>🎓 Treinamento da IA pelo próprio usuário</h2>
+            <p>UI de <em>knowledge base</em> que permite a equipe ensinar o sistema sobre seus dados sem precisar de engenheiro: descreve tabelas, marca colunas-chave, adiciona sinônimos de negócio e exemplos de perguntas. O contexto editado vai direto para os prompts dos agentes e melhora a acurácia ao longo do tempo.</p>
+
+            <h2>🛡️ Engineering Maduro</h2>
+            <ul>
+                <li><strong>Husky + Commitlint</strong> (Conventional Commits), ESLint, Prettier, lint-staged</li>
+                <li><strong>Vitest</strong> com characterization tests fixando comportamento de módulos refatorados</li>
+                <li><strong>Benchmark suite</strong> próprio (panel-consumer baseline) para detectar regressão de acurácia</li>
+                <li><strong>GitHub Actions</strong> para CI</li>
+                <li>Documentação hierárquica em <code>AGENTS.md</code> por pacote + <code>ARCHITECTURE.md</code> + wiki interno</li>
+            </ul>
+
+            <h2>📈 O que esse projeto comprova</h2>
+            <ul>
+                <li>Arquitetura full-stack TypeScript em escala (monorepo, workspaces)</li>
+                <li>Sistemas multi-agente em produção — não PoC</li>
+                <li>RAG sério com pgvector + retrieval semântico</li>
+                <li>Integração com múltiplos LLMs e estratégia explícita de fallback</li>
+                <li>PostgreSQL avançado (RLS, RPCs, pgvector, migrations)</li>
+                <li>Disciplina de engenharia: testes, benchmarks, CI, conventional commits</li>
+            </ul>
+        `,
+        liveDemo: null,
+        repositorio: "https://github.com/honacleon/SQL_ASSISTANT",
+        video: null
+    },
+    {
         id: "agente-documentos",
         titulo: "Agente de Análise de Documentos",
         descricao: "Sistema inteligente que utiliza IA para análise e extração de informações de documentos complexos, com processamento de linguagem natural avançado.",
@@ -177,8 +255,91 @@ const projetos = [
         "liveDemo": null,
         "repositorio": "https://github.com/honacleon/marketing-dashboard",
         "video": null
+    },
+    {
+        id: "bi-dashboard-starter",
+        titulo: "BI Dashboard Starter — KPIs Executivos em Tempo Real",
+        descricao: "Dashboard executivo com KPIs essenciais, drill-downs e visualizações interativas para diagnóstico rápido de saúde do negócio. Hospedado no Streamlit Cloud com acesso público.",
+        tecnologias: ["Python", "Streamlit", "Plotly", "Pandas", "BI"],
+        thumbnail: "img/projects/bi-starter/capa.png",
+        screenshots: [
+            "img/projects/bi-starter/capa.png"
+        ],
+        descricaoDetalhada: `
+            <h2>📊 Visão Geral</h2>
+            <p>Dashboard de BI focado em diagnóstico visual rápido — pensado para gestores que precisam responder "como estamos hoje?" em poucos cliques. Os KPIs ficam no topo, filtros por período/segmento ao lado, e o resto é drill-down em gráficos interativos.</p>
+
+            <h2>🎯 O que entrega</h2>
+            <ul>
+                <li>KPIs principais com comparativos vs. período anterior</li>
+                <li>Visualizações interativas (Plotly): séries temporais, distribuições, rankings</li>
+                <li>Filtros encadeados que recalculam todas as métricas em tempo real</li>
+                <li>Layout responsivo e tema customizado</li>
+            </ul>
+
+            <h2>🛠️ Stack</h2>
+            <p>Python + Streamlit + Plotly + Pandas, deploy no Streamlit Cloud.</p>
+        `,
+        liveDemo: "https://aurum-starter.streamlit.app/",
+        repositorio: null,
+        video: null
+    },
+    {
+        id: "bi-dashboard-business",
+        titulo: "BI Dashboard Business — Análise Preditiva e Simulação de Cenários",
+        descricao: "Plataforma BI com modelos preditivos, alertas automáticos e simulação de cenários (what-if) para apoiar decisões estratégicas de gestão.",
+        tecnologias: ["Python", "Streamlit", "Scikit-learn", "Plotly", "Pandas", "Machine Learning"],
+        thumbnail: "img/projects/bi-business/capa.png",
+        screenshots: [
+            "img/projects/bi-business/capa.png"
+        ],
+        descricaoDetalhada: `
+            <h2>📈 Visão Geral</h2>
+            <p>Versão avançada do dashboard: além dos KPIs, adiciona <strong>modelos preditivos</strong>, <strong>detecção de anomalias</strong> e um <strong>simulador de cenários</strong> para projetar o impacto de mudanças de variáveis no resultado final.</p>
+
+            <h2>🎯 O que entrega</h2>
+            <ul>
+                <li>Modelos preditivos (forecast de receita, churn, conversão)</li>
+                <li>Alertas automáticos quando métricas saem de bandas esperadas</li>
+                <li>Simulador <em>what-if</em>: usuário ajusta variáveis e vê o impacto projetado</li>
+                <li>Comparações multi-período (YoY, MoM) com narrativa contextual</li>
+            </ul>
+
+            <h2>🛠️ Stack</h2>
+            <p>Python + Streamlit + Scikit-learn + Plotly + Pandas, deploy no Streamlit Cloud.</p>
+        `,
+        liveDemo: "https://aurum-business.streamlit.app/",
+        repositorio: null,
+        video: null
+    },
+    {
+        id: "bi-dashboard-professional",
+        titulo: "BI Dashboard Professional — IA Aplicada com RAG e Agentes",
+        descricao: "Plataforma BI premium com IA generativa, RAG e agentes para responder perguntas em linguagem natural, gerar insights automáticos e automatizar análises recorrentes.",
+        tecnologias: ["Python", "Streamlit", "LangChain", "OpenAI", "RAG", "Agentes IA", "BI Avançado"],
+        thumbnail: "img/projects/bi-professional/capa.png",
+        screenshots: [
+            "img/projects/bi-professional/capa.png"
+        ],
+        descricaoDetalhada: `
+            <h2>🧠 Visão Geral</h2>
+            <p>Versão premium do dashboard: incorpora <strong>IA generativa</strong> para conversar com os dados, <strong>RAG</strong> para responder com base em documentos da empresa e <strong>agentes</strong> que automatizam análises e relatórios recorrentes.</p>
+
+            <h2>🎯 O que entrega</h2>
+            <ul>
+                <li>Chat sobre os dados: usuário pergunta em português, agente responde com gráfico + narrativa</li>
+                <li>RAG sobre base de conhecimento (políticas, contratos, manuais)</li>
+                <li>Geração automática de insights e recomendações ao abrir o dashboard</li>
+                <li>Pipeline de automação para relatórios e alertas via email/WhatsApp</li>
+            </ul>
+
+            <h2>🛠️ Stack</h2>
+            <p>Python + Streamlit + LangChain + OpenAI + RAG + arquitetura multi-agente, deploy no Streamlit Cloud.</p>
+        `,
+        liveDemo: "https://aurum-professional.streamlit.app/",
+        repositorio: null,
+        video: null
     }
-    
 ];
 
 // ===== VARIÁVEIS GLOBAIS =====
@@ -646,16 +807,13 @@ function initLazyLoading() {
     }
 }
 
-// Preload das imagens críticas
+// Preload das imagens críticas (primeira thumbnail de cada projeto)
 function preloadCriticalImages() {
-    const criticalImages = [
-        'img/projects/doc-agent/screenshot1.png',
-        'img/projects/case-ollist/0.png'
-    ];
-
-    criticalImages.forEach(src => {
+    if (typeof projetos === 'undefined' || !Array.isArray(projetos)) return;
+    projetos.slice(0, 2).forEach(projeto => {
+        if (!projeto.thumbnail) return;
         const img = new Image();
-        img.src = src;
+        img.src = projeto.thumbnail;
     });
 }
 

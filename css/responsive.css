@@ -100,25 +100,46 @@
         gap: var(--spacing-xl);
         text-align: center;
     }
-    
+
     .hero-text {
         order: 2;
     }
-    
+
     .hero-image {
         order: 1;
     }
-    
+
     .hero-title {
         font-size: var(--font-size-4xl);
     }
-    
+
     .hero-subtitle {
         font-size: var(--font-size-lg);
     }
-    
+
     .hero-buttons {
         justify-content: center;
+    }
+
+    /* Typewriter: allow wrapping on small screens to prevent horizontal overflow */
+    .cursor {
+        white-space: normal;
+        width: auto !important;
+        border-right: none;
+        animation: none !important;
+        font-size: var(--font-size-2xl);
+    }
+
+    .hero-rotating {
+        min-width: 0;
+        display: block;
+        margin-top: var(--spacing-xs);
+        height: auto;
+        position: relative;
+    }
+
+    .hero-rotating span {
+        position: relative;
     }
     
     .profile-avatar {
@@ -141,15 +162,15 @@
         font-size: var(--font-size-base);
     }
     
-    /* Projetos */
+    /* Projetos: 2 colunas em tablets (600-768) */
     .projetos-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
         gap: var(--spacing-lg);
     }
-    
+
     .projeto-card {
-        max-width: 500px;
-        margin: 0 auto;
+        max-width: none;
+        margin: 0;
     }
     
     /* Sobre */
@@ -269,7 +290,7 @@
         --spacing-xl: 1.5rem;
         --spacing-2xl: 2rem;
         --spacing-3xl: 2.5rem;
-        
+
         --font-size-lg: 1rem;
         --font-size-xl: 1.125rem;
         --font-size-2xl: 1.25rem;
@@ -277,6 +298,12 @@
         --font-size-4xl: 1.5rem;
         --font-size-5xl: 1.875rem;
     }
+
+    /* Shrink orbs on small screens so they don't dominate the layout */
+    .orb-1 { width: 320px; height: 320px; top: -120px; left: -120px; }
+    .orb-2 { width: 280px; height: 280px; right: -100px; }
+    .orb-3 { width: 260px; height: 260px; bottom: -80px; }
+    .orb-4 { width: 220px; height: 220px; }
     
     /* Hero */
     .hero-tag {
@@ -338,11 +365,20 @@
         font-size: var(--font-size-sm);
     }
     
-    /* Projetos */
+    /* Projetos: 1 coluna em mobile pequeno (<480) */
+    .projetos-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .projeto-card {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
     .projetos {
         padding: var(--spacing-xl) 0;
     }
-    
+
     .projeto-image {
         height: 200px;
     }
