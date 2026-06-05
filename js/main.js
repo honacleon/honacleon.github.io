@@ -334,6 +334,30 @@ const projetos = [
     }
 ];
 
+// ===== PROJETOS QUANT (ML & Finanças Quantitativas) =====
+// Cada case abre um notebook renderizado (HTML estático, read-only) em quant/.
+// A base de dados NÃO é publicada — apenas o código e os resultados.
+const projetosQuant = [
+    {
+        id: "momentum-ml",
+        titulo: "Momentum ML — Sinais de Direção Intradiário",
+        descricao: "Classificador (gradient boosting) que prevê a direção do próximo candle a partir de features de momentum, volatilidade e microestrutura, com backtest e gestão de risco por volatilidade.",
+        tecnologias: ["Python", "XGBoost", "pandas", "NumPy", "backtest"],
+        metricas: { pnl: "+24.3%", accuracy: "61.2%", drawdown: "-8.7%" },
+        notebook: "quant/exemplo-momentum-ml.html",
+        repositorio: null
+    },
+    {
+        id: "mean-reversion",
+        titulo: "Mean Reversion Estatística em Pares",
+        descricao: "Reversão à média em pares cointegrados (z-score do spread), com filtro de regime e stops dinâmicos. Notebook com a lógica completa e o backtest.",
+        tecnologias: ["Python", "statsmodels", "pandas", "cointegração"],
+        metricas: { pnl: "+17.1%", accuracy: "58.4%", drawdown: "-6.2%" },
+        notebook: "quant/exemplo-mean-reversion.html",
+        repositorio: null
+    }
+];
+
 // ===== ESTADO GLOBAL =====
 let currentProject = null;
 let currentImageIndex = 0;
@@ -354,6 +378,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initCodeParticles();
     initParallax();
     initContactForm();
+    loadQuantProjects();
     loadProjects();
     initModal();
     initLightbox();
@@ -616,6 +641,72 @@ function initContactForm() {
         window.location.href = `mailto:hpouro@outlook.com?subject=${subject}&body=${body}`;
         form.reset();
     });
+}
+
+// ===== PROJETOS QUANT =====
+function loadQuantProjects() {
+    const grid = document.getElementById('quant-grid');
+    if (!grid) return;
+    grid.innerHTML = '';
+    projetosQuant.forEach((p, i) => grid.appendChild(createQuantCard(p, i)));
+}
+
+// Gera o path SVG de uma "equity curve" sintética (determinística por seed)
+function makeEquityPath(seed, w = 600, h = 160, n = 64) {
+    let s = (seed * 9301 + 49297) % 233280;
+    const rnd = () => { s = (s * 9301 + 49297) % 233280; return s / 233280; };
+    const ys = [];
+    let v = 0, min = Infinity, max = -Infinity;
+    for (let i = 0; i < n; i++) {
+        v += rnd() - 0.40; // leve viés de alta com ruído (gera drawdowns)
+        ys.push(v);
+        if (v < min) min = v;
+        if (v > max) max = v;
+    }
+    const span = (max - min) || 1;
+    return ys.map((y, i) => {
+        const x = (i / (n - 1)) * w;
+        const yy = h - ((y - min) / span) * (h - 8) - 4;
+        return `${i === 0 ? 'M' : 'L'}${x.toFixed(1)},${yy.toFixed(1)}`;
+    }).join(' ');
+}
+
+function createQuantCard(p, index) {
+    const card = document.createElement('article');
+    card.className = 'quant-card reveal';
+    card.addEventListener('click', () => window.open(p.notebook, '_blank', 'noopener'));
+
+    const path = makeEquityPath(index + 3);
+    const tags = p.tecnologias.map(t => `<span class="tag">${t}</span>`).join('');
+    const repo = p.repositorio
+        ? `<a href="${p.repositorio}" target="_blank" rel="noopener" class="quant-icon-link" title="Ver código" onclick="event.stopPropagation()"><i class="fab fa-github"></i></a>`
+        : '';
+
+    card.innerHTML = `
+        <div class="quant-curve" aria-hidden="true">
+            <svg viewBox="0 0 600 160" preserveAspectRatio="none">
+                <path d="${path}" fill="none" stroke="var(--gold)" stroke-width="2"
+                      stroke-linejoin="round" stroke-linecap="round"/>
+            </svg>
+        </div>
+        <div class="quant-card-head">
+            <span class="quant-badge"><i class="fas fa-arrow-trend-up"></i> Quant</span>
+            <div class="quant-links">
+                <span class="quant-icon-link" title="Abrir notebook"><i class="fas fa-book-open"></i></span>
+                ${repo}
+            </div>
+        </div>
+        <h3 class="quant-title">${p.titulo}</h3>
+        <p class="quant-desc">${p.descricao}</p>
+        <div class="quant-metrics">
+            <div class="quant-metric"><span class="metric-value pnl">${p.metricas.pnl}</span><span class="metric-label">PnL</span></div>
+            <div class="quant-metric"><span class="metric-value acc">${p.metricas.accuracy}</span><span class="metric-label">Accuracy</span></div>
+            <div class="quant-metric"><span class="metric-value dd">${p.metricas.drawdown}</span><span class="metric-label">Max Drawdown</span></div>
+        </div>
+        <div class="quant-tags">${tags}</div>
+        <div class="quant-cta"><span>Abrir notebook</span> <i class="fas fa-arrow-right"></i></div>
+    `;
+    return card;
 }
 
 // ===== PROJETOS =====

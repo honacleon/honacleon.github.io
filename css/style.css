@@ -855,6 +855,115 @@ h1, h2, h3, h4, h5, h6 { font-weight: 700; line-height: 1.2; }
 .project-tags .tag { font-size: 0.72rem; }
 .project-tags .tag-more { color: var(--gold); border-color: var(--border-gold); }
 
+/* ===== QUANT (ML & Finanças Quantitativas) ===== */
+.quant-intro {
+    max-width: 780px;
+    color: var(--text-secondary);
+    font-size: 1.02rem;
+    line-height: 1.8;
+    margin: -1.8rem 0 2.6rem;
+}
+.quant-intro strong { color: var(--gold); font-weight: 600; }
+
+.quant-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(430px, 1fr));
+    gap: 1.8rem;
+}
+.quant-card {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(160deg, var(--bg-elevated) 0%, var(--bg-card) 100%);
+    border: 1px solid var(--border-gold);
+    border-radius: 18px;
+    padding: 1.7rem 1.9rem 1.6rem;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    transition: transform var(--transition-smooth), box-shadow var(--transition-smooth), border-color var(--transition-smooth);
+}
+.quant-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--gold);
+    box-shadow: var(--shadow-lg), var(--glow-gold-soft);
+}
+.quant-curve {
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 58%;
+    opacity: 0.14;
+    pointer-events: none;
+    z-index: 0;
+    -webkit-mask-image: linear-gradient(180deg, transparent, #000 60%);
+            mask-image: linear-gradient(180deg, transparent, #000 60%);
+}
+.quant-curve svg { width: 100%; height: 100%; display: block; }
+.quant-card > *:not(.quant-curve) { position: relative; z-index: 1; }
+
+.quant-card-head { display: flex; justify-content: space-between; align-items: center; }
+.quant-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: rgba(212, 175, 55, 0.12);
+    color: var(--gold);
+    border: 1px solid var(--border-gold);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+.quant-links { display: flex; gap: 0.5rem; }
+.quant-icon-link {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-darker);
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    transition: all var(--transition-fast);
+}
+.quant-icon-link:hover { color: var(--gold); border-color: var(--border-gold); }
+
+.quant-title { font-family: var(--font-mono); font-size: 1.22rem; color: var(--text-primary); line-height: 1.32; }
+.quant-desc { color: var(--text-secondary); font-size: 0.92rem; line-height: 1.7; flex: 1; }
+
+.quant-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.8rem;
+    padding: 1.1rem 0;
+    border-top: 1px solid var(--border-soft);
+    border-bottom: 1px solid var(--border-soft);
+}
+.quant-metric { display: flex; flex-direction: column; gap: 0.25rem; text-align: center; }
+.metric-value { font-family: var(--font-mono); font-size: 1.4rem; font-weight: 700; line-height: 1; }
+.metric-value.pnl { color: #5fd0a0; }
+.metric-value.acc { color: var(--cyan-soft); }
+.metric-value.dd  { color: #e88a8a; }
+.metric-label { font-size: 0.68rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; font-family: var(--font-mono); }
+
+.quant-tags { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+.quant-cta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--gold);
+    font-family: var(--font-mono);
+    font-size: 0.88rem;
+    font-weight: 600;
+}
+.quant-cta i { transition: transform var(--transition-fast); }
+.quant-card:hover .quant-cta i { transform: translateX(5px); }
+
 /* ===== CONTACT ===== */
 .contact-content { display: grid; grid-template-columns: 1fr 1.3fr; gap: 3rem; align-items: start; }
 .contact-info { display: flex; flex-direction: column; gap: 1.2rem; }

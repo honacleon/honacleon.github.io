@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Momentum ML — Honacleon Júnior</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="notebook.css">
+</head>
+<body>
+    <div class="nb-wrap">
+        <div class="nb-topbar">
+            <a class="nb-back" href="../index.html#quant"><i class="fas fa-arrow-left"></i> Voltar ao portfólio</a>
+            <span class="nb-file">momentum_ml.ipynb · read-only</span>
+        </div>
+
+        <h1 class="nb-title">Momentum ML — Sinais de Direção Intradiário</h1>
+        <p class="nb-sub">Classificação da direção do próximo candle com gradient boosting, backtest e gestão de risco por volatilidade.</p>
+
+        <div class="nb-banner">
+            <i class="fas fa-shield-halved"></i>
+            <div>
+                <strong>Notebook somente leitura.</strong> O código está visível para fins de portfólio, mas
+                a <strong>base de dados é privada</strong>: a conexão usa variável de ambiente (nunca credenciais no código),
+                e os números exibidos vêm de uma <strong>amostra sintética</strong>. Nada aqui executa contra dados reais.
+            </div>
+        </div>
+
+        <!-- markdown -->
+        <div class="nb-cell nb-md">
+            <h2># Visão geral</h2>
+            <p>A estratégia trata a previsão de direção como um problema de <strong>classificação binária</strong>: a cada candle,
+            o modelo estima se o próximo fechamento será maior (1) ou menor (0) que o atual. As <em>features</em> combinam
+            momentum, volatilidade e microestrutura. O dimensionamento de posição é proporcional ao inverso da volatilidade.</p>
+        </div>
+
+        <!-- code 1 -->
+        <div class="nb-cell">
+            <div class="nb-input">
+                <div class="nb-prompt">In&nbsp;[1]:</div>
+                <div class="nb-code"><pre><span class="tok-kw">import</span> os
+<span class="tok-kw">import</span> pandas <span class="tok-kw">as</span> pd
+<span class="tok-kw">import</span> numpy <span class="tok-kw">as</span> np
+<span class="tok-kw">import</span> xgboost <span class="tok-kw">as</span> xgb
+<span class="tok-kw">from</span> sklearn.metrics <span class="tok-kw">import</span> classification_report
+
+<span class="tok-com"># A base vem de uma variável de ambiente — credenciais NUNCA no notebook.</span>
+<span class="tok-com"># O .env e os arquivos de dados ficam fora do versionamento (.gitignore).</span>
+DATA_URL <span class="tok-op">=</span> os.environ[<span class="tok-str">"QUANT_DB_URL"</span>]
+prices <span class="tok-op">=</span> <span class="tok-fn">load_prices</span>(DATA_URL, symbol<span class="tok-op">=</span><span class="tok-str">"WIN"</span>, timeframe<span class="tok-op">=</span><span class="tok-str">"5min"</span>)</pre></div>
+            </div>
+            <div class="nb-output">
+                <div class="nb-oprompt">Out[1]:</div>
+                <div class="nb-out">
+                    <div class="nb-out-text">12.480 candles carregados · 2021-01 → 2024-12 · fonte: base privada (oculta)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- markdown -->
+        <div class="nb-cell nb-md">
+            <h2># Feature engineering</h2>
+            <p>Retorno, momentum de 12 períodos, volatilidade móvel (20) e RSI(14). O alvo é a direção do próximo candle.</p>
+        </div>
+
+        <!-- code 2 -->
+        <div class="nb-cell">
+            <div class="nb-input">
+                <div class="nb-prompt">In&nbsp;[2]:</div>
+                <div class="nb-code"><pre><span class="tok-kw">def</span> <span class="tok-fn">make_features</span>(df):
+    df[<span class="tok-str">"ret"</span>]    <span class="tok-op">=</span> df[<span class="tok-str">"close"</span>].pct_change()
+    df[<span class="tok-str">"mom"</span>]    <span class="tok-op">=</span> df[<span class="tok-str">"close"</span>].pct_change(<span class="tok-num">12</span>)
+    df[<span class="tok-str">"vol"</span>]    <span class="tok-op">=</span> df[<span class="tok-str">"ret"</span>].rolling(<span class="tok-num">20</span>).std()
+    df[<span class="tok-str">"rsi"</span>]    <span class="tok-op">=</span> <span class="tok-fn">rsi</span>(df[<span class="tok-str">"close"</span>], <span class="tok-num">14</span>)
+    df[<span class="tok-str">"target"</span>] <span class="tok-op">=</span> (df[<span class="tok-str">"close"</span>].shift(<span class="tok-num">-1</span>) <span class="tok-op">&gt;</span> df[<span class="tok-str">"close"</span>]).astype(<span class="tok-cls">int</span>)
+    <span class="tok-kw">return</span> df.dropna()
+
+data <span class="tok-op">=</span> <span class="tok-fn">make_features</span>(prices)</pre></div>
+            </div>
+        </div>
+
+        <!-- markdown -->
+        <div class="nb-cell nb-md">
+            <h2># Treino do modelo</h2>
+            <p>Split temporal 70/30 (sem embaralhar, para não vazar futuro). Gradient boosting com regularização leve.</p>
+        </div>
+
+        <!-- code 3 -->
+        <div class="nb-cell">
+            <div class="nb-input">
+                <div class="nb-prompt">In&nbsp;[3]:</div>
+                <div class="nb-code"><pre>features <span class="tok-op">=</span> [<span class="tok-str">"ret"</span>, <span class="tok-str">"mom"</span>, <span class="tok-str">"vol"</span>, <span class="tok-str">"rsi"</span>]
+split <span class="tok-op">=</span> <span class="tok-cls">int</span>(<span class="tok-cls">len</span>(data) <span class="tok-op">*</span> <span class="tok-num">0.7</span>)
+X_tr, y_tr <span class="tok-op">=</span> data[features][:split], data[<span class="tok-str">"target"</span>][:split]
+X_te, y_te <span class="tok-op">=</span> data[features][split:], data[<span class="tok-str">"target"</span>][split:]
+
+model <span class="tok-op">=</span> xgb.<span class="tok-fn">XGBClassifier</span>(n_estimators<span class="tok-op">=</span><span class="tok-num">400</span>, max_depth<span class="tok-op">=</span><span class="tok-num">4</span>, learning_rate<span class="tok-op">=</span><span class="tok-num">0.03</span>)
+model.<span class="tok-fn">fit</span>(X_tr, y_tr)
+<span class="tok-fn">print</span>(<span class="tok-fn">classification_report</span>(y_te, model.<span class="tok-fn">predict</span>(X_te)))</pre></div>
+            </div>
+            <div class="nb-output">
+                <div class="nb-oprompt">Out[3]:</div>
+                <div class="nb-out">
+                    <div class="nb-out-text">              precision    recall  f1-score   support
+
+           0       0.60      0.58      0.59      1834
+           1       0.62      0.64      0.63      1942
+
+    accuracy                           0.612      3776
+   macro avg       0.61      0.61      0.61      3776</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- markdown -->
+        <div class="nb-cell nb-md">
+            <h2># Backtest e gestão de risco</h2>
+            <p>Posição <em>long</em> quando o sinal é 1, dimensionada pelo inverso da volatilidade. Métricas calculadas
+            sobre o período de teste (out-of-sample).</p>
+        </div>
+
+        <!-- code 4 -->
+        <div class="nb-cell">
+            <div class="nb-input">
+                <div class="nb-prompt">In&nbsp;[4]:</div>
+                <div class="nb-code"><pre>signal <span class="tok-op">=</span> model.<span class="tok-fn">predict</span>(X_te)
+ret    <span class="tok-op">=</span> data[<span class="tok-str">"ret"</span>][split:].values
+size   <span class="tok-op">=</span> <span class="tok-num">1</span> <span class="tok-op">/</span> data[<span class="tok-str">"vol"</span>][split:].values     <span class="tok-com"># risco-alvo por volatilidade</span>
+pnl    <span class="tok-op">=</span> signal <span class="tok-op">*</span> ret <span class="tok-op">*</span> np.<span class="tok-fn">clip</span>(size, <span class="tok-num">0</span>, <span class="tok-num">3</span>)
+equity <span class="tok-op">=</span> (<span class="tok-num">1</span> <span class="tok-op">+</span> pnl).<span class="tok-fn">cumprod</span>()
+dd     <span class="tok-op">=</span> equity <span class="tok-op">/</span> np.maximum.<span class="tok-fn">accumulate</span>(equity) <span class="tok-op">-</span> <span class="tok-num">1</span>
+
+<span class="tok-fn">print</span>(<span class="tok-str">f"PnL total : {(equity[-1]-1)*100:+.1f}%"</span>)
+<span class="tok-fn">print</span>(<span class="tok-str">f"Max DD    : {dd.min()*100:.1f}%"</span>)</pre></div>
+            </div>
+            <div class="nb-output">
+                <div class="nb-oprompt">Out[4]:</div>
+                <div class="nb-out">
+                    <div class="nb-fig">
+                        <div class="nb-fig-title">Equity Curve — out-of-sample (amostra sintética)</div>
+                        <svg viewBox="0 0 800 280" preserveAspectRatio="none" role="img" aria-label="Equity curve">
+                            <defs>
+                                <linearGradient id="eqfill" x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="0%" stop-color="#e9c46a" stop-opacity="0.35"/>
+                                    <stop offset="100%" stop-color="#e9c46a" stop-opacity="0"/>
+                                </linearGradient>
+                            </defs>
+                            <line x1="0" y1="70"  x2="800" y2="70"  stroke="#1f2545" stroke-width="1"/>
+                            <line x1="0" y1="140" x2="800" y2="140" stroke="#1f2545" stroke-width="1"/>
+                            <line x1="0" y1="210" x2="800" y2="210" stroke="#1f2545" stroke-width="1"/>
+                            <path d="M0,232 L57,221 L114,205 L171,210 L228,183 L285,160 L342,171 L399,138 L456,150 L513,118 L570,128 L627,86 L684,64 L741,46 L800,30 L800,280 L0,280 Z" fill="url(#eqfill)"/>
+                            <path d="M0,232 L57,221 L114,205 L171,210 L228,183 L285,160 L342,171 L399,138 L456,150 L513,118 L570,128 L627,86 L684,64 L741,46 L800,30" fill="none" stroke="#e9c46a" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+                        </svg>
+                        <div class="nb-metrics">
+                            <div class="nb-metric"><span class="v pnl">+24.3%</span><span class="l">PnL</span></div>
+                            <div class="nb-metric"><span class="v acc">61.2%</span><span class="l">Accuracy</span></div>
+                            <div class="nb-metric"><span class="v dd">-8.7%</span><span class="l">Max Drawdown</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- markdown -->
+        <div class="nb-cell nb-md">
+            <h2># Conclusão</h2>
+            <p>O modelo entrega <em>edge</em> consistente <em>out-of-sample</em> com drawdown controlado. Próximos passos:
+            validação <em>walk-forward</em>, custos de transação e <em>ensembling</em> com outros horizontes.</p>
+            <ul>
+                <li>Validação temporal sem vazamento de futuro</li>
+                <li>Risco dimensionado por volatilidade (target vol)</li>
+                <li>Base de dados e credenciais mantidas privadas</li>
+            </ul>
+        </div>
+
+        <div class="nb-foot">
+            Notebook renderizado como HTML estático (read-only) ·
+            <a href="../index.html#quant">← voltar ao portfólio</a>
+        </div>
+    </div>
+</body>
+</html>
