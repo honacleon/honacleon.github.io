@@ -8,11 +8,64 @@
 // Para adicionar um novo projeto, adicione um objeto neste array.
 const projetos = [
     {
+        id: "aurum-mkt",
+        titulo: "Aurum MKT — Plataforma de Analytics de Performance de Anúncios",
+        descricao: "SaaS multi-cliente para agências: centraliza Meta Ads e Google Ads em dashboards com motor de alertas, registro de vendas/ROAS, insights de IA (Gemini), relatórios prontos para WhatsApp e RBAC por papel (admin/analyst/client).",
+        tecnologias: ["Next.js 14", "TypeScript", "Tailwind", "shadcn/ui", "Recharts", "React Query", "FastAPI", "SQLAlchemy", "PostgreSQL", "JWT/RBAC", "Alembic", "Gemini (IA)"],
+        thumbnail: "img/projects/aurum/aurum-tour.gif",
+        screenshots: [
+            "img/projects/aurum/dashboard-meta.png",
+            "img/projects/aurum/dashboard-google.png",
+            "img/projects/aurum/dashboard-vendas.png",
+            "img/projects/aurum/ia-insights.png",
+            "img/projects/aurum/alerts.png",
+            "img/projects/aurum/optimizations.png",
+            "img/projects/aurum/sales.png",
+            "img/projects/aurum/report.png",
+            "img/projects/aurum/admin.png",
+            "img/projects/aurum/login.png"
+        ],
+        descricaoDetalhada: `
+            <h2>🚀 Visão Geral</h2>
+            <p>O <strong>Aurum MKT</strong> é uma plataforma multi-cliente de analytics de performance de anúncios, pensada para agências de marketing. Centraliza dados de <strong>Meta Ads</strong> e <strong>Google Ads</strong> em dashboards executivos, com motor de alertas, registro de vendas/ROAS, insights gerados por IA e controle de acesso por papel — tudo construído a partir de um blueprint de especificação com paridade total de regras de negócio (incluindo a definição Looker de "Leads").</p>
+
+            <h2>🛠️ Stack</h2>
+            <ul>
+                <li><strong>Frontend</strong>: Next.js 14 (App Router) + TypeScript + Tailwind + shadcn/ui + Recharts + React Query, com micro-interações em Framer Motion.</li>
+                <li><strong>Backend</strong>: FastAPI (Python 3.11+) + SQLAlchemy 2.x + Alembic (19 tabelas).</li>
+                <li><strong>Banco</strong>: PostgreSQL plugável por <code>DATABASE_URL</code> (Supabase / Postgres local / Neon / RDS).</li>
+                <li><strong>Auth</strong>: JWT próprio (access + refresh) com RBAC na camada de aplicação.</li>
+                <li><strong>ETL/Jobs</strong>: workers Python (Meta/Google) agendáveis por cron ou APScheduler.</li>
+            </ul>
+
+            <h2>🧠 Como Funciona</h2>
+            <ol>
+                <li><strong>Dashboards multi-fonte</strong>: visão consolidada de Meta Ads, Google Ads e Vendas com KPIs, comparativos e tendências.</li>
+                <li><strong>Motor de alertas</strong>: 8 templates de alerta detectam quedas de performance e oportunidades.</li>
+                <li><strong>Insights de IA (Gemini)</strong>: prompts de domínio (Marketing, Financial, Market Research) geram análises e relatórios sob demanda.</li>
+                <li><strong>Vendas & ROAS</strong>: registro de vendas com cálculo de retorno sobre investimento por cliente/período.</li>
+                <li><strong>Relatórios</strong>: exportações prontas para WhatsApp e apresentação ao cliente.</li>
+                <li><strong>RBAC</strong>: papéis admin / analyst / client com acesso validado no backend a cada chamada.</li>
+            </ol>
+
+            <h2>💎 Diferenciais Técnicos</h2>
+            <ul>
+                <li><strong>Spec-driven</strong>: implementado a partir de blueprint (SPECS_ZERO), com paridade de regras de negócio.</li>
+                <li><strong>Design system glass</strong>: tema dark "Aurum Glass" com fundo de partículas animado e UI consistente.</li>
+                <li><strong>Segurança</strong>: credenciais via variáveis de ambiente; acesso a dados sempre enforçado no backend.</li>
+                <li><strong>Arquitetura em camadas</strong>: core / db / schemas / repositories / services / api / etl / jobs.</li>
+            </ul>
+        `,
+        liveDemo: null,
+        repositorio: null,
+        video: null
+    },
+    {
         id: "sql-assistant",
         titulo: "AI SQL Assistant — Natural Language → SQL com Multi-Agent + RAG",
         descricao: "Plataforma full-stack que traduz perguntas em português para SQL via pipeline multi-agente de 9 prompts especializados, com retrieval semântico em pgvector, self-healing de queries e multi-LLM (Claude / GPT-4o / Gemini).",
         tecnologias: ["TypeScript", "React 18", "Node.js", "Express", "Supabase", "pgvector", "Anthropic Claude", "OpenAI GPT-4o", "Google Gemini", "Multi-Agent", "RAG", "Tailwind", "ShadCN/UI", "Vitest"],
-        thumbnail: "img/projects/sql-assistant/capa.jpg",
+        thumbnail: "img/projects/sql-assistant/sql-tour.gif",
         screenshots: [
             "img/projects/sql-assistant/capa.jpg",
             "img/projects/sql-assistant/login.jpg",
@@ -21,7 +74,9 @@ const projetos = [
             "img/projects/sql-assistant/sql-gerado.jpg",
             "img/projects/sql-assistant/resultado.jpg",
             "img/projects/sql-assistant/insights.jpg",
-            "img/projects/sql-assistant/treinar-ia.jpg"
+            "img/projects/sql-assistant/upload.jpg",
+            "img/projects/sql-assistant/treinar-ia.jpg",
+            "img/projects/sql-assistant/compartilhar.jpg"
         ],
         descricaoDetalhada: `
             <h2>🎯 Visão Geral</h2>
@@ -339,21 +394,29 @@ const projetos = [
 // A base de dados NÃO é publicada — apenas o código e os resultados.
 const projetosQuant = [
     {
-        id: "momentum-ml",
-        titulo: "Momentum ML — Sinais de Direção Intradiário",
-        descricao: "Classificador (gradient boosting) que prevê a direção do próximo candle a partir de features de momentum, volatilidade e microestrutura, com backtest e gestão de risco por volatilidade.",
-        tecnologias: ["Python", "XGBoost", "pandas", "NumPy", "backtest"],
-        metricas: { pnl: "+24.3%", accuracy: "61.2%", drawdown: "-8.7%" },
-        notebook: "quant/exemplo-momentum-ml.html",
+        id: "audusd-rf-familia-b",
+        titulo: "Random Forest — Direção do AUDUSD (Variáveis de Momentum)",
+        descricao: "Classificação da direção do AUDUSD em 5 dias (alta × baixa) com Random Forest, usando variáveis de momentum. Pipeline filter_v3: modelo base → diagnóstico de overfitting → fine-grid de hiperparâmetros → avaliação out-of-sample (~12,5 anos).",
+        tecnologias: ["Python", "scikit-learn", "RandomForest", "pandas", "NumPy", "out-of-sample"],
+        metricas: [
+            { v: "56,2%", l: "Acurácia OOS", cls: "acc" },
+            { v: "0,56", l: "AUC (teste)", cls: "acc" },
+            { v: "0,84", l: "Sharpe", cls: "pnl" }
+        ],
+        notebook: "quant/audusd-rf-familia-b.html",
         repositorio: null
     },
     {
-        id: "mean-reversion",
-        titulo: "Mean Reversion Estatística em Pares",
-        descricao: "Reversão à média em pares cointegrados (z-score do spread), com filtro de regime e stops dinâmicos. Notebook com a lógica completa e o backtest.",
-        tecnologias: ["Python", "statsmodels", "pandas", "cointegração"],
-        metricas: { pnl: "+17.1%", accuracy: "58.4%", drawdown: "-6.2%" },
-        notebook: "quant/exemplo-mean-reversion.html",
+        id: "audusd-rf-familia-r",
+        titulo: "Random Forest — Direção do AUDUSD (Variáveis de Força Relativa)",
+        descricao: "Mesmo pipeline filter_v3 (base → fine-grid → otimizado) aplicado a variáveis de força relativa (RSI), classificando a direção do AUDUSD em 5 dias com avaliação out-of-sample (~12,5 anos).",
+        tecnologias: ["Python", "scikit-learn", "RandomForest", "pandas", "NumPy", "out-of-sample"],
+        metricas: [
+            { v: "58,1%", l: "Acurácia OOS", cls: "acc" },
+            { v: "0,58", l: "AUC (teste)", cls: "acc" },
+            { v: "0,95", l: "Sharpe", cls: "pnl" }
+        ],
+        notebook: "quant/audusd-rf-familia-r.html",
         repositorio: null
     }
 ];
@@ -682,6 +745,10 @@ function createQuantCard(p, index) {
         ? `<a href="${p.repositorio}" target="_blank" rel="noopener" class="quant-icon-link" title="Ver código" onclick="event.stopPropagation()"><i class="fab fa-github"></i></a>`
         : '';
 
+    const metricsHtml = (Array.isArray(p.metricas) ? p.metricas : [])
+        .map(m => `<div class="quant-metric"><span class="metric-value ${m.cls || ''}">${m.v}</span><span class="metric-label">${m.l}</span></div>`)
+        .join('');
+
     card.innerHTML = `
         <div class="quant-curve" aria-hidden="true">
             <svg viewBox="0 0 600 160" preserveAspectRatio="none">
@@ -698,11 +765,7 @@ function createQuantCard(p, index) {
         </div>
         <h3 class="quant-title">${p.titulo}</h3>
         <p class="quant-desc">${p.descricao}</p>
-        <div class="quant-metrics">
-            <div class="quant-metric"><span class="metric-value pnl">${p.metricas.pnl}</span><span class="metric-label">PnL</span></div>
-            <div class="quant-metric"><span class="metric-value acc">${p.metricas.accuracy}</span><span class="metric-label">Accuracy</span></div>
-            <div class="quant-metric"><span class="metric-value dd">${p.metricas.drawdown}</span><span class="metric-label">Max Drawdown</span></div>
-        </div>
+        <div class="quant-metrics">${metricsHtml}</div>
         <div class="quant-tags">${tags}</div>
         <div class="quant-cta"><span>Abrir notebook</span> <i class="fas fa-arrow-right"></i></div>
     `;
