@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mean Reversion em Pares — Honacleon Júnior</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="notebook.css">
+</head>
+<body>
+    <div class="nb-wrap">
+        <div class="nb-topbar">
+            <a class="nb-back" href="../index.html#quant"><i class="fas fa-arrow-left"></i> Voltar ao portfólio</a>
+            <span class="nb-file">mean_reversion.ipynb · read-only</span>
+        </div>
+
+        <h1 class="nb-title">Mean Reversion Estatística em Pares</h1>
+        <p class="nb-sub">Reversão à média em pares cointegrados via z-score do spread, com filtro de regime e stops dinâmicos.</p>
+
+        <div class="nb-banner">
+            <i class="fas fa-shield-halved"></i>
+            <div>
+                <strong>Notebook somente leitura.</strong> Código aberto para leitura; a
+                <strong>base de dados é privada</strong> (conexão por variável de ambiente) e os resultados
+                exibidos usam uma <strong>amostra sintética</strong>.
+            </div>
+        </div>
+
+        <div class="nb-cell nb-md">
+            <h2># Visão geral</h2>
+            <p>Dois ativos cointegrados tendem a manter um <em>spread</em> estacionário. Quando o spread se afasta da média
+            (z-score alto), abre-se posição apostando no retorno à média; fecha-se quando o z-score normaliza.</p>
+        </div>
+
+        <div class="nb-cell">
+            <div class="nb-input">
+                <div class="nb-prompt">In&nbsp;[1]:</div>
+                <div class="nb-code"><pre><span class="tok-kw">import</span> os
+<span class="tok-kw">import</span> numpy <span class="tok-kw">as</span> np
+<span class="tok-kw">import</span> pandas <span class="tok-kw">as</span> pd
+<span class="tok-kw">from</span> statsmodels.tsa.stattools <span class="tok-kw">import</span> coint
+
+<span class="tok-com"># Base privada: a string de conexão vem do ambiente, não do notebook.</span>
+prices <span class="tok-op">=</span> <span class="tok-fn">load_pairs</span>(os.environ[<span class="tok-str">"QUANT_DB_URL"</span>], tickers<span class="tok-op">=</span>[<span class="tok-str">"PETR4"</span>, <span class="tok-str">"PETR3"</span>])
+a, b <span class="tok-op">=</span> prices[<span class="tok-str">"PETR4"</span>], prices[<span class="tok-str">"PETR3"</span>]</pre></div>
+            </div>
+        </div>
+
+        <div class="nb-cell">
+            <div class="nb-input">
+                <div class="nb-prompt">In&nbsp;[2]:</div>
+                <div class="nb-code"><pre>score, pvalue, _ <span class="tok-op">=</span> <span class="tok-fn">coint</span>(a, b)
+spread <span class="tok-op">=</span> a <span class="tok-op">-</span> <span class="tok-fn">hedge_ratio</span>(a, b) <span class="tok-op">*</span> b
+z <span class="tok-op">=</span> (spread <span class="tok-op">-</span> spread.rolling(<span class="tok-num">60</span>).mean()) <span class="tok-op">/</span> spread.rolling(<span class="tok-num">60</span>).std()
+<span class="tok-fn">print</span>(<span class="tok-str">f"p-valor de cointegração: {pvalue:.4f}"</span>)</pre></div>
+            </div>
+            <div class="nb-output">
+                <div class="nb-oprompt">Out[2]:</div>
+                <div class="nb-out">
+                    <div class="nb-out-text">p-valor de cointegração: 0.0083   (par cointegrado a 1%)</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="nb-cell nb-md">
+            <h2># Regras de entrada e saída</h2>
+            <p>Entra contra o desvio quando <code>|z| &gt; 2</code>; zera quando <code>|z| &lt; 0.5</code>; stop quando <code>|z| &gt; 3.5</code>.</p>
+        </div>
+
+        <div class="nb-cell">
+            <div class="nb-input">
+                <div class="nb-prompt">In&nbsp;[3]:</div>
+                <div class="nb-code"><pre>pos <span class="tok-op">=</span> np.<span class="tok-fn">zeros</span>(<span class="tok-cls">len</span>(z))
+pos[z <span class="tok-op">&gt;</span>  <span class="tok-num">2.0</span>] <span class="tok-op">=</span> <span class="tok-num">-1</span>          <span class="tok-com"># spread alto: vende o spread</span>
+pos[z <span class="tok-op">&lt;</span> <span class="tok-num">-2.0</span>] <span class="tok-op">=</span>  <span class="tok-num">1</span>          <span class="tok-com"># spread baixo: compra o spread</span>
+pos <span class="tok-op">=</span> <span class="tok-fn">apply_exits</span>(pos, z, exit_z<span class="tok-op">=</span><span class="tok-num">0.5</span>, stop_z<span class="tok-op">=</span><span class="tok-num">3.5</span>)
+
+pnl    <span class="tok-op">=</span> pos[:<span class="tok-num">-1</span>] <span class="tok-op">*</span> spread.<span class="tok-fn">diff</span>().values[<span class="tok-num">1</span>:]
+equity <span class="tok-op">=</span> (<span class="tok-num">1</span> <span class="tok-op">+</span> pnl <span class="tok-op">/</span> spread.values[:<span class="tok-num">-1</span>]).<span class="tok-fn">cumprod</span>()</pre></div>
+            </div>
+            <div class="nb-output">
+                <div class="nb-oprompt">Out[3]:</div>
+                <div class="nb-out">
+                    <div class="nb-fig">
+                        <div class="nb-fig-title">Equity Curve — out-of-sample (amostra sintética)</div>
+                        <svg viewBox="0 0 800 280" preserveAspectRatio="none" role="img" aria-label="Equity curve">
+                            <defs>
+                                <linearGradient id="eqfill2" x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="0%" stop-color="#e9c46a" stop-opacity="0.32"/>
+                                    <stop offset="100%" stop-color="#e9c46a" stop-opacity="0"/>
+                                </linearGradient>
+                            </defs>
+                            <line x1="0" y1="70"  x2="800" y2="70"  stroke="#1f2545" stroke-width="1"/>
+                            <line x1="0" y1="140" x2="800" y2="140" stroke="#1f2545" stroke-width="1"/>
+                            <line x1="0" y1="210" x2="800" y2="210" stroke="#1f2545" stroke-width="1"/>
+                            <path d="M0,240 L67,228 L134,232 L201,210 L268,214 L335,190 L402,176 L469,182 L536,150 L603,138 L670,120 L737,96 L800,84 L800,280 L0,280 Z" fill="url(#eqfill2)"/>
+                            <path d="M0,240 L67,228 L134,232 L201,210 L268,214 L335,190 L402,176 L469,182 L536,150 L603,138 L670,120 L737,96 L800,84" fill="none" stroke="#e9c46a" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+                        </svg>
+                        <div class="nb-metrics">
+                            <div class="nb-metric"><span class="v pnl">+17.1%</span><span class="l">PnL</span></div>
+                            <div class="nb-metric"><span class="v acc">58.4%</span><span class="l">Accuracy</span></div>
+                            <div class="nb-metric"><span class="v dd">-6.2%</span><span class="l">Max Drawdown</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="nb-cell nb-md">
+            <h2># Conclusão</h2>
+            <p>Estratégia de baixa correlação com direção de mercado — bom componente de diversificação. Drawdown contido
+            pelo stop em z-score. Extensões: cesta de múltiplos pares e reestimação dinâmica do <em>hedge ratio</em>.</p>
+        </div>
+
+        <div class="nb-foot">
+            Notebook renderizado como HTML estático (read-only) ·
+            <a href="../index.html#quant">← voltar ao portfólio</a>
+        </div>
+    </div>
+</body>
+</html>

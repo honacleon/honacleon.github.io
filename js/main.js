@@ -1,12 +1,71 @@
+// ============================================================
+//  HONACLEON JÚNIOR — Portfólio IA & Data Science
+//  Lógica de projetos (dinâmica), modal/galeria/lightbox e
+//  animações de interface (loader, reveal, skills, contadores).
+// ============================================================
+
 // ===== CONFIGURAÇÃO DOS PROJETOS =====
-// Para adicionar um novo projeto, adicione um objeto neste array
+// Para adicionar um novo projeto, adicione um objeto neste array.
 const projetos = [
+    {
+        id: "aurum-mkt",
+        titulo: "Aurum MKT — Plataforma de Analytics de Performance de Anúncios",
+        descricao: "SaaS multi-cliente para agências: centraliza Meta Ads e Google Ads em dashboards com motor de alertas, registro de vendas/ROAS, insights de IA (Gemini), relatórios prontos para WhatsApp e RBAC por papel (admin/analyst/client).",
+        tecnologias: ["Next.js 14", "TypeScript", "Tailwind", "shadcn/ui", "Recharts", "React Query", "FastAPI", "SQLAlchemy", "PostgreSQL", "JWT/RBAC", "Alembic", "Gemini (IA)"],
+        thumbnail: "img/projects/aurum/aurum-tour.gif",
+        screenshots: [
+            "img/projects/aurum/dashboard-meta.png",
+            "img/projects/aurum/dashboard-google.png",
+            "img/projects/aurum/dashboard-vendas.png",
+            "img/projects/aurum/ia-insights.png",
+            "img/projects/aurum/alerts.png",
+            "img/projects/aurum/optimizations.png",
+            "img/projects/aurum/sales.png",
+            "img/projects/aurum/report.png",
+            "img/projects/aurum/admin.png",
+            "img/projects/aurum/login.png"
+        ],
+        descricaoDetalhada: `
+            <h2>🚀 Visão Geral</h2>
+            <p>O <strong>Aurum MKT</strong> é uma plataforma multi-cliente de analytics de performance de anúncios, pensada para agências de marketing. Centraliza dados de <strong>Meta Ads</strong> e <strong>Google Ads</strong> em dashboards executivos, com motor de alertas, registro de vendas/ROAS, insights gerados por IA e controle de acesso por papel — tudo construído a partir de um blueprint de especificação com paridade total de regras de negócio (incluindo a definição Looker de "Leads").</p>
+
+            <h2>🛠️ Stack</h2>
+            <ul>
+                <li><strong>Frontend</strong>: Next.js 14 (App Router) + TypeScript + Tailwind + shadcn/ui + Recharts + React Query, com micro-interações em Framer Motion.</li>
+                <li><strong>Backend</strong>: FastAPI (Python 3.11+) + SQLAlchemy 2.x + Alembic (19 tabelas).</li>
+                <li><strong>Banco</strong>: PostgreSQL plugável por <code>DATABASE_URL</code> (Supabase / Postgres local / Neon / RDS).</li>
+                <li><strong>Auth</strong>: JWT próprio (access + refresh) com RBAC na camada de aplicação.</li>
+                <li><strong>ETL/Jobs</strong>: workers Python (Meta/Google) agendáveis por cron ou APScheduler.</li>
+            </ul>
+
+            <h2>🧠 Como Funciona</h2>
+            <ol>
+                <li><strong>Dashboards multi-fonte</strong>: visão consolidada de Meta Ads, Google Ads e Vendas com KPIs, comparativos e tendências.</li>
+                <li><strong>Motor de alertas</strong>: 8 templates de alerta detectam quedas de performance e oportunidades.</li>
+                <li><strong>Insights de IA (Gemini)</strong>: prompts de domínio (Marketing, Financial, Market Research) geram análises e relatórios sob demanda.</li>
+                <li><strong>Vendas & ROAS</strong>: registro de vendas com cálculo de retorno sobre investimento por cliente/período.</li>
+                <li><strong>Relatórios</strong>: exportações prontas para WhatsApp e apresentação ao cliente.</li>
+                <li><strong>RBAC</strong>: papéis admin / analyst / client com acesso validado no backend a cada chamada.</li>
+            </ol>
+
+            <h2>💎 Diferenciais Técnicos</h2>
+            <ul>
+                <li><strong>Spec-driven</strong>: implementado a partir de blueprint (SPECS_ZERO), com paridade de regras de negócio.</li>
+                <li><strong>Design system glass</strong>: tema dark "Aurum Glass" com fundo de partículas animado e UI consistente.</li>
+                <li><strong>Segurança</strong>: credenciais via variáveis de ambiente; acesso a dados sempre enforçado no backend.</li>
+                <li><strong>Arquitetura em camadas</strong>: core / db / schemas / repositories / services / api / etl / jobs.</li>
+            </ul>
+        `,
+        liveDemo: null,
+        repositorio: null,
+        video: null
+    },
     {
         id: "sql-assistant",
         titulo: "AI SQL Assistant — Natural Language → SQL com Multi-Agent + RAG",
         descricao: "Plataforma full-stack que traduz perguntas em português para SQL via pipeline multi-agente de 9 prompts especializados, com retrieval semântico em pgvector, self-healing de queries e multi-LLM (Claude / GPT-4o / Gemini).",
         tecnologias: ["TypeScript", "React 18", "Node.js", "Express", "Supabase", "pgvector", "Anthropic Claude", "OpenAI GPT-4o", "Google Gemini", "Multi-Agent", "RAG", "Tailwind", "ShadCN/UI", "Vitest"],
-        thumbnail: "img/projects/sql-assistant/capa.jpg",
+        thumbnail: "img/projects/sql-assistant/sql-tour.gif",
         screenshots: [
             "img/projects/sql-assistant/capa.jpg",
             "img/projects/sql-assistant/login.jpg",
@@ -15,7 +74,9 @@ const projetos = [
             "img/projects/sql-assistant/sql-gerado.jpg",
             "img/projects/sql-assistant/resultado.jpg",
             "img/projects/sql-assistant/insights.jpg",
-            "img/projects/sql-assistant/treinar-ia.jpg"
+            "img/projects/sql-assistant/upload.jpg",
+            "img/projects/sql-assistant/treinar-ia.jpg",
+            "img/projects/sql-assistant/compartilhar.jpg"
         ],
         descricaoDetalhada: `
             <h2>🎯 Visão Geral</h2>
@@ -83,7 +144,7 @@ const projetos = [
         id: "agente-documentos",
         titulo: "Agente de Análise de Documentos",
         descricao: "Sistema inteligente que utiliza IA para análise e extração de informações de documentos complexos, com processamento de linguagem natural avançado.",
-        tecnologias: ["Python", "OpenAI API", "LangChain", "NLTK", "Streamlit"],
+        tecnologias: ["Python", "OpenAI API", "NLTK", "Streamlit"],
         thumbnail: "img/projects/doc-agent/capa_1.png",
         screenshots: [
             "img/projects/doc-agent/capa_1.png",
@@ -119,17 +180,12 @@ const projetos = [
             "img/projects/case-ollist/0.png",
             "img/projects/case-ollist/1.png",
             "img/projects/case-ollist/2.png",
-            
             "img/projects/case-ollist/4.png",
             "img/projects/case-ollist/5.png",
-            
             "img/projects/case-ollist/7.png",
-            
             "img/projects/case-ollist/9.png",
             "img/projects/case-ollist/10.png",
             "img/projects/case-ollist/11.png"
-            
-            
         ],
         descricaoDetalhada: `
             <p>Este projeto consiste em um caso de estudo completo para a empresa Ollist, plataforma de e-commerce brasileira. A análise envolveu o processamento de grandes volumes de dados transacionais para extrair insights estratégicos sobre o desempenho do marketplace.</p>
@@ -149,8 +205,8 @@ const projetos = [
     {
         id: "neurochat-rag-retrieval-augmented-generation",
         titulo: "NeuroChat - RAG (Retrieval-Augmented Generation) ",
-        descricao: "RAG Completo: Pipeline de ingestão, chunking, embeddings, indexação e busca semântica. Integração: OpenAI + Pinecone + LangChain + Streamlit.",
-        tecnologias: ["Pinecone", "LangChain", "Streamlit", "Python", "Docling", "OpenAI (API)", "Retrieval-Augmented Generation - RAG"],
+        descricao: "RAG Completo: Pipeline de ingestão, chunking, embeddings, indexação e busca semântica. Integração: OpenAI + Pinecone + Streamlit.",
+        tecnologias: ["Pinecone", "Streamlit", "Python", "Docling", "OpenAI (API)", "Retrieval-Augmented Generation - RAG"],
         thumbnail: "img/projects/rag-docs/capa_1.png",
         screenshots: [
             "img/projects/rag-docs/capa_1.png",
@@ -162,23 +218,20 @@ const projetos = [
         ],
         descricaoDetalhada: `
             <h2>🚀 Visão Geral</h2>
-            
             <p>O <strong>NeuroChat AI</strong> é um chatbot inteligente baseado em RAG (Retrieval-Augmented Generation), que combina modelos de linguagem da OpenAI, banco vetorial Pinecone e uma interface web futurista com Streamlit. O sistema permite consultar grandes volumes de documentos (PDFs convertidos) de forma semântica, respondendo perguntas com contexto e precisão.</p>
-            
+
             <h2>🛠️ Tecnologias e Ferramentas Utilizadas</h2>
-            
             <ul>
                 <li><strong>OpenAI (API)</strong>: Geração de embeddings e respostas contextuais usando modelos de última geração (GPT-4o, text-embedding-3-small).</li>
                 <li><strong>Pinecone</strong>: Banco vetorial para indexação e busca semântica de documentos.</li>
-                <li><strong>LangChain</strong>: Pipeline para chunking, preparação e manipulação de documentos.</li>
+                <li><strong>Pipeline de ingestão</strong>: chunking, preparação e manipulação de documentos.</li>
                 <li><strong>Streamlit</strong>: Interface web moderna, responsiva e customizada com CSS avançado.</li>
                 <li><strong>Python-dotenv</strong>: Gerenciamento seguro de variáveis de ambiente.</li>
                 <li><strong>PDF Converter</strong>: Pipeline para converter PDFs em TXT/JSON, facilitando ingestão de dados.</li>
                 <li><strong>Design Futurista</strong>: UI diferenciada com animações, gradientes, fontes customizadas e experiência de usuário avançada.</li>
             </ul>
-            
+
             <h2>🧠 Como Funciona</h2>
-            
             <ol>
                 <li><strong>Conversão de PDFs</strong>: Use o script "pdf_converter"para transformar arquivos PDF em TXT/JSON.</li>
                 <li><strong>Processamento e Indexação</strong>: Rode "rag_system" para dividir documentos em chunks, gerar embeddings via OpenAI e indexar tudo no Pinecone.</li>
@@ -189,14 +242,13 @@ const projetos = [
         repositorio: "https://github.com/honacleon/NeuroChat",
         video: null
     },
-
     {
-        "id": "marketing-roi-dashboard",
-        "titulo": "Marketing ROI Dashboard - Análise Preditiva de Campanhas",
-        "descricao": "Dashboard avançado de BI com Machine Learning para otimização de campanhas de marketing digital. Análise preditiva de ROAS, alocação inteligente de budget e insights automatizados.",
-        "tecnologias": ["Python", "Streamlit", "Plotly", "Scikit-learn", "Pandas", "Machine Learning", "CSS Avançado"],
-        "thumbnail": "img/projects/mkt-dash/capa_1.png",
-        "screenshots": [
+        id: "marketing-roi-dashboard",
+        titulo: "Marketing ROI Dashboard - Análise Preditiva de Campanhas",
+        descricao: "Dashboard avançado de BI com Machine Learning para otimização de campanhas de marketing digital. Análise preditiva de ROAS, alocação inteligente de budget e insights automatizados.",
+        tecnologias: ["Python", "Streamlit", "Plotly", "Scikit-learn", "Pandas", "Machine Learning", "CSS Avançado"],
+        thumbnail: "img/projects/mkt-dash/capa_1.png",
+        screenshots: [
             "img/projects/mkt-dash/capa_1.png",
             "img/projects/mkt-dash/mkt_1.png",
             "img/projects/mkt-dash/mkt_2.png",
@@ -205,13 +257,11 @@ const projetos = [
             "img/projects/mkt-dash/mkt_5.png",
             "img/projects/mkt-dash/mkt_6.png"
         ],
-        "descricaoDetalhada": `
+        descricaoDetalhada: `
             <h2>🚀 Visão Geral</h2>
-            
             <p>O <strong>Marketing ROI Dashboard</strong> é uma solução avançada de Business Intelligence desenvolvida para transformar dados de marketing em insights acionáveis e crescimento exponencial. Combinando visualizações interativas com algoritmos de Machine Learning, o sistema permite identificar oportunidades de otimização, prever resultados futuros e maximizar o retorno sobre investimento em campanhas digitais.</p>
-            
+
             <h2>🛠️ Tecnologias e Ferramentas Utilizadas</h2>
-            
             <ul>
                 <li><strong>Python</strong>: Base de desenvolvimento com processamento de dados de alta performance.</li>
                 <li><strong>Streamlit</strong>: Framework para criação da interface web interativa com componentes dinâmicos.</li>
@@ -221,9 +271,8 @@ const projetos = [
                 <li><strong>CSS Customizado</strong>: Interface premium com gradientes dinâmicos, animações e efeitos visuais.</li>
                 <li><strong>Streamlit Option Menu</strong>: Navegação intuitiva com menu lateral personalizado.</li>
             </ul>
-            
+
             <h2>🧠 Como Funciona</h2>
-            
             <ol>
                 <li><strong>Autenticação Segura</strong>: Sistema de login com hash SHA-256 para proteção de dados sensíveis.</li>
                 <li><strong>Dashboard Executivo</strong>: Visão consolidada de KPIs críticos com comparativos e tendências.</li>
@@ -232,18 +281,16 @@ const projetos = [
                 <li><strong>IA & Predições</strong>: Algoritmos de Machine Learning para previsão de ROAS e identificação de anomalias.</li>
                 <li><strong>Budget Optimization</strong>: Recomendações automáticas para alocação ideal de investimentos.</li>
             </ol>
-    
+
             <h2>🔥 Resultados Comprovados</h2>
-            
             <ul>
                 <li><strong>+45% no ROAS</strong> através de otimização baseada em IA</li>
                 <li><strong>-28% no CPA</strong> com realocação inteligente de budget</li>
                 <li><strong>+35% na eficiência</strong> de campanhas multi-canal</li>
                 <li><strong>R$ 2.3M</strong> em receita adicional identificada via análise preditiva</li>
             </ul>
-    
+
             <h2>💎 Diferenciais Técnicos</h2>
-            
             <ul>
                 <li><strong>Design Premium</strong>: Interface com gradientes dinâmicos, animações suaves e tema dark otimizado.</li>
                 <li><strong>Algoritmos Proprietários</strong>: ROAS Predictor, Budget Optimizer, Anomaly Detection e Seasonality Engine.</li>
@@ -252,9 +299,9 @@ const projetos = [
                 <li><strong>Simulador de Cenários</strong>: Ferramenta interativa para projeção de resultados com diferentes alocações.</li>
             </ul>
         `,
-        "liveDemo": null,
-        "repositorio": "https://github.com/honacleon/marketing-dashboard",
-        "video": null
+        liveDemo: null,
+        repositorio: "https://github.com/honacleon/marketing-dashboard",
+        video: null
     },
     {
         id: "bi-dashboard-starter",
@@ -316,7 +363,7 @@ const projetos = [
         id: "bi-dashboard-professional",
         titulo: "BI Dashboard Professional — IA Aplicada com RAG e Agentes",
         descricao: "Plataforma BI premium com IA generativa, RAG e agentes para responder perguntas em linguagem natural, gerar insights automáticos e automatizar análises recorrentes.",
-        tecnologias: ["Python", "Streamlit", "LangChain", "OpenAI", "RAG", "Agentes IA", "BI Avançado"],
+        tecnologias: ["Python", "Streamlit", "OpenAI", "RAG", "Agentes IA", "BI Avançado"],
         thumbnail: "img/projects/bi-professional/capa.png",
         screenshots: [
             "img/projects/bi-professional/capa.png"
@@ -334,7 +381,7 @@ const projetos = [
             </ul>
 
             <h2>🛠️ Stack</h2>
-            <p>Python + Streamlit + LangChain + OpenAI + RAG + arquitetura multi-agente, deploy no Streamlit Cloud.</p>
+            <p>Python + Streamlit + OpenAI + RAG + arquitetura multi-agente, deploy no Streamlit Cloud.</p>
         `,
         liveDemo: "https://aurum-professional.streamlit.app/",
         repositorio: null,
@@ -342,267 +389,455 @@ const projetos = [
     }
 ];
 
-// ===== VARIÁVEIS GLOBAIS =====
+// ===== PROJETOS QUANT (ML & Finanças Quantitativas) =====
+// Cada case abre um notebook renderizado (HTML estático, read-only) em quant/.
+// A base de dados NÃO é publicada — apenas o código e os resultados.
+const projetosQuant = [
+    {
+        id: "audusd-rf-familia-b",
+        titulo: "Random Forest — Direção do AUDUSD (Variáveis de Momentum)",
+        descricao: "Classificação da direção do AUDUSD em 5 dias (alta × baixa) com Random Forest, usando variáveis de momentum. Pipeline filter_v3: modelo base → diagnóstico de overfitting → fine-grid de hiperparâmetros → avaliação out-of-sample (~12,5 anos).",
+        tecnologias: ["Python", "scikit-learn", "RandomForest", "pandas", "NumPy", "out-of-sample"],
+        metricas: [
+            { v: "56,2%", l: "Acurácia OOS", cls: "acc" },
+            { v: "0,56", l: "AUC (teste)", cls: "acc" },
+            { v: "0,84", l: "Sharpe", cls: "pnl" }
+        ],
+        notebook: "quant/audusd-rf-familia-b.html",
+        repositorio: null
+    },
+    {
+        id: "audusd-rf-familia-r",
+        titulo: "Random Forest — Direção do AUDUSD (Variáveis de Força Relativa)",
+        descricao: "Mesmo pipeline filter_v3 (base → fine-grid → otimizado) aplicado a variáveis de força relativa (RSI), classificando a direção do AUDUSD em 5 dias com avaliação out-of-sample (~12,5 anos).",
+        tecnologias: ["Python", "scikit-learn", "RandomForest", "pandas", "NumPy", "out-of-sample"],
+        metricas: [
+            { v: "58,1%", l: "Acurácia OOS", cls: "acc" },
+            { v: "0,58", l: "AUC (teste)", cls: "acc" },
+            { v: "0,95", l: "Sharpe", cls: "pnl" }
+        ],
+        notebook: "quant/audusd-rf-familia-r.html",
+        repositorio: null
+    }
+];
+
+// ===== ESTADO GLOBAL =====
 let currentProject = null;
 let currentImageIndex = 0;
 let currentImages = [];
 
 // ===== INICIALIZAÇÃO =====
-document.addEventListener('DOMContentLoaded', function() {
-    // Remove o preloader
-    setTimeout(() => {
-        const preloader = document.getElementById('preloader');
-        if (preloader) {
-            preloader.style.opacity = '0';
-            setTimeout(() => {
-                preloader.style.display = 'none';
-            }, 500);
-        }
-    }, 1000);
-
-    // Inicializa os componentes
+document.addEventListener('DOMContentLoaded', () => {
+    setFooterYear();
+    initLoader();
     initNavigation();
-    initHeroAnimations();
-    initScrollAnimations();
+    initMobileMenu();
+    initScrollSpy();
+    initHeaderScroll();
+    initRevealOnScroll();
+    initSkillBars();
+    initStatCounters();
     initBackToTop();
-    initMagneticButtons();
+    initCodeParticles();
+    initParallax();
+    initContactForm();
+    loadQuantProjects();
     loadProjects();
     initModal();
     initLightbox();
-    
-    console.log('Portfolio carregado com sucesso!');
 });
 
-// ===== NAVEGAÇÃO =====
+// ===== FOOTER YEAR =====
+function setFooterYear() {
+    const el = document.getElementById('footer-year');
+    if (el) el.textContent = new Date().getFullYear();
+}
+
+// ===== LOADER =====
+function initLoader() {
+    const loader = document.getElementById('loader');
+    const bar = document.getElementById('loaderBar');
+    const percent = document.getElementById('loaderPercent');
+    if (!loader) return;
+
+    let progress = 0;
+    const interval = setInterval(() => {
+        progress += Math.random() * 16;
+        if (progress >= 100) {
+            progress = 100;
+            clearInterval(interval);
+            setTimeout(() => {
+                loader.classList.add('hidden');
+                runHeroIntro();
+            }, 350);
+        }
+        if (bar) bar.style.width = progress + '%';
+        if (percent) percent.textContent = Math.floor(progress) + '%';
+    }, 110);
+
+    // Fallback de segurança: nunca deixar o loader preso
+    setTimeout(() => loader.classList.add('hidden'), 4000);
+}
+
+function runHeroIntro() {
+    const hero = document.querySelector('.hero-content');
+    if (hero) hero.classList.add('intro-done');
+    typeHeroName();
+}
+
+function typeHeroName() {
+    const nameValue = document.querySelector('.hero-name .name-value');
+    if (!nameValue) return;
+    const text = nameValue.textContent;
+    nameValue.textContent = '';
+    nameValue.style.minHeight = '1em';
+    let i = 0;
+    const tick = () => {
+        if (i <= text.length) {
+            nameValue.textContent = text.substring(0, i);
+            i++;
+            setTimeout(tick, 55);
+        }
+    };
+    tick();
+}
+
+// ===== NAVIGATION =====
 function initNavigation() {
-    const navToggle = document.querySelector('.nav-toggle');
-    const navMenu = document.querySelector('.nav-menu');
-    const navLinks = document.querySelectorAll('.nav-link');
-
-    // Toggle menu mobile
-    if (navToggle) {
-        navToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            navToggle.classList.toggle('active');
-        });
-    }
-
-    // Fechar menu ao clicar em link
+    const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
     navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            navMenu.classList.remove('active');
-            navToggle.classList.remove('active');
-            
-            // Atualizar link ativo
-            navLinks.forEach(l => l.classList.remove('active'));
-            link.classList.add('active');
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const target = document.querySelector(link.getAttribute('href'));
+            if (!target) return;
+            const headerH = document.querySelector('.main-header').offsetHeight;
+            window.scrollTo({ top: target.offsetTop - headerH + 1, behavior: 'smooth' });
+            closeMobileMenu();
         });
     });
 
-    // Scroll spy para navegação
-    window.addEventListener('scroll', () => {
-        const sections = document.querySelectorAll('section[id]');
-        const scrollPos = window.scrollY + 100;
+    // Brand link
+    const brand = document.querySelector('.nav-brand');
+    if (brand) {
+        brand.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+}
 
+function initScrollSpy() {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    const onScroll = () => {
+        const pos = window.scrollY + 120;
+        let current = '';
         sections.forEach(section => {
-            const top = section.offsetTop;
-            const height = section.offsetHeight;
-            const id = section.getAttribute('id');
-            const link = document.querySelector(`.nav-link[href="#${id}"]`);
-
-            if (scrollPos >= top && scrollPos < top + height) {
-                navLinks.forEach(l => l.classList.remove('active'));
-                if (link) link.classList.add('active');
+            if (pos >= section.offsetTop && pos < section.offsetTop + section.offsetHeight) {
+                current = section.getAttribute('id');
             }
         });
+        navLinks.forEach(link => {
+            link.classList.toggle('active', link.getAttribute('data-section') === current);
+        });
+    };
+    window.addEventListener('scroll', throttle(onScroll, 100));
+    onScroll();
+}
 
-        // Header background no scroll
-        const header = document.querySelector('.header');
-        if (window.scrollY > 50) {
-            header.style.background = 'rgba(255, 255, 255, 0.98)';
-            header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
-        } else {
-            header.style.background = 'rgba(255, 255, 255, 0.95)';
-            header.style.boxShadow = 'none';
+function initHeaderScroll() {
+    const header = document.querySelector('.main-header');
+    if (!header) return;
+    const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 40);
+    window.addEventListener('scroll', throttle(onScroll, 100));
+    onScroll();
+}
+
+// ===== MOBILE MENU =====
+function initMobileMenu() {
+    const toggle = document.getElementById('menuToggle');
+    const menu = document.getElementById('navMenu');
+    if (!toggle || !menu) return;
+
+    toggle.addEventListener('click', () => {
+        const open = menu.classList.toggle('active');
+        toggle.classList.toggle('active', open);
+    });
+
+    document.addEventListener('click', (e) => {
+        if (menu.classList.contains('active') && !menu.contains(e.target) && !toggle.contains(e.target)) {
+            closeMobileMenu();
         }
     });
 }
 
-// ===== ANIMAÇÕES HERO =====
-function initHeroAnimations() {
-    const heroElements = document.querySelectorAll('.hero-tag, .hero-title, .hero-subtitle, .hero-buttons, .profile-card');
-    
-    heroElements.forEach((element, index) => {
-        setTimeout(() => {
-            element.classList.add('fade-in');
-        }, index * 200);
-    });
+function closeMobileMenu() {
+    const toggle = document.getElementById('menuToggle');
+    const menu = document.getElementById('navMenu');
+    if (menu) menu.classList.remove('active');
+    if (toggle) toggle.classList.remove('active');
 }
 
-// ===== SCROLL ANIMATIONS =====
-function initScrollAnimations() {
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
+// ===== REVEAL ON SCROLL =====
+function initRevealOnScroll() {
+    const els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) {
+        els.forEach(el => el.classList.add('visible'));
+        return;
+    }
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('animate');
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
             }
         });
-    }, observerOptions);
+    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+    els.forEach(el => observer.observe(el));
+}
 
-    // Observar elementos para animação
-    const animatedElements = document.querySelectorAll('.section-header, .projeto-card, .skill-item, .contato-item');
-    animatedElements.forEach(el => {
-        el.classList.add('scroll-animate');
-        observer.observe(el);
-    });
+// ===== SKILL BARS =====
+function initSkillBars() {
+    const items = document.querySelectorAll('.skill-item');
+    if (!items.length) return;
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            const item = entry.target;
+            const percent = parseInt(item.getAttribute('data-percent') || '0', 10);
+            const bar = item.querySelector('.skill-progress');
+            const label = item.querySelector('.skill-percent');
+            if (bar) bar.style.width = percent + '%';
+            if (label) animateNumber(label, percent, 1500, '%');
+            observer.unobserve(item);
+        });
+    }, { threshold: 0.4 });
+    items.forEach(item => observer.observe(item));
+}
+
+// ===== STAT COUNTERS =====
+function initStatCounters() {
+    const stats = document.querySelectorAll('.stat-number[data-count]');
+    if (!stats.length) return;
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            const el = entry.target;
+            const target = parseInt(el.getAttribute('data-count') || '0', 10);
+            const suffix = el.querySelector('.stat-suffix');
+            animateNumber(el, target, 1800, '', suffix ? suffix.outerHTML : '');
+            observer.unobserve(el);
+        });
+    }, { threshold: 0.5 });
+    stats.forEach(s => observer.observe(s));
+}
+
+function animateNumber(el, target, duration, unit = '', suffixHTML = '') {
+    const start = performance.now();
+    const step = (now) => {
+        const p = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        const value = Math.floor(eased * target);
+        el.innerHTML = value + unit + suffixHTML;
+        if (p < 1) requestAnimationFrame(step);
+        else el.innerHTML = target + unit + suffixHTML;
+    };
+    requestAnimationFrame(step);
 }
 
 // ===== BACK TO TOP =====
 function initBackToTop() {
-    const backToTop = document.getElementById('back-to-top');
-    
-    if (!backToTop) return;
+    const btn = document.getElementById('back-to-top');
+    if (!btn) return;
+    window.addEventListener('scroll', throttle(() => {
+        btn.classList.toggle('visible', window.scrollY > 500);
+    }, 150));
+    btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+}
 
+// ===== CODE PARTICLES (HERO) =====
+function initCodeParticles() {
+    const container = document.getElementById('particles');
+    if (!container) return;
+    const symbols = ['{', '}', '[', ']', '(', ')', '<', '>', '/', '=', ';', '#', '&', '|', 'λ', 'Σ', '∂', 'AI', 'ML', 'def', 'np'];
+    const count = window.innerWidth < 768 ? 12 : 20;
+    for (let i = 0; i < count; i++) {
+        const p = document.createElement('span');
+        p.className = 'particle';
+        p.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+        p.style.left = Math.random() * 100 + '%';
+        p.style.animationDelay = Math.random() * 16 + 's';
+        p.style.animationDuration = 12 + Math.random() * 10 + 's';
+        p.style.fontSize = (0.9 + Math.random() * 1.2) + 'rem';
+        container.appendChild(p);
+    }
+}
+
+// ===== PARALLAX (sutil) =====
+function initParallax() {
+    const profile = document.getElementById('profileImage');
+    const grid = document.querySelector('.code-grid-bg');
+    if (!profile && !grid) return;
+    let ticking = false;
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 500) {
-            backToTop.classList.add('visible');
-        } else {
-            backToTop.classList.remove('visible');
-        }
-    });
-
-    backToTop.addEventListener('click', (e) => {
-        e.preventDefault();
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => {
+            const y = window.pageYOffset;
+            if (profile) profile.style.transform = `translateY(${Math.min(y * 0.12, 60)}px)`;
+            if (grid) grid.style.transform = `translateY(${y * 0.15}px)`;
+            ticking = false;
         });
     });
 }
 
-// ===== CARREGAMENTO DE PROJETOS =====
-function loadProjects() {
-    const projetosGrid = document.getElementById('projetos-grid');
-    if (!projetosGrid) return;
-
-    projetosGrid.innerHTML = '';
-
-    projetos.forEach((projeto, index) => {
-        const projetoCard = createProjectCard(projeto);
-        projetosGrid.appendChild(projetoCard);
-
-        // Animação escalonada
-        setTimeout(() => {
-            projetoCard.classList.add('fade-in');
-        }, index * 200);
+// ===== CONTACT FORM (mailto) =====
+function initContactForm() {
+    const form = document.getElementById('contactForm');
+    if (!form) return;
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const data = Object.fromEntries(new FormData(form));
+        const subject = encodeURIComponent(`[Portfólio] ${data.assunto || 'Contato'}`);
+        const body = encodeURIComponent(`Nome: ${data.nome}\nEmail: ${data.email}\n\n${data.mensagem}`);
+        window.location.href = `mailto:hpouro@outlook.com?subject=${subject}&body=${body}`;
+        form.reset();
     });
 }
 
-// ===== MAGNETIC CTA EFFECT =====
-function initMagneticButtons() {
-    const buttons = document.querySelectorAll('.btn.magnetic');
-
-    buttons.forEach(button => {
-        if (button.dataset.magneticInit === 'true') return;
-
-        const field = document.createElement('div');
-        field.className = 'particles-field';
-
-        const particleCount = 40;
-        for (let i = 0; i < particleCount; i++) {
-            const particle = document.createElement('span');
-            particle.className = 'particle';
-            particle.style.setProperty('--x', `${Math.random() * 160 - 80}px`);
-            particle.style.setProperty('--y', `${Math.random() * 160 - 80}px`);
-            particle.style.animationDuration = `${1 + Math.random() * 1.5}s`;
-            particle.style.animationDelay = `${Math.random() * 0.5}s`;
-            particle.style.left = `${Math.random() * 100}%`;
-            particle.style.top = `${Math.random() * 100}%`;
-            field.appendChild(particle);
-        }
-
-        button.appendChild(field);
-        button.dataset.magneticInit = 'true';
-    });
+// ===== PROJETOS QUANT =====
+function loadQuantProjects() {
+    const grid = document.getElementById('quant-grid');
+    if (!grid) return;
+    grid.innerHTML = '';
+    projetosQuant.forEach((p, i) => grid.appendChild(createQuantCard(p, i)));
 }
 
-function createProjectCard(projeto) {
-    const card = document.createElement('div');
-    card.className = 'projeto-card scroll-animate';
-    card.onclick = () => openProjectModal(projeto);
+// Gera o path SVG de uma "equity curve" sintética (determinística por seed)
+function makeEquityPath(seed, w = 600, h = 160, n = 64) {
+    let s = (seed * 9301 + 49297) % 233280;
+    const rnd = () => { s = (s * 9301 + 49297) % 233280; return s / 233280; };
+    const ys = [];
+    let v = 0, min = Infinity, max = -Infinity;
+    for (let i = 0; i < n; i++) {
+        v += rnd() - 0.40; // leve viés de alta com ruído (gera drawdowns)
+        ys.push(v);
+        if (v < min) min = v;
+        if (v > max) max = v;
+    }
+    const span = (max - min) || 1;
+    return ys.map((y, i) => {
+        const x = (i / (n - 1)) * w;
+        const yy = h - ((y - min) / span) * (h - 8) - 4;
+        return `${i === 0 ? 'M' : 'L'}${x.toFixed(1)},${yy.toFixed(1)}`;
+    }).join(' ');
+}
+
+function createQuantCard(p, index) {
+    const card = document.createElement('article');
+    card.className = 'quant-card reveal';
+    card.addEventListener('click', () => window.open(p.notebook, '_blank', 'noopener'));
+
+    const path = makeEquityPath(index + 3);
+    const tags = p.tecnologias.map(t => `<span class="tag">${t}</span>`).join('');
+    const repo = p.repositorio
+        ? `<a href="${p.repositorio}" target="_blank" rel="noopener" class="quant-icon-link" title="Ver código" onclick="event.stopPropagation()"><i class="fab fa-github"></i></a>`
+        : '';
+
+    const metricsHtml = (Array.isArray(p.metricas) ? p.metricas : [])
+        .map(m => `<div class="quant-metric"><span class="metric-value ${m.cls || ''}">${m.v}</span><span class="metric-label">${m.l}</span></div>`)
+        .join('');
 
     card.innerHTML = `
-        <div class="projeto-image">
-            <img src="${projeto.thumbnail}" alt="${projeto.titulo}" loading="lazy">
-            <div class="projeto-overlay">
-                <button class="btn btn-primary">
-                    <i class="fas fa-eye"></i>
-                    Ver Detalhes
-                </button>
+        <div class="quant-curve" aria-hidden="true">
+            <svg viewBox="0 0 600 160" preserveAspectRatio="none">
+                <path d="${path}" fill="none" stroke="var(--gold)" stroke-width="2"
+                      stroke-linejoin="round" stroke-linecap="round"/>
+            </svg>
+        </div>
+        <div class="quant-card-head">
+            <span class="quant-badge"><i class="fas fa-arrow-trend-up"></i> Quant</span>
+            <div class="quant-links">
+                <span class="quant-icon-link" title="Abrir notebook"><i class="fas fa-book-open"></i></span>
+                ${repo}
             </div>
         </div>
-        <div class="projeto-content">
-            <h3 class="projeto-title">${projeto.titulo}</h3>
-            <p class="projeto-description">${projeto.descricao}</p>
-            <div class="projeto-tech">
-                ${projeto.tecnologias.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
-            </div>
-            <div class="projeto-links">
-                ${projeto.liveDemo ? `<a href="${projeto.liveDemo}" target="_blank" class="projeto-link"><i class="fas fa-external-link-alt"></i> Demo</a>` : ''}
-                ${projeto.repositorio ? `<a href="${projeto.repositorio}" target="_blank" class="projeto-link"><i class="fab fa-github"></i> Código</a>` : ''}
-            </div>
-        </div>
+        <h3 class="quant-title">${p.titulo}</h3>
+        <p class="quant-desc">${p.descricao}</p>
+        <div class="quant-metrics">${metricsHtml}</div>
+        <div class="quant-tags">${tags}</div>
+        <div class="quant-cta"><span>Abrir notebook</span> <i class="fas fa-arrow-right"></i></div>
     `;
-
     return card;
 }
 
-// ===== MODAL DE PROJETO =====
+// ===== PROJETOS =====
+function loadProjects() {
+    const grid = document.getElementById('projetos-grid');
+    if (!grid) return;
+    grid.innerHTML = '';
+    projetos.forEach(projeto => grid.appendChild(createProjectCard(projeto)));
+    // Observa os novos cards para o efeito reveal
+    initRevealOnScroll();
+}
+
+function createProjectCard(projeto) {
+    const card = document.createElement('article');
+    card.className = 'project-card reveal';
+    card.addEventListener('click', () => openProjectModal(projeto));
+
+    const maxTags = 4;
+    const tags = projeto.tecnologias.slice(0, maxTags)
+        .map(t => `<span class="tag">${t}</span>`).join('');
+    const extra = projeto.tecnologias.length > maxTags
+        ? `<span class="tag tag-more">+${projeto.tecnologias.length - maxTags}</span>` : '';
+
+    const demoLink = projeto.liveDemo
+        ? `<a href="${projeto.liveDemo}" target="_blank" rel="noopener" class="project-link" title="Ver demo" onclick="event.stopPropagation()"><i class="fas fa-external-link-alt"></i></a>` : '';
+    const repoLink = projeto.repositorio
+        ? `<a href="${projeto.repositorio}" target="_blank" rel="noopener" class="project-link" title="Ver código" onclick="event.stopPropagation()"><i class="fab fa-github"></i></a>` : '';
+
+    card.innerHTML = `
+        <div class="project-image">
+            <img src="${projeto.thumbnail}" alt="${projeto.titulo}" loading="lazy">
+            <div class="project-overlay">
+                <div class="project-links">
+                    <span class="project-link" title="Ver detalhes"><i class="fas fa-eye"></i></span>
+                    ${demoLink}
+                    ${repoLink}
+                </div>
+            </div>
+        </div>
+        <div class="project-content">
+            <h3 class="project-title">${projeto.titulo}</h3>
+            <p class="project-description">${projeto.descricao}</p>
+            <div class="project-tags">${tags}${extra}</div>
+        </div>
+    `;
+    return card;
+}
+
+// ===== MODAL =====
 function initModal() {
     const modal = document.getElementById('project-modal');
     const closeBtn = document.querySelector('.modal-close');
-
-    if (closeBtn) {
-        closeBtn.addEventListener('click', closeProjectModal);
-    }
-
+    if (closeBtn) closeBtn.addEventListener('click', closeProjectModal);
     if (modal) {
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                closeProjectModal();
-            }
-        });
+        modal.addEventListener('click', (e) => { if (e.target === modal) closeProjectModal(); });
     }
-
-    // Fechar com ESC
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            closeProjectModal();
-            closeLightbox();
-        }
+        if (e.key === 'Escape') { closeProjectModal(); closeLightbox(); }
     });
-
-    // Controles da galeria
-    const prevBtn = document.querySelector('.gallery-prev');
-    const nextBtn = document.querySelector('.gallery-next');
-
-    if (prevBtn) {
-        prevBtn.addEventListener('click', () => changeImage(-1));
-    }
-
-    if (nextBtn) {
-        nextBtn.addEventListener('click', () => changeImage(1));
-    }
+    const prev = document.querySelector('.gallery-prev');
+    const next = document.querySelector('.gallery-next');
+    if (prev) prev.addEventListener('click', () => changeImage(-1));
+    if (next) next.addEventListener('click', () => changeImage(1));
 }
 
 function openProjectModal(projeto) {
     currentProject = projeto;
-    currentImages = projeto.screenshots;
+    currentImages = projeto.screenshots || [];
     currentImageIndex = 0;
 
     const modal = document.getElementById('project-modal');
@@ -610,75 +845,58 @@ function openProjectModal(projeto) {
     const description = document.getElementById('modal-description');
     const tech = document.getElementById('modal-tech');
     const links = document.getElementById('modal-links');
-
     if (!modal) return;
 
-    // Preencher conteúdo
     if (title) title.textContent = projeto.titulo;
     if (description) description.innerHTML = projeto.descricaoDetalhada;
-    
-    if (tech) {
-        tech.innerHTML = projeto.tecnologias.map(t => `<span class="tech-tag">${t}</span>`).join('');
-    }
-
+    if (tech) tech.innerHTML = projeto.tecnologias.map(t => `<span class="tag">${t}</span>`).join('');
     if (links) {
         links.innerHTML = `
-            ${projeto.liveDemo ? `<a href="${projeto.liveDemo}" target="_blank" class="btn btn-primary"><i class="fas fa-external-link-alt"></i> Ver Demo</a>` : ''}
-            ${projeto.repositorio ? `<a href="${projeto.repositorio}" target="_blank" class="btn btn-outline"><i class="fab fa-github"></i> Ver Código</a>` : ''}
+            ${projeto.liveDemo ? `<a href="${projeto.liveDemo}" target="_blank" rel="noopener" class="btn btn-primary"><i class="fas fa-external-link-alt"></i> Ver Demo</a>` : ''}
+            ${projeto.repositorio ? `<a href="${projeto.repositorio}" target="_blank" rel="noopener" class="btn btn-secondary"><i class="fab fa-github"></i> Ver Código</a>` : ''}
         `;
     }
 
-    // Configurar galeria
     setupGallery();
-
-    // Mostrar modal
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
 }
 
 function closeProjectModal() {
     const modal = document.getElementById('project-modal');
-    if (modal) {
-        modal.classList.remove('active');
-        document.body.style.overflow = '';
-    }
+    if (modal) modal.classList.remove('active');
+    document.body.style.overflow = '';
     currentProject = null;
 }
 
 function setupGallery() {
     const mainImage = document.getElementById('modal-main-image');
-    const thumbnailsContainer = document.getElementById('gallery-thumbnails');
+    const thumbs = document.getElementById('gallery-thumbnails');
+    const controls = document.querySelector('.gallery-controls');
+    if (!mainImage || !thumbs || !currentImages.length) return;
 
-    if (!mainImage || !thumbnailsContainer || !currentImages.length) return;
-
-    // Imagem principal
     mainImage.src = currentImages[0];
     mainImage.alt = `${currentProject.titulo} - Imagem 1`;
-    mainImage.onclick = () => openLightbox(0);
+    mainImage.onclick = () => openLightbox(currentImageIndex);
 
-    // Thumbnails
-    thumbnailsContainer.innerHTML = '';
+    // Esconde controles e thumbs quando há apenas 1 imagem
+    const single = currentImages.length <= 1;
+    if (controls) controls.style.display = single ? 'none' : 'flex';
+    thumbs.style.display = single ? 'none' : 'flex';
+
+    thumbs.innerHTML = '';
     currentImages.forEach((img, index) => {
-        const thumbnail = document.createElement('div');
-        thumbnail.className = `gallery-thumbnail ${index === 0 ? 'active' : ''}`;
-        thumbnail.onclick = () => changeToImage(index);
-        
-        thumbnail.innerHTML = `<img src="${img}" alt="Thumbnail ${index + 1}">`;
-        thumbnailsContainer.appendChild(thumbnail);
+        const t = document.createElement('div');
+        t.className = `gallery-thumbnail ${index === 0 ? 'active' : ''}`;
+        t.onclick = () => changeToImage(index);
+        t.innerHTML = `<img src="${img}" alt="Miniatura ${index + 1}" loading="lazy">`;
+        thumbs.appendChild(t);
     });
 }
 
 function changeImage(direction) {
     if (!currentImages.length) return;
-
-    currentImageIndex += direction;
-
-    if (currentImageIndex < 0) {
-        currentImageIndex = currentImages.length - 1;
-    } else if (currentImageIndex >= currentImages.length) {
-        currentImageIndex = 0;
-    }
-
+    currentImageIndex = (currentImageIndex + direction + currentImages.length) % currentImages.length;
     updateGalleryImage();
 }
 
@@ -689,197 +907,77 @@ function changeToImage(index) {
 
 function updateGalleryImage() {
     const mainImage = document.getElementById('modal-main-image');
-    const thumbnails = document.querySelectorAll('.gallery-thumbnail');
-
+    const thumbs = document.querySelectorAll('.gallery-thumbnail');
     if (mainImage) {
         mainImage.src = currentImages[currentImageIndex];
         mainImage.alt = `${currentProject.titulo} - Imagem ${currentImageIndex + 1}`;
     }
-
-    thumbnails.forEach((thumb, index) => {
-        thumb.classList.toggle('active', index === currentImageIndex);
-    });
+    thumbs.forEach((t, i) => t.classList.toggle('active', i === currentImageIndex));
 }
 
 // ===== LIGHTBOX =====
 function initLightbox() {
     const lightbox = document.getElementById('lightbox');
     const closeBtn = document.querySelector('.lightbox-close');
-    const prevBtn = document.querySelector('.lightbox-prev');
-    const nextBtn = document.querySelector('.lightbox-next');
-
-    if (closeBtn) {
-        closeBtn.addEventListener('click', closeLightbox);
-    }
-
-    if (prevBtn) {
-        prevBtn.addEventListener('click', () => changeLightboxImage(-1));
-    }
-
-    if (nextBtn) {
-        nextBtn.addEventListener('click', () => changeLightboxImage(1));
-    }
-
-    if (lightbox) {
-        lightbox.addEventListener('click', (e) => {
-            if (e.target === lightbox) {
-                closeLightbox();
-            }
-        });
-    }
-
-    // Controles de teclado
+    const prev = document.querySelector('.lightbox-prev');
+    const next = document.querySelector('.lightbox-next');
+    if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
+    if (prev) prev.addEventListener('click', () => changeLightboxImage(-1));
+    if (next) next.addEventListener('click', () => changeLightboxImage(1));
+    if (lightbox) lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
     document.addEventListener('keydown', (e) => {
-        if (lightbox && lightbox.classList.contains('active')) {
-            switch(e.key) {
-                case 'ArrowLeft':
-                    changeLightboxImage(-1);
-                    break;
-                case 'ArrowRight':
-                    changeLightboxImage(1);
-                    break;
-            }
+        const lb = document.getElementById('lightbox');
+        if (lb && lb.classList.contains('active')) {
+            if (e.key === 'ArrowLeft') changeLightboxImage(-1);
+            if (e.key === 'ArrowRight') changeLightboxImage(1);
         }
     });
 }
 
-function openLightbox(imageIndex) {
+function openLightbox(index) {
     const lightbox = document.getElementById('lightbox');
-    const lightboxImage = document.getElementById('lightbox-image');
-
-    if (!lightbox || !lightboxImage || !currentImages.length) return;
-
-    currentImageIndex = imageIndex;
-    lightboxImage.src = currentImages[currentImageIndex];
-    lightboxImage.alt = `${currentProject.titulo} - Imagem ${currentImageIndex + 1}`;
-
+    const img = document.getElementById('lightbox-image');
+    if (!lightbox || !img || !currentImages.length) return;
+    currentImageIndex = index;
+    img.src = currentImages[index];
+    img.alt = `${currentProject.titulo} - Imagem ${index + 1}`;
     lightbox.classList.add('active');
     document.body.style.overflow = 'hidden';
 }
 
 function closeLightbox() {
     const lightbox = document.getElementById('lightbox');
-    if (lightbox) {
-        lightbox.classList.remove('active');
-        document.body.style.overflow = '';
-    }
+    if (lightbox) lightbox.classList.remove('active');
+    // Mantém overflow hidden se o modal ainda estiver aberto
+    const modal = document.getElementById('project-modal');
+    if (!modal || !modal.classList.contains('active')) document.body.style.overflow = '';
 }
 
 function changeLightboxImage(direction) {
     if (!currentImages.length) return;
-
-    currentImageIndex += direction;
-
-    if (currentImageIndex < 0) {
-        currentImageIndex = currentImages.length - 1;
-    } else if (currentImageIndex >= currentImages.length) {
-        currentImageIndex = 0;
+    currentImageIndex = (currentImageIndex + direction + currentImages.length) % currentImages.length;
+    const img = document.getElementById('lightbox-image');
+    if (img) {
+        img.src = currentImages[currentImageIndex];
+        img.alt = `${currentProject.titulo} - Imagem ${currentImageIndex + 1}`;
     }
-
-    const lightboxImage = document.getElementById('lightbox-image');
-    if (lightboxImage) {
-        lightboxImage.src = currentImages[currentImageIndex];
-        lightboxImage.alt = `${currentProject.titulo} - Imagem ${currentImageIndex + 1}`;
-    }
-
-    // Atualizar thumbnail ativo no modal se estiver aberto
     updateGalleryImage();
 }
 
-// ===== PERFORMANCE OPTIMIZATIONS =====
-// Lazy loading para imagens
-function initLazyLoading() {
-    const images = document.querySelectorAll('img[loading="lazy"]');
-    
-    if ('IntersectionObserver' in window) {
-        const imageObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    img.src = img.dataset.src || img.src;
-                    img.classList.remove('lazy');
-                    imageObserver.unobserve(img);
-                }
-            });
-        });
-
-        images.forEach(img => imageObserver.observe(img));
-    }
-}
-
-// Preload das imagens críticas (primeira thumbnail de cada projeto)
-function preloadCriticalImages() {
-    if (typeof projetos === 'undefined' || !Array.isArray(projetos)) return;
-    projetos.slice(0, 2).forEach(projeto => {
-        if (!projeto.thumbnail) return;
-        const img = new Image();
-        img.src = projeto.thumbnail;
-    });
-}
-
-// ===== UTILITÁRIOS =====
-// Debounce para otimizar eventos de scroll
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
+// ===== UTILS =====
+function throttle(fn, wait) {
+    let last = 0, timer = null;
+    return function (...args) {
+        const now = Date.now();
+        const remaining = wait - (now - last);
+        if (remaining <= 0) {
+            if (timer) { clearTimeout(timer); timer = null; }
+            last = now;
+            fn.apply(this, args);
+        } else if (!timer) {
+            timer = setTimeout(() => { last = Date.now(); timer = null; fn.apply(this, args); }, remaining);
+        }
     };
 }
 
-// Smooth scroll para navegação
-function smoothScrollTo(element) {
-    if (element) {
-        element.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-        });
-    }
-}
-
-// ===== ERROR HANDLING =====
-window.addEventListener('error', (e) => {
-    console.error('Erro no portfolio:', e.error);
-});
-
-// ===== ANALYTICS & TRACKING =====
-function trackProjectView(projectId) {
-    // Implementar tracking se necessário
-    console.log(`Projeto visualizado: ${projectId}`);
-}
-
-function trackContactClick(method) {
-    // Implementar tracking se necessário
-    console.log(`Contato clicado: ${method}`);
-}
-
-// ===== INICIALIZAÇÃO FINAL =====
-// Executar otimizações quando a página carregar completamente
-window.addEventListener('load', () => {
-    initLazyLoading();
-    preloadCriticalImages();
-    
-    // Otimizar scroll events
-    const optimizedScrollHandler = debounce(() => {
-        // Handlers de scroll já otimizados
-    }, 16);
-    
-    window.addEventListener('scroll', optimizedScrollHandler);
-    
-    console.log('Portfolio otimizado e pronto!');
-});
-
-// ===== EXPOSIÇÃO GLOBAL PARA DEBUGGING =====
-if (typeof window !== 'undefined') {
-    window.portfolioDebug = {
-        projetos,
-        currentProject,
-        currentImageIndex,
-        openProjectModal,
-        closeProjectModal
-    };
-}
+window.addEventListener('error', (e) => console.error('Erro no portfolio:', e.error));

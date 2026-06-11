@@ -1,27 +1,27 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Honacleon Junior - Especialista em IA & Data Science</title>
-    <meta name="description" content="Portfólio de Honacleon Junior - IA, Data Science e automação aplicada a negócios, com entrega segura e orientada a resultados.">
-    <meta name="author" content="Honacleon Junior">
+    <title>Honacleon Júnior — Especialista em IA & Data Science</title>
+    <meta name="description" content="Portfólio de Honacleon Júnior — IA, Data Science e automação aplicada a negócios, com entrega segura e orientada a resultados.">
+    <meta name="author" content="Honacleon Júnior">
     <meta name="keywords" content="data science, inteligência artificial, python, machine learning, automação, analytics, dashboards, RAG, agentes">
-    
+
     <!-- Favicon -->
     <link rel="icon" href="assets/favicon.png" type="image/png">
-    
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <!-- Styles -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
-    
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
     <!-- Animated Background -->
@@ -31,247 +31,481 @@
             <div class="orb orb-1"></div>
             <div class="orb orb-2"></div>
             <div class="orb orb-3"></div>
-            <div class="orb orb-4"></div>
         </div>
     </div>
 
-    <!-- Preloader -->
-    <div id="preloader">
-        <div class="loader">
-            <div class="loader-circle"></div>
-            <span>Carregando...</span>
+    <!-- Loading Screen -->
+    <div class="loader-screen" id="loader">
+        <div class="loader-content">
+            <div class="loader-code-text">
+                <span class="code-line"><span class="tok-key">const</span> honacleon = {</span>
+                <span class="code-line">&nbsp;&nbsp;loading: <span class="tok-str">true</span>,</span>
+                <span class="code-line">&nbsp;&nbsp;foco: <span class="tok-str">'IA &amp; Data'</span></span>
+                <span class="code-line">};</span>
+            </div>
+            <div class="loader-spinner"></div>
+            <div class="loader-progress-wrapper">
+                <div class="loader-progress-bar" id="loaderBar"></div>
+            </div>
+            <div class="loader-percentage" id="loaderPercent">0%</div>
         </div>
     </div>
 
     <!-- Header -->
-    <header class="header">
-        <nav class="nav container">
-            <div class="nav-brand">
-                <span class="logo">HJ</span>
+    <header class="main-header" id="header">
+        <nav class="nav-container">
+            <a href="#home" class="nav-brand">
+                <div class="brand-logo">
+                    <span class="logo-bracket">&lt;</span>
+                    <span class="logo-text">HJ</span>
+                    <span class="logo-bracket">/&gt;</span>
+                </div>
+            </a>
+
+            <div class="nav-menu" id="navMenu">
+                <a href="#home" class="nav-link active" data-section="home"><i class="fas fa-home"></i><span>Início</span></a>
+                <a href="#sobre" class="nav-link" data-section="sobre"><i class="fas fa-user"></i><span>Sobre</span></a>
+                <a href="#skills" class="nav-link" data-section="skills"><i class="fas fa-layer-group"></i><span>Skills</span></a>
+                <a href="#experiencia" class="nav-link" data-section="experiencia"><i class="fas fa-briefcase"></i><span>Experiência</span></a>
+                <a href="#formacao" class="nav-link" data-section="formacao"><i class="fas fa-graduation-cap"></i><span>Formação</span></a>
+                <a href="#quant" class="nav-link" data-section="quant"><i class="fas fa-chart-line"></i><span>Quant</span></a>
+                <a href="#projetos" class="nav-link" data-section="projetos"><i class="fas fa-rocket"></i><span>Projetos</span></a>
+                <a href="#contato" class="nav-link" data-section="contato"><i class="fas fa-envelope"></i><span>Contato</span></a>
             </div>
-            <ul class="nav-menu">
-                <li><a href="#home" class="nav-link active">Início</a></li>
-                <li><a href="#projetos" class="nav-link">Projetos</a></li>
-                <li><a href="#sobre" class="nav-link">Sobre</a></li>
-                <li><a href="#contato" class="nav-link">Contato</a></li>
-            </ul>
-            <div class="nav-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
+
+            <div class="nav-controls">
+                <button class="menu-toggle" id="menuToggle" title="Menu" aria-label="Abrir menu">
+                    <span></span><span></span><span></span>
+                </button>
             </div>
         </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <span class="hero-tag">
-                        <i class="fas fa-code"></i>
-                        IA aplicada ao negócio e produtos digitais
-                    </span>
-                    <h1 class="hero-title">
-                        <span class="cursor typewriter-line line-1">Que bom que você veio!</span>
-                        <span class="cursor typewriter-line line-2">Fique à vontade para navegar e me conhecer melhor</span>
+    <!-- Main -->
+    <main class="main-content">
+
+        <!-- Hero -->
+        <section id="home" class="hero-section">
+            <div class="hero-background">
+                <div class="code-grid-bg"></div>
+                <div class="floating-particles" id="particles"></div>
+            </div>
+
+            <div class="hero-container">
+                <div class="hero-content">
+                    <div class="hero-greeting">
+                        <span class="greeting-text">// Olá, seja bem-vindo</span>
+                        <span class="greeting-cursor">_</span>
+                    </div>
+
+                    <h1 class="hero-name" id="heroName">
+                        <span class="name-prefix">const</span>
+                        <span class="name-operator">=</span>
+                        <span class="name-value">Honacleon&nbsp;Júnior</span>
+                        <span class="name-suffix">;</span>
                     </h1>
-                    <p class="hero-subtitle">
+
+                    <div class="hero-title">
+                        <span class="title-prefix">//</span>
+                        <span class="title-text">Especialista em IA &amp; Data Science</span>
+                    </div>
+
+                    <p class="hero-description">
                         Foco em
-                        <span class="hero-rotating" aria-label="Foco em áreas de atuação">
-                            <span>Inteligência artificial</span>
-                            <span>Análise de dados</span>
-                            <span>Business intelligence</span>
+                        <span class="hero-rotating" aria-label="Áreas de atuação">
+                            <span>Inteligência Artificial</span>
+                            <span>Análise de Dados</span>
+                            <span>Business Intelligence</span>
                             <span>Automações</span>
                         </span>
+                        <br>
+                        Do discovery ao deploy — com entrega segura e orientada a resultados.
                     </p>
+
                     <div class="hero-buttons">
-                        <a href="#projetos" class="btn btn-primary magnetic">
-                            <i class="fas fa-rocket"></i>
-                            Ver projetos
-                        </a>
-                        <a href="#contato" class="btn btn-outline magnetic">
-                            <i class="fas fa-envelope"></i>
-                            Contato
-                        </a>
+                        <a href="#projetos" class="btn btn-primary"><i class="fas fa-rocket"></i><span>Ver projetos</span></a>
+                        <a href="#contato" class="btn btn-secondary"><i class="fas fa-envelope"></i><span>Contato</span></a>
+                    </div>
+
+                    <div class="hero-social">
+                        <a href="https://github.com/honacleon" target="_blank" rel="noopener" class="social-icon" title="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/honacleonjr/" target="_blank" rel="noopener" class="social-icon" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="mailto:hpouro@outlook.com" class="social-icon" title="Email"><i class="fas fa-envelope"></i></a>
                     </div>
                 </div>
-                <div class="hero-image">
-                    <div class="profile-card">
-                        <div class="profile-avatar">
-                            <span>HJ</span>
-                        </div>
-                        <div class="profile-glow"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="hero-scroll">
-            <span>Role para baixo</span>
-            <i class="fas fa-arrow-down"></i>
-        </div>
-    </section>
 
-    <!-- Projetos Section -->
-    <section id="projetos" class="projetos">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">
-                    <i class="fas fa-project-diagram"></i>
-                    Meus Projetos
-                </span>
-                <h2 class="section-title">Projetos Realizados</h2>
-                <p class="section-subtitle">
-                    Entregas que unem engenharia de dados, IA e produto para aumentar eficiência, receita e experiência do cliente.
-                </p>
-            </div>
-            
-            <div class="projetos-grid" id="projetos-grid">
-                <!-- Projetos serão carregados dinamicamente pelo JavaScript -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Sobre Section -->
-    <section id="sobre" class="sobre">
-        <div class="container">
-            <div class="sobre-content">
-                <div class="sobre-text">
-                    <span class="section-tag">
-                        <i class="fas fa-user"></i>
-                        Sobre Mim
-                    </span>
-                    <h2 class="section-title">IA, dados e automação para decisões confiáveis</h2>
-                    <p>
-                        Sou especialista em Inteligência Artificial e Ciência de Dados. Desenho processos, produtos e modelos que conectam dados, operação e negócio para decisões claras e mensuráveis.
-                    </p>
-                    <p>
-                        Atuo do discovery ao deploy: mapeio dores, prototipo, construo agentes e dashboards, e garanto governança e segurança nas integrações com IA.
-                    </p>
-                    
-                    <div class="skills-list">
-                        <div class="skill-item">
-                            <i class="fas fa-brain"></i>
-                            <span>Arquitetura de IA & MLOps</span>
+                <div class="hero-image-wrapper">
+                    <div class="hero-image-container">
+                        <div class="profile-image-glow"></div>
+                        <div class="profile-image-frame">
+                            <div class="profile-image" id="profileImage">
+                                <!-- Troque por uma foto: <img src="assets/profile.jpg" alt="Honacleon Júnior"> -->
+                                <span class="profile-monogram">HJ</span>
+                            </div>
                         </div>
-                        <div class="skill-item">
-                            <i class="fas fa-chart-line"></i>
-                            <span>Previsão e otimização de negócio</span>
+                        <div class="floating-badge badge-1">
+                            <i class="fab fa-python"></i>
+                            <div class="badge-content">
+                                <span class="badge-title">Python</span>
+                                <span class="badge-libs">Pandas · Scikit-learn · NumPy</span>
+                            </div>
                         </div>
-                        <div class="skill-item">
+                        <div class="floating-badge badge-2">
                             <i class="fas fa-robot"></i>
-                            <span>Agentes e copilotos com RAG/LLM</span>
+                            <div class="badge-content">
+                                <span class="badge-title">IA &amp; LLMs</span>
+                                <span class="badge-libs">RAG · Multi-Agent · Embeddings</span>
+                            </div>
                         </div>
-                        <div class="skill-item">
-                            <i class="fas fa-database"></i>
-                            <span>Governança de dados & segurança</span>
+                        <div class="floating-badge badge-3">
+                            <i class="fas fa-chart-line"></i>
+                            <div class="badge-content">
+                                <span class="badge-title">Dados &amp; BI</span>
+                                <span class="badge-libs">SQL · Plotly · Streamlit</span>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                
-                <div class="sobre-skills">
-                    <h3>Tecnologias</h3>
-                    <div class="tech-grid">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">TypeScript</span>
-                        <span class="tech-tag">SQL</span>
-                        <span class="tech-tag">PostgreSQL</span>
-                        <span class="tech-tag">Pandas</span>
-                        <span class="tech-tag">Scikit-Learn</span>
-                        <span class="tech-tag">LangChain</span>
-                        <span class="tech-tag">RAG</span>
-                        <span class="tech-tag">Multi-Agent</span>
-                        <span class="tech-tag">Anthropic Claude</span>
-                        <span class="tech-tag">OpenAI</span>
-                        <span class="tech-tag">Gemini</span>
-                        <span class="tech-tag">pgvector</span>
-                        <span class="tech-tag">Supabase</span>
-                        <span class="tech-tag">Node.js</span>
-                        <span class="tech-tag">React</span>
-                        <span class="tech-tag">Streamlit</span>
-                        <span class="tech-tag">Plotly</span>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Contato Section -->
-    <section id="contato" class="contato">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">
-                    <i class="fas fa-envelope"></i>
-                    Contato
-                </span>
-                <h2 class="section-title">Vamos Conversar</h2>
-                <p class="section-subtitle">
-                    Fale sobre desafios de dados, IA e automação; respondo com proposta objetiva para projetos ou posições.
+            <div class="scroll-indicator">
+                <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+                <span>scroll</span>
+            </div>
+        </section>
+
+        <!-- Sobre -->
+        <section id="sobre" class="section">
+            <div class="section-container">
+                <div class="section-header reveal">
+                    <span class="section-number">01</span>
+                    <h2 class="section-title"><span class="title-bracket">&lt;</span><span class="title-text">Sobre</span><span class="title-bracket">/&gt;</span></h2>
+                    <div class="section-line"></div>
+                </div>
+
+                <div class="about-content">
+                    <div class="about-text-wrapper reveal">
+                        <p class="about-text">
+                            Comecei minha trajetória como <strong>cientista de dados</strong>, em projetos densos de estatística e modelagem. De lá migrei para a construção de <strong>dashboards inteligentes em Streamlit</strong> e, hoje, meu foco está em <strong>criar soluções com IA</strong> — agentes, RAG e automações, que são os meus projetos mais recentes.
+                        </p>
+                        <p class="about-text">
+                            Ciência de dados também virou paixão: mesmo sem atuar como cientista de dados no dia a dia, sigo <strong>estudando e construindo modelos quantitativos por conta própria, com rigor de produção</strong> — é o que você encontra na seção de Quant. Não é só hobby; é levado a sério.
+                        </p>
+                        <p class="about-text">
+                            Atuo do <strong>discovery ao deploy</strong>: entendo a dor, prototipo, construo e entrego com governança e segurança. No caminho passei por <strong>estatística, BI, engenharia de dados e cloud</strong> — nem tudo no meu dia a dia hoje, mas tudo que já coloquei em prática.
+                        </p>
+
+                        <div class="about-stats">
+                            <div class="stat-item">
+                                <div class="stat-number" data-count="8">0</div>
+                                <div class="stat-label">Projetos no portfólio</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number" data-count="18">0<span class="stat-suffix">+</span></div>
+                                <div class="stat-label">Tecnologias</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number" data-count="4">0</div>
+                                <div class="stat-label">Áreas de atuação</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="about-image-wrapper reveal reveal-delay-2">
+                        <div class="code-block">
+                            <div class="code-dots"><span></span><span></span><span></span></div>
+                            <div class="code-line">
+                                <span class="code-keyword">const</span>
+                                <span class="code-variable">honacleon</span>
+                                <span class="code-operator">=</span>
+                                <span class="code-brace">{</span>
+                            </div>
+                            <div class="code-line indent"><span class="code-property">area</span><span class="code-operator">:</span> <span class="code-string">'IA &amp; Data Science'</span><span class="code-comma">,</span></div>
+                            <div class="code-line indent"><span class="code-property">stack</span><span class="code-operator">:</span> <span class="code-bracket">[</span><span class="code-string">'Python'</span><span class="code-comma">,</span> <span class="code-string">'SQL'</span><span class="code-comma">,</span> <span class="code-string">'RAG'</span><span class="code-bracket">]</span><span class="code-comma">,</span></div>
+                            <div class="code-line indent"><span class="code-property">entrega</span><span class="code-operator">:</span> <span class="code-string">'discovery → deploy'</span><span class="code-comma">,</span></div>
+                            <div class="code-line indent"><span class="code-property">foco</span><span class="code-operator">:</span> <span class="code-string">'resultados'</span></div>
+                            <div class="code-line"><span class="code-brace">}</span><span class="code-semicolon">;</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills -->
+        <section id="skills" class="section">
+            <div class="section-container">
+                <div class="section-header reveal">
+                    <span class="section-number">02</span>
+                    <h2 class="section-title"><span class="title-bracket">&lt;</span><span class="title-text">Skills</span><span class="title-bracket">/&gt;</span></h2>
+                    <div class="section-line"></div>
+                </div>
+
+                <div class="skills-grid">
+                    <div class="skill-category reveal">
+                        <h3 class="category-title"><i class="fas fa-brain"></i> IA &amp; Machine Learning</h3>
+                        <div class="skill-items">
+                            <div class="skill-item" data-percent="95"><div class="skill-header"><span class="skill-name">Python</span><span class="skill-percent">0%</span></div><div class="skill-bar"><div class="skill-progress"></div></div></div>
+                            <div class="skill-item" data-percent="92"><div class="skill-header"><span class="skill-name">LLMs &amp; Agentes (Claude · GPT · Gemini)</span><span class="skill-percent">0%</span></div><div class="skill-bar"><div class="skill-progress"></div></div></div>
+                            <div class="skill-item" data-percent="90"><div class="skill-header"><span class="skill-name">RAG &amp; Busca Semântica</span><span class="skill-percent">0%</span></div><div class="skill-bar"><div class="skill-progress"></div></div></div>
+                            <div class="skill-item" data-percent="85"><div class="skill-header"><span class="skill-name">Scikit-learn / Modelagem Estatística</span><span class="skill-percent">0%</span></div><div class="skill-bar"><div class="skill-progress"></div></div></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-category reveal reveal-delay-1">
+                        <h3 class="category-title"><i class="fas fa-chart-line"></i> Dados &amp; Analytics</h3>
+                        <div class="skill-items">
+                            <div class="skill-item" data-percent="95"><div class="skill-header"><span class="skill-name">Pandas / NumPy</span><span class="skill-percent">0%</span></div><div class="skill-bar"><div class="skill-progress"></div></div></div>
+                            <div class="skill-item" data-percent="92"><div class="skill-header"><span class="skill-name">SQL / PostgreSQL</span><span class="skill-percent">0%</span></div><div class="skill-bar"><div class="skill-progress"></div></div></div>
+                            <div class="skill-item" data-percent="90"><div class="skill-header"><span class="skill-name">Streamlit</span><span class="skill-percent">0%</span></div><div class="skill-bar"><div class="skill-progress"></div></div></div>
+                            <div class="skill-item" data-percent="88"><div class="skill-header"><span class="skill-name">Power BI / Plotly</span><span class="skill-percent">0%</span></div><div class="skill-bar"><div class="skill-progress"></div></div></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-category reveal reveal-delay-2">
+                        <h3 class="category-title"><i class="fas fa-server"></i> Engenharia &amp; Cloud</h3>
+                        <div class="skill-items">
+                            <div class="skill-item" data-percent="85"><div class="skill-header"><span class="skill-name">Supabase / pgvector</span><span class="skill-percent">0%</span></div><div class="skill-bar"><div class="skill-progress"></div></div></div>
+                            <div class="skill-item" data-percent="82"><div class="skill-header"><span class="skill-name">TypeScript / Node.js</span><span class="skill-percent">0%</span></div><div class="skill-bar"><div class="skill-progress"></div></div></div>
+                            <div class="skill-item" data-percent="88"><div class="skill-header"><span class="skill-name">Git / CI/CD</span><span class="skill-percent">0%</span></div><div class="skill-bar"><div class="skill-progress"></div></div></div>
+                            <div class="skill-item" data-percent="80"><div class="skill-header"><span class="skill-name">React / Next.js</span><span class="skill-percent">0%</span></div><div class="skill-bar"><div class="skill-progress"></div></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experiência -->
+        <section id="experiencia" class="section">
+            <div class="section-container">
+                <div class="section-header reveal">
+                    <span class="section-number">03</span>
+                    <h2 class="section-title"><span class="title-bracket">&lt;</span><span class="title-text">Experiência</span><span class="title-bracket">/&gt;</span></h2>
+                    <div class="section-line"></div>
+                </div>
+
+                <div class="timeline">
+                    <div class="timeline-item reveal">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <div class="timeline-year">2026 — Presente</div>
+                                <div class="timeline-badge">Atual</div>
+                            </div>
+                            <h3 class="timeline-title">AI Analyst</h3>
+                            <div class="timeline-company"><i class="fas fa-building"></i> HSR Specialist Researchers</div>
+                            <p class="timeline-description">
+                                Desenvolvo soluções de IA que conectam LLMs, dados de pesquisa e decisão de negócio — de sistemas RAG e agentes a automações de workflows analíticos.
+                            </p>
+                            <div class="timeline-achievements">
+                                <div class="achievement-item"><i class="fas fa-check-circle"></i><span>Sistemas RAG (busca semântica) para consulta em linguagem natural sobre bases e documentos</span></div>
+                                <div class="achievement-item"><i class="fas fa-check-circle"></i><span>Agentes e assistentes de IA que automatizam tarefas analíticas repetitivas</span></div>
+                                <div class="achievement-item"><i class="fas fa-check-circle"></i><span>Automação de workflows analíticos de ponta a ponta</span></div>
+                            </div>
+                            <div class="timeline-tags">
+                                <span class="tag">Python</span><span class="tag">LLMs</span><span class="tag">RAG</span><span class="tag">Multi-Agent</span><span class="tag">Automação</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item reveal">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <div class="timeline-year">2024 — 2025</div>
+                            </div>
+                            <h3 class="timeline-title">Data Scientist</h3>
+                            <div class="timeline-company"><i class="fas fa-building"></i> HSR Specialist Researchers</div>
+                            <p class="timeline-description">
+                                Análise e modelagem de dados de pesquisa de mercado — estatística aplicada, segmentações e dashboards inteligentes para decisão executiva.
+                            </p>
+                            <div class="timeline-achievements">
+                                <div class="achievement-item"><i class="fas fa-check-circle"></i><span>Modelagem estatística e análises aplicadas a dados de pesquisa</span></div>
+                                <div class="achievement-item"><i class="fas fa-check-circle"></i><span>Dashboards inteligentes (Streamlit / Power BI) para decisão executiva</span></div>
+                            </div>
+                            <div class="timeline-tags">
+                                <span class="tag">Python</span><span class="tag">Estatística</span><span class="tag">Streamlit</span><span class="tag">Power BI</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item reveal">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <div class="timeline-year">2021 — 2023</div>
+                            </div>
+                            <h3 class="timeline-title">Analista de Planejamento Estratégico</h3>
+                            <div class="timeline-company"><i class="fas fa-building"></i> Online Traders</div>
+                            <p class="timeline-description">
+                                Atuei com Business Intelligence para otimizar processos internos e apoiar decisões estratégicas — coleta, análise e visualização de dados com SQL e Power BI.
+                            </p>
+                            <div class="timeline-achievements">
+                                <div class="achievement-item"><i class="fas fa-check-circle"></i><span>Dashboards interativos no Power BI para monitoramento de KPIs</span></div>
+                                <div class="achievement-item"><i class="fas fa-check-circle"></i><span>Extração e transformação de dados de múltiplas fontes</span></div>
+                                <div class="achievement-item"><i class="fas fa-check-circle"></i><span>Relatórios sob medida para a liderança</span></div>
+                            </div>
+                            <div class="timeline-tags">
+                                <span class="tag">SQL</span><span class="tag">Power BI</span><span class="tag">BI</span><span class="tag">KPIs</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item reveal">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <div class="timeline-year">2016 — 2019</div>
+                            </div>
+                            <h3 class="timeline-title">Assistente de Qualidade</h3>
+                            <div class="timeline-company"><i class="fas fa-building"></i> Rentokil Initial</div>
+                            <p class="timeline-description">
+                                Gestão da qualidade e melhoria contínua de processos — indicadores, auditorias e análise de causa raiz com metodologias como PDCA e FMEA.
+                            </p>
+                            <div class="timeline-tags">
+                                <span class="tag">Qualidade</span><span class="tag">PDCA</span><span class="tag">ISO 9001</span><span class="tag">FMEA</span><span class="tag">Indicadores</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Formação -->
+        <section id="formacao" class="section">
+            <div class="section-container">
+                <div class="section-header reveal">
+                    <span class="section-number">04</span>
+                    <h2 class="section-title"><span class="title-bracket">&lt;</span><span class="title-text">Formação</span><span class="title-bracket">/&gt;</span></h2>
+                    <div class="section-line"></div>
+                </div>
+
+                <div class="education-grid">
+                    <div class="education-card reveal">
+                        <div class="education-icon"><i class="fas fa-graduation-cap"></i></div>
+                        <div class="education-info">
+                            <h3 class="education-degree">MBA em Data Science &amp; Analytics</h3>
+                            <div class="education-school"><i class="fas fa-university"></i> USP/Esalq</div>
+                            <div class="education-year">2023 — 2025</div>
+                        </div>
+                    </div>
+
+                    <div class="education-card reveal reveal-delay-1">
+                        <div class="education-icon"><i class="fas fa-bullseye"></i></div>
+                        <div class="education-info">
+                            <h3 class="education-degree">Especialização em Marketing Analytics</h3>
+                            <div class="education-school"><i class="fas fa-university"></i> FGV</div>
+                            <div class="education-year">2024</div>
+                        </div>
+                    </div>
+
+                    <div class="education-card reveal reveal-delay-2">
+                        <div class="education-icon"><i class="fas fa-clipboard-check"></i></div>
+                        <div class="education-info">
+                            <h3 class="education-degree">Gestão da Qualidade</h3>
+                            <div class="education-school"><i class="fas fa-university"></i> UNINOVE</div>
+                            <div class="education-year">2018</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ML & Finanças Quantitativas -->
+        <section id="quant" class="section">
+            <div class="section-container">
+                <div class="section-header reveal">
+                    <span class="section-number">05</span>
+                    <h2 class="section-title"><span class="title-bracket">&lt;</span><span class="title-text">ML &amp; Finanças Quant</span><span class="title-bracket">/&gt;</span></h2>
+                    <div class="section-line"></div>
+                </div>
+                <p class="quant-intro reveal">
+                    Modelos de machine learning aplicados a mercados financeiros — sinais, backtests e gestão de risco.
+                    Os notebooks ficam abertos para leitura; <strong>a base de dados permanece privada</strong>.
                 </p>
-            </div>
-            
-            <div class="contato-content">
-                <div class="contato-info">
-                    <div class="contato-item">
-                        <div class="contato-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="contato-text">
-                            <h3>Email</h3>
-                            <a href="mailto:hpouro@outlook.com">hpouro@outlook.com</a>
-                        </div>
-                    </div>
-                    
-                    <div class="contato-item">
-                        <div class="contato-icon">
-                            <i class="fas fa-phone"></i>
-                        </div>
-                        <div class="contato-text">
-                            <h3>Telefone</h3>
-                            <span>(11) 99255-2143</span>
-                        </div>
-                    </div>
-                    
-                    <div class="contato-item">
-                        <div class="contato-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="contato-text">
-                            <h3>Localização</h3>
-                            <span>São Paulo, Brasil</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="contato-cta">
-                    <a href="mailto:hpouro@outlook.com" class="btn btn-primary btn-large magnetic">
-                        <i class="fas fa-envelope"></i>
-                        Enviar Email
-                    </a>
-                    
-                    <div class="social-links">
-                        <a href="https://github.com/honacleon" target="_blank" class="social-link">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/in/honacleonjr/" target="_blank" class="social-link">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                    </div>
+                <div class="quant-grid" id="quant-grid">
+                    <!-- Cards carregados dinamicamente por js/main.js -->
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <!-- Projetos -->
+        <section id="projetos" class="section">
+            <div class="section-container">
+                <div class="section-header reveal">
+                    <span class="section-number">06</span>
+                    <h2 class="section-title"><span class="title-bracket">&lt;</span><span class="title-text">Projetos</span><span class="title-bracket">/&gt;</span></h2>
+                    <div class="section-line"></div>
+                </div>
+
+                <div class="projects-grid" id="projetos-grid">
+                    <!-- Cards carregados dinamicamente por js/main.js -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Contato -->
+        <section id="contato" class="section">
+            <div class="section-container">
+                <div class="section-header reveal">
+                    <span class="section-number">07</span>
+                    <h2 class="section-title"><span class="title-bracket">&lt;</span><span class="title-text">Contato</span><span class="title-bracket">/&gt;</span></h2>
+                    <div class="section-line"></div>
+                </div>
+
+                <div class="contact-content">
+                    <div class="contact-info reveal">
+                        <a href="mailto:hpouro@outlook.com" class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                            <div class="contact-details">
+                                <span class="contact-label">Email</span>
+                                <span class="contact-value">hpouro@outlook.com</span>
+                            </div>
+                        </a>
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                            <div class="contact-details">
+                                <span class="contact-label">Telefone</span>
+                                <span class="contact-value">(11) 99255-2143</span>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div class="contact-details">
+                                <span class="contact-label">Localização</span>
+                                <span class="contact-value">São Paulo, Brasil</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form class="contact-form reveal reveal-delay-1" id="contactForm">
+                        <div class="form-row">
+                            <input type="text" name="nome" class="form-input" placeholder="Seu nome" required>
+                            <input type="email" name="email" class="form-input" placeholder="Seu email" required>
+                        </div>
+                        <input type="text" name="assunto" class="form-input" placeholder="Assunto" required>
+                        <textarea name="mensagem" class="form-input form-textarea" placeholder="Sua mensagem" required></textarea>
+                        <button type="submit" class="btn btn-primary btn-submit"><i class="fas fa-paper-plane"></i><span>Enviar mensagem</span></button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
+    <footer class="main-footer">
+        <div class="footer-container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <span class="logo">HJ</span>
-                    <p>Especialista em IA & Data Science</p>
+                    <div class="footer-brand-logo"><span class="logo-bracket">&lt;</span><span class="logo-text">HJ</span><span class="logo-bracket">/&gt;</span></div>
+                    <p class="footer-tagline">Especialista em IA &amp; Data Science</p>
                 </div>
                 <div class="footer-copy">
-                    <p>&copy; 2024 Honacleon Junior. Todos os direitos reservados.</p>
+                    <p>&copy; <span id="footer-year">2025</span> <strong>Honacleon Júnior</strong>. Todos os direitos reservados.</p>
+                </div>
+                <div class="footer-social">
+                    <a href="https://github.com/honacleon" target="_blank" rel="noopener" class="footer-social-link" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/honacleonjr/" target="_blank" rel="noopener" class="footer-social-link" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="mailto:hpouro@outlook.com" class="footer-social-link" title="Email"><i class="fas fa-envelope"></i></a>
                 </div>
             </div>
         </div>
@@ -282,9 +516,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h3 id="modal-title"></h3>
-                <button class="modal-close">
-                    <i class="fas fa-times"></i>
-                </button>
+                <button class="modal-close" aria-label="Fechar"><i class="fas fa-times"></i></button>
             </div>
             <div class="modal-body">
                 <div class="modal-image-container">
@@ -292,25 +524,17 @@
                         <div class="gallery-main">
                             <img id="modal-main-image" src="" alt="">
                             <div class="gallery-controls">
-                                <button class="gallery-btn gallery-prev">
-                                    <i class="fas fa-chevron-left"></i>
-                                </button>
-                                <button class="gallery-btn gallery-next">
-                                    <i class="fas fa-chevron-right"></i>
-                                </button>
+                                <button class="gallery-btn gallery-prev" aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>
+                                <button class="gallery-btn gallery-next" aria-label="Próxima"><i class="fas fa-chevron-right"></i></button>
                             </div>
                         </div>
-                        <div class="gallery-thumbnails" id="gallery-thumbnails">
-                            <!-- Thumbnails serão carregados dinamicamente -->
-                        </div>
+                        <div class="gallery-thumbnails" id="gallery-thumbnails"></div>
                     </div>
                 </div>
                 <div class="modal-info">
                     <div class="modal-description" id="modal-description"></div>
                     <div class="modal-tech" id="modal-tech"></div>
-                    <div class="modal-links" id="modal-links">
-                        <!-- Links serão carregados dinamicamente -->
-                    </div>
+                    <div class="modal-links" id="modal-links"></div>
                 </div>
             </div>
         </div>
@@ -320,27 +544,19 @@
     <div id="lightbox" class="lightbox">
         <div class="lightbox-content">
             <img id="lightbox-image" src="" alt="">
-            <button class="lightbox-close">
-                <i class="fas fa-times"></i>
-            </button>
+            <button class="lightbox-close" aria-label="Fechar"><i class="fas fa-times"></i></button>
             <div class="lightbox-controls">
-                <button class="lightbox-prev">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <button class="lightbox-next">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
+                <button class="lightbox-prev" aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>
+                <button class="lightbox-next" aria-label="Próxima"><i class="fas fa-chevron-right"></i></button>
             </div>
         </div>
     </div>
 
     <!-- Back to Top -->
-    <button id="back-to-top" class="back-to-top">
-        <i class="fas fa-arrow-up"></i>
-    </button>
+    <button id="back-to-top" class="back-to-top" aria-label="Voltar ao topo"><i class="fas fa-arrow-up"></i></button>
 
     <!-- Scripts -->
-    <script src="js/main.js"></script>
     <script src="js/particles.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>

@@ -1,0 +1,113 @@
+{#
+  Template nbconvert "portfolio" — Honacleon Júnior
+  ---------------------------------------------------------------------------
+  Converte um .ipynb real no MESMO visual dos notebooks de exemplo do portfólio
+  (tema azul-noite + dourado, read-only). Estende o template `classic/base`,
+  que já renderiza corretamente TODAS as saídas (texto, dataframes, matplotlib,
+  erros). Aqui só trocamos o scaffold (topbar/título/banner/rodapé) e o resto
+  é reestilizado por quant/notebook.css.
+
+  Uso:
+    jupyter nbconvert --to html --template portfolio \
+      --TemplateExporter.extra_template_basedirs=quant/templates \
+      meu_notebook.ipynb --output-dir quant
+  (ou use o wrapper quant/templates/convert.sh)
+
+  Título / subtítulo / banner / repo são lidos de nb.metadata.portfolio:
+    "metadata": { "portfolio": {
+        "title": "...", "subtitle": "...",
+        "repo": "https://github.com/...", "banner": "<html opcional>"
+    }}
+  Sem metadata, o título cai no 1º "# H1" markdown e, por fim, no nome do arquivo.
+#}
+{%- extends 'classic/base.html.j2' -%}
+
+{#- ---- resolução de título/subtítulo a partir do metadata ou do 1º H1 ---- -#}
+{%- set pf = nb.metadata.get('portfolio', {}) -%}
+{%- set ns = namespace(title=pf.get('title', ''), sub=pf.get('subtitle', '')) -%}
+{%- if ns.title == '' -%}
+    {%- for cell in nb.cells -%}
+        {%- if ns.title == '' and cell.cell_type == 'markdown' -%}
+            {%- set firstline = cell.source.split('\n')[0] | trim -%}
+            {%- if firstline.startswith('# ') -%}
+                {%- set ns.title = firstline[2:] | trim -%}
+            {%- endif -%}
+        {%- endif -%}
+    {%- endfor -%}
+{%- endif -%}
+{%- if ns.title == '' -%}
+    {%- set ns.title = resources.metadata.name -%}
+{%- endif -%}
+
+{% block header %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ ns.title | escape }} — Honacleon Júnior</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="notebook.css">
+    <script>
+        MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] } };
+    </script>
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script>
+</head>
+<body>
+    <div class="nb-wrap">
+        <div class="nb-topbar">
+            <a class="nb-back" href="../index.html#quant"><i class="fas fa-arrow-left"></i> Voltar ao portfólio</a>
+            <span class="nb-file">
+                {{- resources.metadata.name | escape }}.ipynb · read-only
+                {%- if pf.get('repo') %} · <a href="{{ pf.get('repo') | escape }}" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none;"><i class="fab fa-github"></i> código</a>{% endif -%}
+            </span>
+        </div>
+
+        <h1 class="nb-title">{{ ns.title | escape }}</h1>
+        {%- if ns.sub %}
+        <p class="nb-sub">{{ ns.sub | escape }}</p>
+        {%- endif %}
+
+        <div class="nb-banner">
+            <i class="fas fa-shield-halved"></i>
+            <div>
+                {%- if pf.get('banner') %}
+                {{ pf.get('banner') }}
+                {%- else %}
+                <strong>Notebook somente leitura.</strong> O código está aberto para leitura, mas a
+                <strong>base de dados é privada</strong> — a conexão usa variável de ambiente
+                (credenciais nunca no notebook) e os números exibidos vêm de uma
+                <strong>amostra sintética</strong>. Nada aqui executa contra dados reais.
+                {%- endif %}
+            </div>
+        </div>
+{% endblock header %}
+
+{#- markdown: remove o H1 que já virou o título da página (evita duplicação) -#}
+{% block markdowncell scoped %}
+{%- set src = cell.source -%}
+{%- set firstline = src.split('\n')[0] | trim -%}
+{%- if firstline == '# ' ~ ns.title -%}
+    {%- set src = src.split('\n')[1:] | join('\n') -%}
+{%- endif -%}
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+{{ src | markdown2html | strip_files_prefix }}
+</div>
+</div>
+</div>
+{% endblock markdowncell %}
+
+{% block footer %}
+        <div class="nb-foot">
+            Notebook renderizado como HTML estático (read-only) ·
+            <a href="../index.html#quant">← voltar ao portfólio</a>
+        </div>
+    </div><!-- /.nb-wrap -->
+</body>
+</html>
+{% endblock footer %}
