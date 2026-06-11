@@ -777,6 +777,36 @@ h1, h2, h3, h4, h5, h6 { font-weight: 700; line-height: 1.2; }
 .achievement-item i { color: var(--gold); font-size: 0.95rem; flex-shrink: 0; }
 .timeline-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 
+/* ===== FORMAÇÃO / EDUCATION ===== */
+.education-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+.education-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.8rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1.2rem;
+    transition: border-color var(--transition), transform var(--transition);
+}
+.education-card:hover { border-color: var(--border-gold); transform: translateY(-4px); }
+.education-icon {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(212, 175, 55, 0.12);
+    border: 1px solid var(--border-gold);
+    border-radius: 12px;
+    color: var(--gold);
+    font-size: 1.2rem;
+}
+.education-degree { font-family: var(--font-mono); font-size: 1.02rem; color: var(--text-primary); margin-bottom: 0.45rem; line-height: 1.45; }
+.education-school { color: var(--blue-soft); font-weight: 500; font-size: 0.9rem; display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.4rem; }
+.education-year { font-family: var(--font-mono); color: var(--gold); font-weight: 600; font-size: 0.82rem; }
+
 .tag {
     background: var(--bg-darker);
     color: var(--text-secondary);

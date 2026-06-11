@@ -144,7 +144,7 @@ const projetos = [
         id: "agente-documentos",
         titulo: "Agente de Análise de Documentos",
         descricao: "Sistema inteligente que utiliza IA para análise e extração de informações de documentos complexos, com processamento de linguagem natural avançado.",
-        tecnologias: ["Python", "OpenAI API", "LangChain", "NLTK", "Streamlit"],
+        tecnologias: ["Python", "OpenAI API", "NLTK", "Streamlit"],
         thumbnail: "img/projects/doc-agent/capa_1.png",
         screenshots: [
             "img/projects/doc-agent/capa_1.png",
@@ -205,8 +205,8 @@ const projetos = [
     {
         id: "neurochat-rag-retrieval-augmented-generation",
         titulo: "NeuroChat - RAG (Retrieval-Augmented Generation) ",
-        descricao: "RAG Completo: Pipeline de ingestão, chunking, embeddings, indexação e busca semântica. Integração: OpenAI + Pinecone + LangChain + Streamlit.",
-        tecnologias: ["Pinecone", "LangChain", "Streamlit", "Python", "Docling", "OpenAI (API)", "Retrieval-Augmented Generation - RAG"],
+        descricao: "RAG Completo: Pipeline de ingestão, chunking, embeddings, indexação e busca semântica. Integração: OpenAI + Pinecone + Streamlit.",
+        tecnologias: ["Pinecone", "Streamlit", "Python", "Docling", "OpenAI (API)", "Retrieval-Augmented Generation - RAG"],
         thumbnail: "img/projects/rag-docs/capa_1.png",
         screenshots: [
             "img/projects/rag-docs/capa_1.png",
@@ -224,7 +224,7 @@ const projetos = [
             <ul>
                 <li><strong>OpenAI (API)</strong>: Geração de embeddings e respostas contextuais usando modelos de última geração (GPT-4o, text-embedding-3-small).</li>
                 <li><strong>Pinecone</strong>: Banco vetorial para indexação e busca semântica de documentos.</li>
-                <li><strong>LangChain</strong>: Pipeline para chunking, preparação e manipulação de documentos.</li>
+                <li><strong>Pipeline de ingestão</strong>: chunking, preparação e manipulação de documentos.</li>
                 <li><strong>Streamlit</strong>: Interface web moderna, responsiva e customizada com CSS avançado.</li>
                 <li><strong>Python-dotenv</strong>: Gerenciamento seguro de variáveis de ambiente.</li>
                 <li><strong>PDF Converter</strong>: Pipeline para converter PDFs em TXT/JSON, facilitando ingestão de dados.</li>
@@ -363,7 +363,7 @@ const projetos = [
         id: "bi-dashboard-professional",
         titulo: "BI Dashboard Professional — IA Aplicada com RAG e Agentes",
         descricao: "Plataforma BI premium com IA generativa, RAG e agentes para responder perguntas em linguagem natural, gerar insights automáticos e automatizar análises recorrentes.",
-        tecnologias: ["Python", "Streamlit", "LangChain", "OpenAI", "RAG", "Agentes IA", "BI Avançado"],
+        tecnologias: ["Python", "Streamlit", "OpenAI", "RAG", "Agentes IA", "BI Avançado"],
         thumbnail: "img/projects/bi-professional/capa.png",
         screenshots: [
             "img/projects/bi-professional/capa.png"
@@ -381,7 +381,7 @@ const projetos = [
             </ul>
 
             <h2>🛠️ Stack</h2>
-            <p>Python + Streamlit + LangChain + OpenAI + RAG + arquitetura multi-agente, deploy no Streamlit Cloud.</p>
+            <p>Python + Streamlit + OpenAI + RAG + arquitetura multi-agente, deploy no Streamlit Cloud.</p>
         `,
         liveDemo: "https://aurum-professional.streamlit.app/",
         repositorio: null,
